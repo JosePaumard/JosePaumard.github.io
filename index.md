@@ -29,5 +29,5 @@ Book Cover | Book & authors
 
 ### Introductory Katas
 
-[The FizzBuzz Kata](/introductory/fizzbuzz-kata.html)
+[The FizzBuzz Kata](/katas/introductory/fizzbuzz-kata.html)
 
