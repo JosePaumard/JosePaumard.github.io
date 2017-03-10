@@ -1,5 +1,12 @@
 [Back to index](/index.html)
 
+[The FizzBuzz Kata](/katas/introductory/fizzbuzz-kata.html)
+
+The Leap Years Kata
+
+[The RPN Calculator Kata](/katas/introductory/rpncalculator-kata.html)
+
+
 ## The LeapYears Kata
 
 ### The Kata

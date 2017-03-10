@@ -1,5 +1,12 @@
 [Back to index](/index.html)
 
+[The FizzBuzz Kata](/katas/introductory/fizzbuzz-kata.html)
+
+[The Leap Years Kata](/katas/introductory/leapyears-kata.html)
+
+The RPN Calculator Kata
+
+
 ### The Kata
 
 A RPN calculator program computes expressions written in RPN (Reverse Polish Notation).

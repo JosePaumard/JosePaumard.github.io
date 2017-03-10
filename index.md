@@ -9,6 +9,16 @@ Most of these katas can be found somewhere else on the Internet, and sorry, I di
 
 Anyway, here is a list a very good (and well known!) readings if you want to learn more about clean code, software craftsmanship, and all the practices around those.
 
+## The Katas
+
+### Introductory Katas
+
+[The FizzBuzz Kata](/katas/introductory/fizzbuzz-kata.html)
+
+[The Leap Years Kata](/katas/introductory/leapyears-kata.html)
+
+[The RPN Calculator Kata](/katas/introductory/rpncalculator-kata.html)
+
 ## Books I Like
 Anyway, here is a list a very good (and well known!) readings if you want to learn more about clean code, software craftsmanship, and all the practices around those.
 
@@ -24,17 +34,6 @@ Book Cover | Book & authors
 ![Software crafstmanship](/images/software-craftsman.jpg) |The Software Craftsman: Professionalism, Pragmatism, Pride, Sandro Mancuso, 2014.
 ![Coding dojo](/images/coding-dojo.jpg)                   |The Coding Dojo Handbook, Emily Bache, 2013.
 ![Design patterns](/images/design-pattern.jpg)            |Design Patterns: Elements of Reusable Object-Oriented Software, Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994.
-
-## The Katas
-
-### Introductory Katas
-
-[The FizzBuzz Kata](/katas/introductory/fizzbuzz-kata.html)
-
-[The Leap Years Kata](/katas/introductory/leapyears-kata.html)
-
-[The RPN Calculator Kata](/katas/introductory/rpncalculator-kata.html)
-
 
 ![Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png) [licence](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
