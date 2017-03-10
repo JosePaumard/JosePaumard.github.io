@@ -30,6 +30,7 @@ Book Cover | Book & authors
 ### Introductory Katas
 
 [The FizzBuzz Kata](/katas/introductory/fizzbuzz-kata.html)
+[The Leap Years Kata](/katas/introductory/leapyear-kata.html)
 
 ![Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png) [licence](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
