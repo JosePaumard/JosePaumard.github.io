@@ -5,6 +5,4 @@ José Paumard <jose.paumard@gmail.com>
 
 This is a set of personal notes on software craftsmanship. Many things gathered here are not new, some of them are well-known! It is mainly thoughts on my activity as a software craftsmanship coach in several different teams I had the pleasure to work with.
 
-Most of these katas can be found somewhere else on the Internet, and sorry, I did not try to find out who invented which. Well some of them, I know I invented them, but it is so easy to invent a kata that I cannot be sure that someone somewhere came with the same idea.
-
-Anyway, here is a list a very good (and well known!) readings if you want to learn more about clean code, software craftsmanship, and all the practices around those.
+So what could be the value of such a work, since there are so many stuff on katas all around the Internet? Well, first of all, it acts as a block-note for me, with everything in one place. Instead of having a bunch of links, some of them broken, and annotations on what has been published somewhere else, at least everything is here. Second, since this is GitHub, this work can be commented, criticized, improved. From discussions come new ideas. I am convinced that exposing a work can improve it, so let's give a try on this subject!
