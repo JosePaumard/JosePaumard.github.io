@@ -31,7 +31,7 @@ Book Cover | Book & authors
 
 [The FizzBuzz Kata](/katas/introductory/fizzbuzz-kata.html)
 
-[The Leap Years Kata](/katas/introductory/leapyear-kata.html)
+[The Leap Years Kata](/katas/introductory/leapyears-kata.html)
 
 [The RPN Calculator Kata](/katas/introductory/rpncalculator-kata.html)
 
