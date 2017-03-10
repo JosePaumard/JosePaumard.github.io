@@ -1,6 +1,8 @@
 # Software Craftsmanship
 José Paumard <jose.paumard@gmail.com>
 
+This repo can be seen on [https://josepaumard.github.io/](https://josepaumard.github.io/)
+
 ## Foreword
 
 This is a set of personal notes on software craftsmanship. Many things gathered here are not new, some of them are well-known! It is mainly thoughts on my activity as a software craftsmanship coach in several different teams I had the pleasure to work with.
