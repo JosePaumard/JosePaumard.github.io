@@ -109,3 +109,5 @@ For me this trivial example is in fact very good: take a trivial piece of code, 
 I think that this very simple kata is in fact a great introduction to the most important concepts of clean code and TDD. When I coach people on this kata, I usually tell them that we are not going to spend more than 15 minutes on it, not to scary them! What would be the point in spending more time than this on such a trivial example? In fact, I know very well that we are going to spend a full hour on it, talking about the different Clean Code and TDD principles, discussing everything, laying things for the upcoming coaching sessions.
 
 [Back to index](/index.html)
+
+![Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png) [licence](http://creativecommons.org/licenses/by-nc-sa/4.0/)
