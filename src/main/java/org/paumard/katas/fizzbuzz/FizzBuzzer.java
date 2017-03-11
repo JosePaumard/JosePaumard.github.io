@@ -21,9 +21,11 @@ package org.paumard.katas.fizzbuzz;
  */
 public class FizzBuzzer {
 
+    private static final String FIZZ = "Fizz";
+
     public String fizzBuzz(int input) {
         if (input == 3)
-            return "Fizz";
+            return FIZZ;
         return "" + input;
     }
 }
