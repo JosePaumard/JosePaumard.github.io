@@ -21,7 +21,7 @@ This first kata is really so easy to solve, that you are probably asking yoursel
 
 I usually just ask the people: ok, go for it, could you show me how to write this code using TDD. I just look at the code people are writing for a few minutes (no more than 10), and then begin to explain them the first principles of clean coding and TDD.
 
-I added a [fizzbuz-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/fizzbuzz-kata) in this repo with a way of solving this kata, commit by commit. The first commit of the serie is this one: 226a2587144dc3c89b1db428fec69aa72cb7ff7c. 
+I added a [fizzbuz-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/fizzbuzz-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/tree/226a2587144dc3c89b1db428fec69aa72cb7ff7c). 
 
 #### First Questions
 
