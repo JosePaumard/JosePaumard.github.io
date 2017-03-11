@@ -28,10 +28,14 @@ public class FizzBuzzer {
         if (isDivisibleBy3(input))
             return FIZZ;
 
-        if (input % 5 == 0)
+        if (isDivisibleBy5(input))
             return BUZZ;
 
         return "" + input;
+    }
+
+    private boolean isDivisibleBy5(int input) {
+        return input % 5 == 0;
     }
 
     private boolean isDivisibleBy3(int input) {
