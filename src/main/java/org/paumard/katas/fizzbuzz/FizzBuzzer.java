@@ -26,9 +26,8 @@ public class FizzBuzzer {
 
     public String fizzBuzz(int input) {
 
-        if (input == 15) {
+        if (isDivisibleBy3(input) && isDivisibleBy5(input))
             return FIZZ + BUZZ;
-        }
 
         if (isDivisibleBy3(input))
             return FIZZ;
