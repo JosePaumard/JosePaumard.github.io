@@ -22,6 +22,6 @@ package org.paumard.katas.fizzbuzz;
 public class FizzBuzzer {
 
     public String fizzBuzz(int input) {
-        return "1";
+        return "" + input;
     }
 }
