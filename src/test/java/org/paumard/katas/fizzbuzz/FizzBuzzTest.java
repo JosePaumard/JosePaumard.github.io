@@ -54,4 +54,19 @@ public class FizzBuzzTest {
         // Then
         assertThat(output).isEqualTo(expectedOutput);
     }
+
+    @Test
+    public void should_return_Fizz_when_fizzBuzzing_3() {
+
+        // Given
+        FizzBuzzer fizzBuzzer = new FizzBuzzer();
+        int input = 3;
+        String expectedOutput = "Fizz";
+
+        // When
+        String output = fizzBuzzer.fizzBuzz(input);
+
+        // Then
+        assertThat(output).isEqualTo(expectedOutput);
+    }
 }
