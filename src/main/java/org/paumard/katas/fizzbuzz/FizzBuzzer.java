@@ -22,13 +22,14 @@ package org.paumard.katas.fizzbuzz;
 public class FizzBuzzer {
 
     private static final String FIZZ = "Fizz";
+    public static final String BUZZ = "Buzz";
 
     public String fizzBuzz(int input) {
         if (isDivisibleBy3(input))
             return FIZZ;
 
         if (input == 5)
-            return "Buzz";
+            return BUZZ;
 
         return "" + input;
     }
