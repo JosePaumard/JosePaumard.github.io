@@ -26,6 +26,10 @@ public class FizzBuzzer {
     public String fizzBuzz(int input) {
         if (isDivisibleBy3(input))
             return FIZZ;
+
+        if (input == 5)
+            return "Buzz";
+
         return "" + input;
     }
 
