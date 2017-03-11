@@ -24,7 +24,7 @@ public class FizzBuzzer {
     private static final String FIZZ = "Fizz";
 
     public String fizzBuzz(int input) {
-        if (input == 3)
+        if (input % 3 == 0)
             return FIZZ;
         return "" + input;
     }
