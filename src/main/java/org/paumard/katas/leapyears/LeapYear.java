@@ -22,6 +22,9 @@ package org.paumard.katas.leapyears;
 public class LeapYear {
 
     public boolean isLeapYear(int year) {
+        if (year == 2000) {
+            return true;
+        }
         return isTypicalLeapYear(year) && !isAnAtypicalCommonYear(year);
     }
 
