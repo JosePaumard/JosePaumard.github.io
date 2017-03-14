@@ -39,4 +39,19 @@ public class RPNCalculatorTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_compute_2_for_input_2() {
+
+        // Given
+        RPNCalculator calculator = new RPNCalculator();
+        String input = "2";
+        int expectedResult = 2;
+
+        // When
+        int result = calculator.compute(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
