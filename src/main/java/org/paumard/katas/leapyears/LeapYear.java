@@ -22,7 +22,11 @@ package org.paumard.katas.leapyears;
 public class LeapYear {
 
     public boolean isLeapYear(int year) {
-        return isTypicalLeapYear(year) && (!isAnAtypicalCommonYear(year) || year % 400 == 0);
+        return isTypicalLeapYear(year) && (!isAnAtypicalCommonYear(year) || isAnAtypicalLeapYear(year));
+    }
+
+    private boolean isAnAtypicalLeapYear(int year) {
+        return year % 400 == 0;
     }
 
     private boolean isAnAtypicalCommonYear(int year) {
