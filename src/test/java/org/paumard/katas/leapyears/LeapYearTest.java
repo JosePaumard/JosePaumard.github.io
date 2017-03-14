@@ -38,4 +38,19 @@ public class LeapYearTest {
         // Than
         Assertions.assertThat(isLeapYear).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_return_false_for_year_2001_as_a_typical_common_year() {
+
+        // Given
+        int year = 2001;
+        LeapYear leapYear = new LeapYear();
+        boolean expectedResult = false;
+
+        // When
+        boolean isLeapYear = leapYear.isLeapYear(year);
+
+        // Than
+        Assertions.assertThat(isLeapYear).isEqualTo(expectedResult);
+    }
 }
