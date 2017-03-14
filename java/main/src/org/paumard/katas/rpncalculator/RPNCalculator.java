@@ -27,7 +27,7 @@ public class RPNCalculator {
             return Integer.parseInt(input);
         } else {
             int leftOperand = Integer.parseInt(operationElements[0]);
-            int rightOperand = Integer.parseInt(operationElements[0]);
+            int rightOperand = Integer.parseInt(operationElements[1]);
             return leftOperand + rightOperand;
         }
     }
