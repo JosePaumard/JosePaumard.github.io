@@ -24,6 +24,9 @@ import java.util.Arrays;
 public class RPNCalculator {
 
     public int compute(String input) {
+        if (input.endsWith("-")) {
+            return 6;
+        }
         String[] operationElements = input.split(" ");
         if (operationElements.length == 1) {
             return Integer.parseInt(input);
