@@ -22,9 +22,10 @@ package org.paumard.katas.leapyears;
 public class LeapYear {
 
     public boolean isLeapYear(int year) {
-        if (year % 4 == 0) {
-            return true;
-        }
-        return false;
+        return isTypicalLeapYear(year);
+    }
+
+    private boolean isTypicalLeapYear(int year) {
+        return year % 4 == 0;
     }
 }
