@@ -23,6 +23,10 @@ This may seem cruel, but it is sometimes good to be put in front of one's weakne
 
 Beside this, all the principles I tell people during the FizzBuzz kata are just the same here: baby steps, the importance of naming elements (fields, variables, methods, test methods), extracting technical code in correctly named private methods, etc.
 
+On the overall, this kata is very similar to the FizzBuzz kata, slightly more difficult. 
+
+I added a [leapyears-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/leapyears-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/commit/550bc9a94be9b8e545c222eb01b31a31b8939bff). 
+
 ### Wrap-up
 
 The LeapYear kata is a nice introductory kata, a little harder than the FizzBuzz one, mainly due to a quite complex boolean expression to write. This being said, the baby steps approach works very well here, and the problem is very easy to split.
