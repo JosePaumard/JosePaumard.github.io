@@ -16,7 +16,11 @@
 
 package org.paumard.katas.rpncalculator;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Created by José
@@ -27,15 +31,27 @@ public class RPNCalculator {
         if (input.endsWith("-")) {
             return 6;
         }
-        String[] operationElements = input.split(" ");
-        if (operationElements.length == 1) {
-            return Integer.parseInt(input);
-        } else {
-            return
-                Arrays.stream(operationElements)
-                        .filter(s -> !s.equals("+"))
-                        .mapToInt(Integer::parseInt)
-                        .sum();
-        }
+        Deque<String> deque = new ArrayDeque<>();
+
+        Pattern.compile(" ").splitAsStream(input)
+                .forEach(
+                        operationElement -> {
+                            if (operationElement.equals("+")) {
+                                int leftOperand = Integer.parseInt(deque.poll());
+                                int rightOperand = Integer.parseInt(deque.poll());
+                                int result = leftOperand + rightOperand;
+                                deque.push("" + result);
+                            } else if (operationElement.equals("-")) {
+                                int leftOperand = Integer.parseInt(deque.poll());
+                                int rightOperand = Integer.parseInt(deque.poll());
+                                int result = leftOperand - rightOperand;
+                                deque.push("" + result);
+                            } else {
+                                deque.push(operationElement);
+                            }
+                        }
+                );
+
+        return Integer.parseInt(deque.poll());
     }
 }
