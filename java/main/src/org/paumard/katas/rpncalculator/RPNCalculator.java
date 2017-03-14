@@ -17,10 +17,8 @@
 package org.paumard.katas.rpncalculator;
 
 import java.util.ArrayDeque;
-import java.util.Arrays;
 import java.util.Deque;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 /**
  * Created by José
@@ -37,21 +35,33 @@ public class RPNCalculator {
                 .forEach(
                         operationElement -> {
                             if (operationElement.equals("+")) {
-                                int leftOperand = Integer.parseInt(deque.poll());
-                                int rightOperand = Integer.parseInt(deque.poll());
+                                int leftOperand = pollToInt(deque);
+                                int rightOperand = pollToInt(deque);
                                 int result = leftOperand + rightOperand;
-                                deque.push("" + result);
+                                pushString(deque, result);
                             } else if (operationElement.equals("-")) {
-                                int leftOperand = Integer.parseInt(deque.poll());
-                                int rightOperand = Integer.parseInt(deque.poll());
+                                int leftOperand = pollToInt(deque);
+                                int rightOperand = pollToInt(deque);
                                 int result = leftOperand - rightOperand;
-                                deque.push("" + result);
+                                pushString(deque, result);
                             } else {
-                                deque.push(operationElement);
+                                pushString(deque, operationElement);
                             }
                         }
                 );
 
+        return pollToInt(deque);
+    }
+
+    private void pushString(Deque<String> deque, String operationElement) {
+        deque.push(operationElement);
+    }
+
+    private void pushString(Deque<String> deque, int result) {
+        pushString(deque, "" + result);
+    }
+
+    private int pollToInt(Deque<String> deque) {
         return Integer.parseInt(deque.poll());
     }
 }
