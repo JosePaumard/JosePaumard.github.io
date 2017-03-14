@@ -22,6 +22,6 @@ package org.paumard.katas.rpncalculator;
 public class RPNCalculator {
 
     public int compute(String input) {
-        return 0;
+        return 1;
     }
 }
