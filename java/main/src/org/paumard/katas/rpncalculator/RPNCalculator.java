@@ -22,9 +22,13 @@ package org.paumard.katas.rpncalculator;
 public class RPNCalculator {
 
     public int compute(String input) {
-        if (input.endsWith("+")) {
-            return 3;
+        String[] operationElements = input.split(" ");
+        if (operationElements.length == 1) {
+            return Integer.parseInt(input);
+        } else {
+            int leftOperand = Integer.parseInt(operationElements[0]);
+            int rightOperand = Integer.parseInt(operationElements[0]);
+            return leftOperand + rightOperand;
         }
-        return Integer.parseInt(input);
     }
 }
