@@ -16,14 +16,45 @@
 
 package org.paumard.katas.rpncalculator;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.*;
+import java.util.function.IntBinaryOperator;
 import java.util.regex.Pattern;
 
 /**
  * Created by José
  */
 public class RPNCalculator {
+
+    private enum Operator {
+        ADD("+", (i1, i2) -> i1 + i2),
+        SUB("-", (i1, i2) -> i1 - i2);
+
+        private final IntBinaryOperator operator;
+        private final String symbol;
+
+        private Operator(String symbol, IntBinaryOperator operator) {
+            this.symbol = symbol;
+            this.operator = operator;
+        }
+
+        public int compute(int i1, int i2) {
+            return operator.applyAsInt(i1, i2);
+        }
+
+        public static Operator of(String operationElement) {
+            Optional<Operator> operator = findOperatorBySymbol(operationElement);
+            return operator.orElse(null);
+        }
+
+        public static boolean isOperator(String operationElement) {
+            Optional<Operator> operator = findOperatorBySymbol(operationElement);
+            return operator.isPresent();
+        }
+
+        private static Optional<Operator> findOperatorBySymbol(String operationElement) {
+            return Arrays.stream(values()).filter(op -> op.symbol.equals(operationElement)).findAny();
+        }
+    }
 
     public int compute(String input) {
         if (input.endsWith("-")) {
@@ -34,15 +65,10 @@ public class RPNCalculator {
         Pattern.compile(" ").splitAsStream(input)
                 .forEach(
                         operationElement -> {
-                            if (operationElement.equals("+")) {
+                            if (Operator.isOperator(operationElement)) {
                                 int leftOperand = pollToInt(deque);
                                 int rightOperand = pollToInt(deque);
-                                int result = leftOperand + rightOperand;
-                                pushString(deque, result);
-                            } else if (operationElement.equals("-")) {
-                                int leftOperand = pollToInt(deque);
-                                int rightOperand = pollToInt(deque);
-                                int result = leftOperand - rightOperand;
+                                int result = Operator.of(operationElement).compute(leftOperand, rightOperand);
                                 pushString(deque, result);
                             } else {
                                 pushString(deque, operationElement);
