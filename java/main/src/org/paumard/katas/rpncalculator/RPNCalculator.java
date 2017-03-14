@@ -60,34 +60,29 @@ public class RPNCalculator {
         if (input.endsWith("-")) {
             return 6;
         }
-        Deque<Integer> deque = new ArrayDeque<>();
+        RPNCalculatorArrayDeque deque = new RPNCalculatorArrayDeque();
 
         Pattern.compile(" ").splitAsStream(input)
                 .forEach(
                         operationElement -> {
                             if (Operator.isOperator(operationElement)) {
-                                int leftOperand = poll(deque);
-                                int rightOperand = poll(deque);
+                                int leftOperand = deque.poll();
+                                int rightOperand = deque.poll();
                                 int result = Operator.of(operationElement).compute(leftOperand, rightOperand);
-                                push(deque, result);
+                                deque.push(result);
                             } else {
-                                push(deque, operationElement);
+                                deque.push(operationElement);
                             }
                         }
                 );
 
-        return poll(deque);
-    }
-
-    private void push(Deque<Integer> deque, Integer operationElement) {
-        deque.push(operationElement);
-    }
-
-    private void push(Deque<Integer> deque, String operationElement) {
-        deque.push(Integer.parseInt(operationElement));
-    }
-
-    private int poll(Deque<Integer> deque) {
         return deque.poll();
+    }
+
+    private static class RPNCalculatorArrayDeque extends ArrayDeque<Integer> {
+
+        public void push(String operationElement) {
+            super.push(Integer.parseInt(operationElement));
+        }
     }
 }
