@@ -28,6 +28,10 @@ public class RPNCalculator {
         } else {
             int leftOperand = Integer.parseInt(operationElements[0]);
             int rightOperand = Integer.parseInt(operationElements[1]);
+            if (operationElements.length > 3) {
+                int thirdOperand = Integer.parseInt(operationElements[3]);
+                return leftOperand + rightOperand + thirdOperand;
+            }
             return leftOperand + rightOperand;
         }
     }
