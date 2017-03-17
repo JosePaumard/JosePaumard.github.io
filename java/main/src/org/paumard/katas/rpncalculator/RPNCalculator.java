@@ -18,6 +18,7 @@ package org.paumard.katas.rpncalculator;
 
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.regex.Pattern;
 
 /**
@@ -29,42 +30,41 @@ public class RPNCalculator {
         ADD("+", (deque) -> {
             int i1 = deque.poll();
             int i2 = deque.poll();
-            deque.push(i1 + i2);
+            return i1 + i2;
         }),
         SUB("-", (deque) -> {
             int i1 = deque.poll();
             int i2 = deque.poll();
-            deque.push(i2 - i1);
+            return i2 - i1;
         }),
         DIV("/", (deque) -> {
             int i1 = deque.poll();
             int i2 = deque.poll();
-            deque.push(i2 / i1);
+            return i2 / i1;
         }),
         MULT("*", (deque) -> {
             int i1 = deque.poll();
             int i2 = deque.poll();
-            deque.push(i1 * i2);
+            return i1 * i2;
         }),
         SQRT("SQRT", (deque) -> {
             int i = deque.poll();
-            deque.push((int)Math.sqrt(i));
+            return (int)Math.sqrt(i);
         }),
         MAX("MAX", (deque) -> {
-            int max = deque.stream().mapToInt(Integer::intValue).max().getAsInt();
-            deque.push(max);
+            return  deque.stream().mapToInt(Integer::intValue).max().getAsInt();
         });
 
-        private final Consumer<Deque<Integer>> operator;
+        private final Function<Deque<Integer>, Integer> operator;
         private final String symbol;
 
-        private Operator(String symbol, Consumer<Deque<Integer>> operator) {
+        private Operator(String symbol, Function<Deque<Integer>, Integer> operator) {
             this.symbol = symbol;
             this.operator = operator;
         }
 
-        public void accept(Deque<Integer> deque) {
-            operator.accept(deque);
+        public int compute(Deque<Integer> deque) {
+            return operator.apply(deque);
         }
 
         public static Operator of(String operationElement) {
@@ -90,7 +90,8 @@ public class RPNCalculator {
                 .forEach(
                         operationElement -> {
                             if (Operator.isOperator(operationElement)) {
-                                Operator.of(operationElement).accept(deque);
+                                int result = Operator.of(operationElement).compute(deque);
+                                deque.push(result);
                             } else {
                                 deque.push(operationElement);
                             }
