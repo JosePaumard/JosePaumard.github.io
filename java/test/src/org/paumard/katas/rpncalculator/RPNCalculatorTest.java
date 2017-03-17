@@ -129,4 +129,19 @@ public class RPNCalculatorTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_compute_4_for_input_20_5_DIV() {
+
+        // Given
+        RPNCalculator calculator = new RPNCalculator();
+        String input = "20 5 /";
+        int expectedResult = 4;
+
+        // When
+        int result = calculator.compute(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
