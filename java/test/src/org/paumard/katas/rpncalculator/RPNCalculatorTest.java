@@ -144,4 +144,19 @@ public class RPNCalculatorTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_compute_100_for_input_20_5_MULT() {
+
+        // Given
+        RPNCalculator calculator = new RPNCalculator();
+        String input = "20 5 *";
+        int expectedResult = 100;
+
+        // When
+        int result = calculator.compute(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
