@@ -49,6 +49,10 @@ public class RPNCalculator {
         SQRT("SQRT", (deque) -> {
             int i = deque.poll();
             deque.push((int)Math.sqrt(i));
+        }),
+        MAX("MAX", (deque) -> {
+            int max = deque.stream().mapToInt(Integer::intValue).max().getAsInt();
+            deque.push(max);
         });
 
         private final Consumer<Deque<Integer>> operator;
