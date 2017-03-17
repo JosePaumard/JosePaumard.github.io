@@ -17,7 +17,7 @@
 package org.paumard.katas.rpncalculator;
 
 import java.util.*;
-import java.util.function.IntBinaryOperator;
+import java.util.function.Consumer;
 import java.util.regex.Pattern;
 
 /**
@@ -26,21 +26,37 @@ import java.util.regex.Pattern;
 public class RPNCalculator {
 
     private enum Operator {
-        ADD("+", (i1, i2) -> i1 + i2),
-        SUB("-", (i1, i2) -> i2 - i1),
-        DIV("/", (i1, i2) -> i2 / i1),
-        MULT("*", (i1, i2) -> i2 * i1);
+        ADD("+", (deque) -> {
+            int i1 = deque.poll();
+            int i2 = deque.poll();
+            deque.push(i1 + i2);
+        }),
+        SUB("-", (deque) -> {
+            int i1 = deque.poll();
+            int i2 = deque.poll();
+            deque.push(i2 - i1);
+        }),
+        DIV("/", (deque) -> {
+            int i1 = deque.poll();
+            int i2 = deque.poll();
+            deque.push(i2 / i1);
+        }),
+        MULT("*", (deque) -> {
+            int i1 = deque.poll();
+            int i2 = deque.poll();
+            deque.push(i1 * i2);
+        });
 
-        private final IntBinaryOperator operator;
+        private final Consumer<Deque<Integer>> operator;
         private final String symbol;
 
-        private Operator(String symbol, IntBinaryOperator operator) {
+        private Operator(String symbol, Consumer<Deque<Integer>> operator) {
             this.symbol = symbol;
             this.operator = operator;
         }
 
-        public int compute(int i1, int i2) {
-            return operator.applyAsInt(i1, i2);
+        public void accept(Deque<Integer> deque) {
+            operator.accept(deque);
         }
 
         public static Operator of(String operationElement) {
@@ -70,10 +86,7 @@ public class RPNCalculator {
                 .forEach(
                         operationElement -> {
                             if (Operator.isOperator(operationElement)) {
-                                int leftOperand = deque.poll();
-                                int rightOperand = deque.poll();
-                                int result = Operator.of(operationElement).compute(leftOperand, rightOperand);
-                                deque.push(result);
+                                Operator.of(operationElement).accept(deque);
                             } else {
                                 deque.push(operationElement);
                             }
