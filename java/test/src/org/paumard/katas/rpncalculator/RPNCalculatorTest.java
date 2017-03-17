@@ -189,4 +189,19 @@ public class RPNCalculatorTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_compute_3_for_input_9_SQRT() {
+
+        // Given
+        RPNCalculator calculator = new RPNCalculator();
+        String input = "9 SQRT";
+        int expectedResult = 3;
+
+        // When
+        int result = calculator.compute(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
