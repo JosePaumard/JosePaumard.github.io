@@ -45,6 +45,10 @@ public class RPNCalculator {
             int i1 = deque.poll();
             int i2 = deque.poll();
             deque.push(i1 * i2);
+        }),
+        SQRT("SQRT", (deque) -> {
+            int i = deque.poll();
+            deque.push((int)Math.sqrt(i));
         });
 
         private final Consumer<Deque<Integer>> operator;
@@ -75,10 +79,6 @@ public class RPNCalculator {
     }
 
     public int compute(String input) {
-
-        if (input.endsWith("SQRT")) {
-            return 3;
-        }
 
         RPNCalculatorArrayDeque deque = new RPNCalculatorArrayDeque();
 
