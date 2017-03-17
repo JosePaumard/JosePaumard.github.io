@@ -204,4 +204,19 @@ public class RPNCalculatorTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_compute_8_for_input_5_8_1_4_2_MAX() {
+
+        // Given
+        RPNCalculator calculator = new RPNCalculator();
+        String input = "5 8 1 4 2 MAX";
+        int expectedResult = 8;
+
+        // When
+        int result = calculator.compute(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
