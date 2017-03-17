@@ -159,4 +159,34 @@ public class RPNCalculatorTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_compute_3_for_input_4_2_ADD_3_SUB() {
+
+        // Given
+        RPNCalculator calculator = new RPNCalculator();
+        String input = "4 2 + 3 -";
+        int expectedResult = 3;
+
+        // When
+        int result = calculator.compute(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
+
+    @Test
+    public void should_compute_3_for_input_3_5_8_MULT_7_ADD_MULT() {
+
+        // Given
+        RPNCalculator calculator = new RPNCalculator();
+        String input = "3 5 8 * 7 + *";
+        int expectedResult = 141;
+
+        // When
+        int result = calculator.compute(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
