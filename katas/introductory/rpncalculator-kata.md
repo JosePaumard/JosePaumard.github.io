@@ -39,6 +39,10 @@ The right solution to implement such a problem is to use a stack. This structure
 
 The version proposed here has two more questions than the basic version usually found everywhere: it asks for the support of the ``SQRT`` operation, and the ``MAX`` operation. I explain in the following why I added them.
 
+
+I added a [rpncalculator-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/rpncalculator-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/tree/ac3392cf76a5ae1e71e0e45c645d6a8a426e0d0e). 
+
+
 #### The Strategy Pattern
 
 Once the stack is in place, the code will probably be organized around a big ``if then else`` structure, with all the operations in it.

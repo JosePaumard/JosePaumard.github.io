@@ -25,7 +25,7 @@ Beside this, all the principles I tell people during the FizzBuzz kata are just 
 
 On the overall, this kata is very similar to the FizzBuzz kata, slightly more difficult. 
 
-I added a [leapyears-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/leapyears-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/commit/550bc9a94be9b8e545c222eb01b31a31b8939bff). 
+I added a [leapyears-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/leapyears-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/tree/550bc9a94be9b8e545c222eb01b31a31b8939bff). 
 
 ### Wrap-up
 
