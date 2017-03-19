@@ -24,12 +24,7 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 
     public int add(String input) {
-        if (input.isEmpty()) {
-            return 0;
-        }
-        if (input.contains(",")) {
-            return Pattern.compile(",").splitAsStream(input).mapToInt(Integer::parseInt).sum();
-        }
-        return Integer.parseInt(input);
+
+        return Pattern.compile(",").splitAsStream(input).mapToInt(Integer::parseInt).sum();
     }
 }
