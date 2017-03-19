@@ -27,13 +27,25 @@ public class StringCalculator {
 
     public int add(String input) {
 
-        if (input.startsWith("//")) {
-            String separator = input.substring(2, 3);
-            String substring = input.substring(4);
+        if (isCustomSeparatorDefined(input)) {
+            String separator = extractSeparator(input);
+            String substring = removeSeparatorDeclaration(input);
             return add(substring, separator);
+        } else {
+            return add(input, SEPARATOR);
         }
+    }
 
-        return add(input, SEPARATOR);
+    private boolean isCustomSeparatorDefined(String input) {
+        return input.startsWith("//");
+    }
+
+    private String removeSeparatorDeclaration(String input) {
+        return input.substring(4);
+    }
+
+    private String extractSeparator(String input) {
+        return input.substring(2, 3);
     }
 
     private int add(String input, String separator) {
