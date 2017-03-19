@@ -39,4 +39,19 @@ public class StringCalculatorTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_return_1_for_an_input_of_1() {
+
+        // Given
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = "1";
+        int expectedResult = 1;
+
+        // When
+        int result = stringCalculator.add(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
