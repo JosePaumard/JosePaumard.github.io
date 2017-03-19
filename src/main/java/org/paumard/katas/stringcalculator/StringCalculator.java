@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
  */
 public class StringCalculator {
 
-    private static final String SEPARATOR = ",";
+    private static final String SEPARATOR = "[,\n]";
 
     public int add(String input) {
 
