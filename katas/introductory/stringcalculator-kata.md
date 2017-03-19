@@ -42,6 +42,8 @@ The problem itself is not a very complicated one.
 
 There are two things interesting to stress out in the Java version of this kata: the splitting of strings of characters and the exceptions.
 
+I added a [stringcalculator-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/stringcalculator-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/tree/2a907788774aac2d04dde3725684baf1f2981bc9). 
+
 #### Splitting strings of characters
 
 There is a well known way of splitting strings in Java, which is the ``String.split()`` method. This method takes a regular expression, which is just perfect for this problem. Using this method is fine, we just have to analyze the content of the array to solve the problem.
