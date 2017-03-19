@@ -84,4 +84,19 @@ public class StringCalculatorTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_return_5_for_an_input_of_2_coma_3() {
+
+        // Given
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = "2,3";
+        int expectedResult = 5;
+
+        // When
+        int result = stringCalculator.add(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
