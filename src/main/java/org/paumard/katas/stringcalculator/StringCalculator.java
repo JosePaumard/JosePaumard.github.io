@@ -23,8 +23,10 @@ import java.util.regex.Pattern;
  */
 public class StringCalculator {
 
+    private static final String SEPARATOR = ",";
+
     public int add(String input) {
 
-        return Pattern.compile(",").splitAsStream(input).mapToInt(Integer::parseInt).sum();
+        return Pattern.compile(SEPARATOR).splitAsStream(input).mapToInt(Integer::parseInt).sum();
     }
 }
