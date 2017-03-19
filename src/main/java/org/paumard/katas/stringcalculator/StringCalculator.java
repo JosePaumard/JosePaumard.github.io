@@ -29,9 +29,14 @@ public class StringCalculator {
 
         if (input.startsWith("//")) {
             String separator = input.substring(2, 3);
-            return Pattern.compile(separator).splitAsStream(input.substring(4)).mapToInt(Integer::parseInt).sum();
+            String substring = input.substring(4);
+            return add(substring, separator);
         }
 
-        return Pattern.compile(SEPARATOR).splitAsStream(input).mapToInt(Integer::parseInt).sum();
+        return add(input, SEPARATOR);
+    }
+
+    private int add(String input, String separator) {
+        return Pattern.compile(separator).splitAsStream(input).mapToInt(Integer::parseInt).sum();
     }
 }
