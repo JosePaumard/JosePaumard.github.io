@@ -16,6 +16,8 @@
 
 package org.paumard.katas.stringcalculator;
 
+import java.util.regex.Pattern;
+
 /**
  * Created by José
  */
@@ -26,7 +28,7 @@ public class StringCalculator {
             return 0;
         }
         if (input.contains(",")) {
-            return 3;
+            return Pattern.compile(",").splitAsStream(input).mapToInt(Integer::parseInt).sum();
         }
         return Integer.parseInt(input);
     }
