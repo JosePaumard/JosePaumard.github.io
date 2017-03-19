@@ -6,6 +6,8 @@
 
 The RPN Calculator Kata
 
+[The String Calculator Kata](/katas/introductory/stringcalculator-kata.html)
+
 
 ### The Kata
 

@@ -19,6 +19,9 @@ Anyway, here is a list a very good (and well known!) readings if you want to lea
 
 [The RPN Calculator Kata](/katas/introductory/rpncalculator-kata.html)
 
+[The String Calculator Kata](/katas/introductory/stringcalculator-kata.html)
+
+
 ## Books I Like
 Anyway, here is a list a very good (and well known!) readings if you want to learn more about clean code, software craftsmanship, and all the practices around those.
 

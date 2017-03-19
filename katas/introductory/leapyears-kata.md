@@ -6,6 +6,8 @@ The Leap Years Kata
 
 [The RPN Calculator Kata](/katas/introductory/rpncalculator-kata.html)
 
+[The String Calculator Kata](/katas/introductory/stringcalculator-kata.html)
+
 
 ## The LeapYears Kata
 
