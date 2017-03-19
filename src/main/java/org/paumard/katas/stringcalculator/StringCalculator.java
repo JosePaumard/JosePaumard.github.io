@@ -27,8 +27,10 @@ public class StringCalculator {
 
     public int add(String input) {
 
-        if (input.startsWith("//"))
-            return 5;
+        if (input.startsWith("//")) {
+            String separator = input.substring(2, 3);
+            return Pattern.compile(separator).splitAsStream(input.substring(4)).mapToInt(Integer::parseInt).sum();
+        }
 
         return Pattern.compile(SEPARATOR).splitAsStream(input).mapToInt(Integer::parseInt).sum();
     }
