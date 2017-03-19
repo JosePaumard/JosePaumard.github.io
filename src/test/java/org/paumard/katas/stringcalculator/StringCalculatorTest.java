@@ -129,4 +129,19 @@ public class StringCalculatorTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_return_3_for_an_input_of_1_custom_separator_2_and_custom_separator_is_semicolon() {
+
+        // Given
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = "//;\n1;2";
+        int expectedResult = 3;
+
+        // When
+        int result = stringCalculator.add(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
