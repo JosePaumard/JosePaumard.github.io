@@ -27,13 +27,18 @@ public class StringCalculator {
 
     public int add(String input) {
 
+        String separator = null;
+        String operations = null;
+
         if (isCustomSeparatorDefined(input)) {
-            String separator = extractSeparator(input);
-            String substring = removeSeparatorDeclaration(input);
-            return add(substring, separator);
+            separator = extractSeparator(input);
+            operations = removeSeparatorDeclaration(input);
         } else {
-            return add(input, SEPARATOR);
+            separator = SEPARATOR;
+            operations = input;
         }
+
+        return add(operations, separator);
     }
 
     private boolean isCustomSeparatorDefined(String input) {
