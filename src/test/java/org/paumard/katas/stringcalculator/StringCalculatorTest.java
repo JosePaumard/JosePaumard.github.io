@@ -54,4 +54,19 @@ public class StringCalculatorTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_return_2_for_an_input_of_2() {
+
+        // Given
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = "2";
+        int expectedResult = 2;
+
+        // When
+        int result = stringCalculator.add(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
