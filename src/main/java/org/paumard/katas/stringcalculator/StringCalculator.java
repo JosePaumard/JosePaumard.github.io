@@ -22,9 +22,9 @@ package org.paumard.katas.stringcalculator;
 public class StringCalculator {
 
     public int add(String input) {
-        if ("1".equals(input)) {
-            return 1;
+        if (input.isEmpty()) {
+            return 0;
         }
-        return 0;
+        return Integer.parseInt(input);
     }
 }
