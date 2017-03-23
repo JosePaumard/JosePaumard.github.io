@@ -16,7 +16,10 @@
 
 package org.paumard.katas.onetwo;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -37,6 +40,11 @@ public class OneTwo {
         NINE("9", "nine");
 
         private final String number;
+
+        public String getName() {
+            return name;
+        }
+
         private final String name;
 
         Numbers(String number, String name) {
@@ -47,13 +55,35 @@ public class OneTwo {
         public static Numbers byNumber(String number) {
             return Arrays.stream(values()).filter(value -> value.number.equals(number)).findFirst().get();
         }
+
+        public static Numbers byNumber(int number) {
+            return byNumber(Integer.toString(number));
+        }
     }
 
     public String convertToNames(String input) {
 
-        return Pattern.compile(" ").splitAsStream(input)
-                .map(Numbers::byNumber)
-                .map(number -> "one " + number.name)
-                .collect(Collectors.joining(" "));
+        ArrayDeque<Integer> deque =
+                Pattern.compile(" ").splitAsStream(input).map(Integer::parseInt).collect(Collectors.toCollection(ArrayDeque::new));
+
+        List<Integer> result = new ArrayList<>();
+        int currentValue = deque.peek();
+        int count = 0;
+        while (!deque.isEmpty()) {
+            if (deque.peek() == currentValue) {
+                deque.poll();
+                count++;
+            } else {
+                result.add(count);
+                result.add(currentValue);
+                count = 1;
+                currentValue = deque.poll();
+            }
+        }
+        result.add(count);
+        result.add(currentValue);
+
+
+        return result.stream().map(Numbers::byNumber).map(Numbers::getName).collect(Collectors.joining(" "));
     }
 }
