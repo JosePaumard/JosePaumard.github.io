@@ -76,11 +76,14 @@ public class OneTwo {
             count = updateCount(count, isValueChanging);
             currentValue = updateCurrentValue(deque, currentValue, isValueChanging);
         }
-        result.add(count);
-        result.add(currentValue);
+        updateResult(result, currentValue, count);
 
 
         return result.stream().map(Numbers::byNumber).map(Numbers::getName).collect(Collectors.joining(" "));
+    }
+
+    private void updateResult(List<Integer> result, int currentValue, int count) {
+        updateResult(result, currentValue, count, false);
     }
 
     private void updateResult(List<Integer> result, int currentValue, int count, boolean isValueChanging) {
