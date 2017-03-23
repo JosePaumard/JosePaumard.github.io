@@ -8,6 +8,8 @@ The Leap Years Kata
 
 [The String Calculator Kata](/katas/introductory/stringcalculator-kata.html)
 
+[The One Two Kata](/katas/introductory/onetwo-kata.html)
+
 
 ## The LeapYears Kata
 
