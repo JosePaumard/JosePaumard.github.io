@@ -69,13 +69,13 @@ public class OneTwo {
         int currentValue = deque.peek();
         int count = 0;
         while (!deque.isEmpty()) {
-            boolean isValueChanging = deque.peek() == currentValue;
+            boolean isValueChanging = deque.peek() != currentValue;
 
-            updateResult(result, currentValue, count, isValueChanging);
-            count = updateCount(count, isValueChanging);
-            currentValue = updateCurrentValue(deque, currentValue, isValueChanging);
+            addToResult(result, currentValue, count, isValueChanging);
+            count = incrementOrResetIfChanging(count, isValueChanging);
+            currentValue = consumerAndReturnIfChanging(deque, currentValue, isValueChanging);
         }
-        updateResult(result, currentValue, count);
+        addToResult(result, currentValue, count);
 
 
         return result.stream().map(Numbers::byNumber).map(Numbers::getName).collect(Collectors.joining(" "));
@@ -85,19 +85,19 @@ public class OneTwo {
         return Pattern.compile(" ").splitAsStream(input).map(Integer::parseInt).collect(Collectors.toCollection(ArrayDeque::new));
     }
 
-    private void updateResult(List<Integer> result, int currentValue, int count) {
-        updateResult(result, currentValue, count, false);
+    private void addToResult(List<Integer> result, int currentValue, int count) {
+        addToResult(result, currentValue, count, true);
     }
 
-    private void updateResult(List<Integer> result, int currentValue, int count, boolean isValueChanging) {
-        if (!isValueChanging) {
+    private void addToResult(List<Integer> result, int currentValue, int count, boolean isValueChanging) {
+        if (isValueChanging) {
             result.add(count);
             result.add(currentValue);
         }
     }
 
-    private int updateCount(int count, boolean isValueChanging) {
-        if (isValueChanging) {
+    private int incrementOrResetIfChanging(int count, boolean isValueChanging) {
+        if (!isValueChanging) {
             count++;
         } else {
             count = 1;
@@ -105,8 +105,8 @@ public class OneTwo {
         return count;
     }
 
-    private int updateCurrentValue(ArrayDeque<Integer> deque, int currentValue, boolean isValueChanging) {
-        if (isValueChanging) {
+    private int consumerAndReturnIfChanging(ArrayDeque<Integer> deque, int currentValue, boolean isValueChanging) {
+        if (!isValueChanging) {
             deque.poll();
             return currentValue;
         } else {
