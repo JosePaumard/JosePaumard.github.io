@@ -204,4 +204,19 @@ public class OneTwoTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_return_one_three_three_nine_two_eight_for_3_9_9_9_8_8() {
+
+        // Given
+        OneTwo oneTwo = new OneTwo();
+        String input = "3 9 9 9 8 8";
+        String expectedResult = "one three three nine two eight";
+
+        // When
+        String result = oneTwo.convertToNames(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
