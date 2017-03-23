@@ -16,10 +16,7 @@
 
 package org.paumard.katas.onetwo;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -30,12 +27,16 @@ import java.util.stream.IntStream;
 public class OneTwo {
 
     public String convertToFigures(String input) {
-        String[] elements = input.split(" ");
 
-        int numberAsInt = Numbers.byName(elements[0]).getNumberAsInt();
-        String figure = Numbers.byName(elements[1]).getNumber();
+        Deque<String> deque = splitToStringDeque(input);
+        List<String> result = new ArrayList<>();
+        while (!deque.isEmpty()) {
+            int number = Numbers.byName(deque.poll()).getNumberAsInt();
+            String figure = Numbers.byName(deque.poll()).getNumber();
+            result.add(IntStream.range(0, number).mapToObj(index -> figure).collect(Collectors.joining(" ")));
+        }
 
-        return IntStream.range(0, numberAsInt).mapToObj(index -> figure).collect(Collectors.joining(" "));
+        return result.stream().collect(Collectors.joining(" "));
     }
 
     private enum Numbers {
@@ -85,7 +86,7 @@ public class OneTwo {
 
     public String convertToNames(String input) {
 
-        ArrayDeque<Integer> deque = splitToDeque(input);
+        Deque<Integer> deque = splitToIntDeque(input);
 
         List<Integer> result = new ArrayList<>();
         int currentValue = deque.peek();
@@ -104,8 +105,12 @@ public class OneTwo {
         return result.stream().map(Numbers::byNumber).map(Numbers::getName).collect(Collectors.joining(" "));
     }
 
-    private ArrayDeque<Integer> splitToDeque(String input) {
+    private ArrayDeque<Integer> splitToIntDeque(String input) {
         return Pattern.compile(" ").splitAsStream(input).map(Integer::parseInt).collect(Collectors.toCollection(ArrayDeque::new));
+    }
+
+    private ArrayDeque<String> splitToStringDeque(String input) {
+        return Pattern.compile(" ").splitAsStream(input).collect(Collectors.toCollection(ArrayDeque::new));
     }
 
     private void addToResult(List<Integer> result, int currentValue, int count) {
@@ -128,7 +133,7 @@ public class OneTwo {
         return count;
     }
 
-    private int consumeAndUpdateIfChanging(ArrayDeque<Integer> deque, int currentValue, boolean isValueChanging) {
+    private int consumeAndUpdateIfChanging(Deque<Integer> deque, int currentValue, boolean isValueChanging) {
         if (isValueChanging) {
             return deque.poll();
         } else {
