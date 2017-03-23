@@ -27,7 +27,8 @@ public class OneTwo {
         ONE("1", "one"),
         TWO("2", "two"),
         THREE("3", "three"),
-        FOUR("4", "four");
+        FOUR("4", "four"),
+        FIVE("5", "five");
 
         private final String number;
         private final String name;
