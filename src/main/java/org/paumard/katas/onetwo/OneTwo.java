@@ -79,7 +79,6 @@ public class OneTwo {
         }
         addToResult(result, currentValue, count);
 
-
         return result.stream().map(Numbers::byNumber).map(Numbers::getName).collect(Collectors.joining(" "));
     }
 
