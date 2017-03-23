@@ -63,8 +63,7 @@ public class OneTwo {
 
     public String convertToNames(String input) {
 
-        ArrayDeque<Integer> deque =
-                Pattern.compile(" ").splitAsStream(input).map(Integer::parseInt).collect(Collectors.toCollection(ArrayDeque::new));
+        ArrayDeque<Integer> deque = splitToDeque(input);
 
         List<Integer> result = new ArrayList<>();
         int currentValue = deque.peek();
@@ -80,6 +79,10 @@ public class OneTwo {
 
 
         return result.stream().map(Numbers::byNumber).map(Numbers::getName).collect(Collectors.joining(" "));
+    }
+
+    private ArrayDeque<Integer> splitToDeque(String input) {
+        return Pattern.compile(" ").splitAsStream(input).map(Integer::parseInt).collect(Collectors.toCollection(ArrayDeque::new));
     }
 
     private void updateResult(List<Integer> result, int currentValue, int count) {
