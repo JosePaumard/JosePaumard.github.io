@@ -17,6 +17,8 @@
 package org.paumard.katas.onetwo;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Created by José
@@ -49,7 +51,9 @@ public class OneTwo {
 
     public String convertToNames(String input) {
 
-        Numbers number = Numbers.byNumber(input);
-        return "one " + number.name;
+        return Pattern.compile(" ").splitAsStream(input)
+                .map(Numbers::byNumber)
+                .map(number -> "one " + number.name)
+                .collect(Collectors.joining(" "));
     }
 }
