@@ -73,7 +73,7 @@ public class OneTwo {
 
             addToResultIfChanging(result, currentValue, count, isValueChanging);
             count = incrementOrResetIfChanging(count, isValueChanging);
-            currentValue = consumerAndReturnIfChanging(deque, currentValue, isValueChanging);
+            currentValue = consumeAndUpdateIfChanging(deque, currentValue, isValueChanging);
         }
         addToResult(result, currentValue, count);
 
@@ -97,20 +97,20 @@ public class OneTwo {
     }
 
     private int incrementOrResetIfChanging(int count, boolean isValueChanging) {
-        if (!isValueChanging) {
-            count++;
-        } else {
+        if (isValueChanging) {
             count = 1;
+        } else {
+            count++;
         }
         return count;
     }
 
-    private int consumerAndReturnIfChanging(ArrayDeque<Integer> deque, int currentValue, boolean isValueChanging) {
-        if (!isValueChanging) {
+    private int consumeAndUpdateIfChanging(ArrayDeque<Integer> deque, int currentValue, boolean isValueChanging) {
+        if (isValueChanging) {
+            return deque.poll();
+        } else {
             deque.poll();
             return currentValue;
-        } else {
-            return deque.poll();
         }
     }
 }
