@@ -309,4 +309,94 @@ public class OneTwoTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_return_2_for_one_four() {
+
+        // Given
+        OneTwo oneTwo = new OneTwo();
+        String input = "one four";
+        String expectedResult = "4";
+
+        // When
+        String result = oneTwo.convertToFigures(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
+
+    @Test
+    public void should_return_2_for_one_five() {
+
+        // Given
+        OneTwo oneTwo = new OneTwo();
+        String input = "one five";
+        String expectedResult = "5";
+
+        // When
+        String result = oneTwo.convertToFigures(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
+
+    @Test
+    public void should_return_2_for_one_six() {
+
+        // Given
+        OneTwo oneTwo = new OneTwo();
+        String input = "one six";
+        String expectedResult = "6";
+
+        // When
+        String result = oneTwo.convertToFigures(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
+
+    @Test
+    public void should_return_2_for_one_seven() {
+
+        // Given
+        OneTwo oneTwo = new OneTwo();
+        String input = "one seven";
+        String expectedResult = "7";
+
+        // When
+        String result = oneTwo.convertToFigures(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
+
+    @Test
+    public void should_return_2_for_one_eight() {
+
+        // Given
+        OneTwo oneTwo = new OneTwo();
+        String input = "one eight";
+        String expectedResult = "8";
+
+        // When
+        String result = oneTwo.convertToFigures(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
+
+    @Test
+    public void should_return_2_for_one_nine() {
+
+        // Given
+        OneTwo oneTwo = new OneTwo();
+        String input = "one nine";
+        String expectedResult = "9";
+
+        // When
+        String result = oneTwo.convertToFigures(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
