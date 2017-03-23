@@ -16,18 +16,34 @@
 
 package org.paumard.katas.onetwo;
 
+import java.util.Arrays;
+
 /**
  * Created by José
  */
 public class OneTwo {
 
-    public String convertToNames(String input) {
-        if ("1".equals(input)) {
-            return "one one";
-        } else if ("2".equals(input)) {
-            return "one two";
-        } else {
-            return "one three";
+    private enum Numbers {
+        ONE("1", "one"),
+        TWO("2", "two"),
+        THREE("3", "three");
+
+        private final String number;
+        private final String name;
+
+        Numbers(String number, String name) {
+            this.number = number;
+            this.name = name;
         }
+
+        public static Numbers byNumber(String number) {
+            return Arrays.stream(values()).filter(value -> value.number.equals(number)).findFirst().get();
+        }
+    }
+
+    public String convertToNames(String input) {
+
+        Numbers number = Numbers.byNumber(input);
+        return "one " + number.name;
     }
 }
