@@ -414,4 +414,19 @@ public class OneTwoTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_return_3_3_5_5_5_5_for_two_three_four_five() {
+
+        // Given
+        OneTwo oneTwo = new OneTwo();
+        String input = "two three four five";
+        String expectedResult = "3 3 5 5 5 5";
+
+        // When
+        String result = oneTwo.convertToFigures(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
