@@ -71,11 +71,11 @@ public class OneTwo {
         while (!deque.isEmpty()) {
             boolean isValueChanging = deque.peek() != currentValue;
             boolean shouldResetCounter = count == 9;
-            isValueChanging = isValueChanging || shouldResetCounter;
+            boolean isChanging = isValueChanging || shouldResetCounter;
 
-            addToResultIfChanging(result, currentValue, count, isValueChanging);
-            count = incrementOrResetIfChanging(count, isValueChanging);
-            currentValue = consumeAndUpdateIfChanging(deque, currentValue, isValueChanging);
+            addToResultIfChanging(result, currentValue, count, isChanging);
+            count = incrementOrResetIfChanging(count, isChanging);
+            currentValue = consumeAndUpdateIfChanging(deque, currentValue, isChanging);
         }
         addToResult(result, currentValue, count);
 
