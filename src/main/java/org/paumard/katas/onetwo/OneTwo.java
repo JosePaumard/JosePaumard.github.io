@@ -22,6 +22,10 @@ package org.paumard.katas.onetwo;
 public class OneTwo {
 
     public String convertToNames(String input) {
-        return "one one";
+        if ("1".equals(input)) {
+            return "one one";
+        } else {
+            return "one two";
+        }
     }
 }
