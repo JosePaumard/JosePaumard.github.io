@@ -31,12 +31,13 @@ public class OneTwo {
         Deque<String> deque = splitToStringDeque(input);
         List<String> result = new ArrayList<>();
         while (!deque.isEmpty()) {
-            int number = Numbers.byName(deque.poll()).getNumberAsInt();
-            String figure = Numbers.byName(deque.poll()).getNumber();
-            result.add(IntStream.range(0, number).mapToObj(index -> figure).collect(Collectors.joining(" ")));
+            int repeat = pollNumberOfRepeat(deque);
+            String figure = pollNumberToBeRepeated(deque);
+            String repeatedNumber = repeatFigure(repeat, figure);
+            result.add(repeatedNumber);
         }
 
-        return result.stream().collect(Collectors.joining(" "));
+        return joinStringElements(result);
     }
 
     private enum Numbers {
@@ -102,6 +103,10 @@ public class OneTwo {
         }
         addToResult(result, currentValue, count);
 
+        return joinIntElements(result);
+    }
+
+    private String joinIntElements(List<Integer> result) {
         return result.stream().map(Numbers::byNumber).map(Numbers::getName).collect(Collectors.joining(" "));
     }
 
@@ -140,5 +145,21 @@ public class OneTwo {
             deque.poll();
             return currentValue;
         }
+    }
+
+    private String joinStringElements(List<String> result) {
+        return result.stream().collect(Collectors.joining(" "));
+    }
+
+    private String repeatFigure(int repeat, String figure) {
+        return IntStream.range(0, repeat).mapToObj(index -> figure).collect(Collectors.joining(" "));
+    }
+
+    private String pollNumberToBeRepeated(Deque<String> deque) {
+        return Numbers.byName(deque.poll()).getNumber();
+    }
+
+    private int pollNumberOfRepeat(Deque<String> deque) {
+        return Numbers.byName(deque.poll()).getNumberAsInt();
     }
 }
