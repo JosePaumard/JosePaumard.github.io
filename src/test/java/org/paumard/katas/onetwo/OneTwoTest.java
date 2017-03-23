@@ -296,7 +296,7 @@ public class OneTwoTest {
     }
 
     @Test
-    public void should_return_2_for_one_three() {
+    public void should_return_3_for_one_three() {
 
         // Given
         OneTwo oneTwo = new OneTwo();
@@ -311,7 +311,7 @@ public class OneTwoTest {
     }
 
     @Test
-    public void should_return_2_for_one_four() {
+    public void should_return_4_for_one_four() {
 
         // Given
         OneTwo oneTwo = new OneTwo();
@@ -326,7 +326,7 @@ public class OneTwoTest {
     }
 
     @Test
-    public void should_return_2_for_one_five() {
+    public void should_return_5_for_one_five() {
 
         // Given
         OneTwo oneTwo = new OneTwo();
@@ -341,7 +341,7 @@ public class OneTwoTest {
     }
 
     @Test
-    public void should_return_2_for_one_six() {
+    public void should_return_6_for_one_six() {
 
         // Given
         OneTwo oneTwo = new OneTwo();
@@ -356,7 +356,7 @@ public class OneTwoTest {
     }
 
     @Test
-    public void should_return_2_for_one_seven() {
+    public void should_return_7_for_one_seven() {
 
         // Given
         OneTwo oneTwo = new OneTwo();
@@ -371,7 +371,7 @@ public class OneTwoTest {
     }
 
     @Test
-    public void should_return_2_for_one_eight() {
+    public void should_return_8_for_one_eight() {
 
         // Given
         OneTwo oneTwo = new OneTwo();
@@ -386,7 +386,7 @@ public class OneTwoTest {
     }
 
     @Test
-    public void should_return_2_for_one_nine() {
+    public void should_return_9_for_one_nine() {
 
         // Given
         OneTwo oneTwo = new OneTwo();
