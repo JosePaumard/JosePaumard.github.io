@@ -71,7 +71,7 @@ public class OneTwo {
         while (!deque.isEmpty()) {
             boolean isValueChanging = deque.peek() != currentValue;
 
-            addToResult(result, currentValue, count, isValueChanging);
+            addToResultIfChanging(result, currentValue, count, isValueChanging);
             count = incrementOrResetIfChanging(count, isValueChanging);
             currentValue = consumerAndReturnIfChanging(deque, currentValue, isValueChanging);
         }
@@ -86,13 +86,13 @@ public class OneTwo {
     }
 
     private void addToResult(List<Integer> result, int currentValue, int count) {
-        addToResult(result, currentValue, count, true);
+        result.add(count);
+        result.add(currentValue);
     }
 
-    private void addToResult(List<Integer> result, int currentValue, int count, boolean isValueChanging) {
+    private void addToResultIfChanging(List<Integer> result, int currentValue, int count, boolean isValueChanging) {
         if (isValueChanging) {
-            result.add(count);
-            result.add(currentValue);
+            addToResult(result, currentValue, count);
         }
     }
 
