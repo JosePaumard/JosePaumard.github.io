@@ -129,4 +129,19 @@ public class OneTwoTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_return_one_two_for_8() {
+
+        // Given
+        OneTwo oneTwo = new OneTwo();
+        String input = "8";
+        String expectedResult = "one eight";
+
+        // When
+        String result = oneTwo.convertToNames(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
