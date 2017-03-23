@@ -70,13 +70,18 @@ public class OneTwo {
         int currentValue = deque.peek();
         int count = 0;
         while (!deque.isEmpty()) {
-            if (deque.peek() == currentValue) {
-                deque.poll();
-                count++;
-            } else {
+            if (deque.peek() != currentValue) {
                 result.add(count);
                 result.add(currentValue);
+            }
+            if (deque.peek() == currentValue) {
+                count++;
+            } else {
                 count = 1;
+            }
+            if (deque.peek() == currentValue) {
+                deque.poll();
+            } else {
                 currentValue = deque.poll();
             }
         }
