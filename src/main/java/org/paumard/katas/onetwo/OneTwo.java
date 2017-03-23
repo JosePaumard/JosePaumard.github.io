@@ -71,25 +71,40 @@ public class OneTwo {
         int count = 0;
         while (!deque.isEmpty()) {
             boolean isValueChanging = deque.peek() == currentValue;
-            if (!isValueChanging) {
-                result.add(count);
-                result.add(currentValue);
-            }
-            if (isValueChanging) {
-                count++;
-            } else {
-                count = 1;
-            }
-            if (isValueChanging) {
-                deque.poll();
-            } else {
-                currentValue = deque.poll();
-            }
+
+            updateResult(result, currentValue, count, isValueChanging);
+            count = updateCount(count, isValueChanging);
+            currentValue = updateCurrentValue(deque, currentValue, isValueChanging);
         }
         result.add(count);
         result.add(currentValue);
 
 
         return result.stream().map(Numbers::byNumber).map(Numbers::getName).collect(Collectors.joining(" "));
+    }
+
+    private void updateResult(List<Integer> result, int currentValue, int count, boolean isValueChanging) {
+        if (!isValueChanging) {
+            result.add(count);
+            result.add(currentValue);
+        }
+    }
+
+    private int updateCount(int count, boolean isValueChanging) {
+        if (isValueChanging) {
+            count++;
+        } else {
+            count = 1;
+        }
+        return count;
+    }
+
+    private int updateCurrentValue(ArrayDeque<Integer> deque, int currentValue, boolean isValueChanging) {
+        if (isValueChanging) {
+            deque.poll();
+            return currentValue;
+        } else {
+            return deque.poll();
+        }
     }
 }
