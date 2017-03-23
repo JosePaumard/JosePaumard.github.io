@@ -24,8 +24,10 @@ public class OneTwo {
     public String convertToNames(String input) {
         if ("1".equals(input)) {
             return "one one";
-        } else {
+        } else if ("2".equals(input)) {
             return "one two";
+        } else {
+            return "one three";
         }
     }
 }
