@@ -30,7 +30,8 @@ public class OneTwo {
         FOUR("4", "four"),
         FIVE("5", "five"),
         SIX("6", "six"),
-        SEVEN("7", "seven");
+        SEVEN("7", "seven"),
+        EIGHT("8", "eight");
 
         private final String number;
         private final String name;
