@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Created by José
@@ -29,8 +30,12 @@ import java.util.stream.Collectors;
 public class OneTwo {
 
     public String convertToFigures(String input) {
-        String figure = input.split(" ")[1];
-        return Numbers.byName(figure).getNumber();
+        String[] elements = input.split(" ");
+
+        int numberAsInt = Numbers.byName(elements[0]).getNumberAsInt();
+        String figure = Numbers.byName(elements[1]).getNumber();
+
+        return IntStream.range(0, numberAsInt).mapToObj(index -> figure).collect(Collectors.joining(" "));
     }
 
     private enum Numbers {
@@ -50,6 +55,10 @@ public class OneTwo {
 
         public String getNumber() {
             return number;
+        }
+
+        public int getNumberAsInt() {
+            return Integer.parseInt(number);
         }
 
         public String getName() {
