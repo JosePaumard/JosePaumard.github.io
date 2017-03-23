@@ -28,6 +28,10 @@ import java.util.stream.Collectors;
  */
 public class OneTwo {
 
+    public String convertToFigures(String input) {
+        return null;
+    }
+
     private enum Numbers {
         ONE("1", "one"),
         TWO("2", "two"),
