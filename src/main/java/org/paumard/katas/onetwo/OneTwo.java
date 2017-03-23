@@ -26,7 +26,8 @@ public class OneTwo {
     private enum Numbers {
         ONE("1", "one"),
         TWO("2", "two"),
-        THREE("3", "three");
+        THREE("3", "three"),
+        FOUR("4", "four");
 
         private final String number;
         private final String name;
