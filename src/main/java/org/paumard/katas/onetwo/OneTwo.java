@@ -29,7 +29,8 @@ import java.util.stream.Collectors;
 public class OneTwo {
 
     public String convertToFigures(String input) {
-        return "1";
+        String figure = input.split(" ")[1];
+        return Numbers.byName(figure).getNumber();
     }
 
     private enum Numbers {
@@ -45,11 +46,15 @@ public class OneTwo {
 
         private final String number;
 
+        private final String name;
+
+        public String getNumber() {
+            return number;
+        }
+
         public String getName() {
             return name;
         }
-
-        private final String name;
 
         Numbers(String number, String name) {
             this.number = number;
@@ -62,6 +67,10 @@ public class OneTwo {
 
         public static Numbers byNumber(int number) {
             return byNumber(Integer.toString(number));
+        }
+
+        public static Numbers byName(String name) {
+            return Arrays.stream(values()).filter(value -> value.name.equals(name)).findFirst().get();
         }
     }
 
