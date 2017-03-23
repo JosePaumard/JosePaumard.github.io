@@ -70,6 +70,8 @@ public class OneTwo {
         int count = 0;
         while (!deque.isEmpty()) {
             boolean isValueChanging = deque.peek() != currentValue;
+            boolean shouldResetCounter = count == 9;
+            isValueChanging = isValueChanging || shouldResetCounter;
 
             addToResultIfChanging(result, currentValue, count, isValueChanging);
             count = incrementOrResetIfChanging(count, isValueChanging);
