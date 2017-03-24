@@ -46,7 +46,7 @@ I added a [onetwo-kata branch](https://github.com/JosePaumard/JosePaumard.github
 
 There are several interesting points in this kata. First, quite obviously, there is a strategy pattern that is going to emerge, to convert numbers to their equivalent in letters. Second, there is a queue based algorithm in both conversions, with a state that depends on a commutation of the values when we do the first conversion. 
 
-Basically, the first conversion needs to count the elements that are the same, then create a pair one the elements changes, made of the number of same elements we saw, and the element itself. This can be easily done with the following code, very basic: 
+Basically, the first conversion needs to count the elements that are the same, then create a pair once the element changes, made of the number of same elements we saw, and the element itself. This can be easily done with the following code, very basic: 
 
 ```java
 List<Integer> result = new ArrayList<>();
@@ -70,7 +70,7 @@ We need to refactor this code. Why? Well, first because its complexity is out ot
 
 The consequence of breaking the SRP is that it is much more difficult to extract the technical code into meaningful methods. 
 
-### Expanding if
+#### Expanding if
 
 The price to pay is to first create as many ``if else`` as we need to apply the single responsibility principle. We can rewrite this code like that. 
  
@@ -100,7 +100,7 @@ result.add(currentValue);
 
 We just need to be careful because the order in which those ``if`` are written is not random... But we have tests, don't we?
 
-### Extracting methods
+#### Extracting methods
 
 Of course this code is not in its final state. But now, since the SRP holds for each ``if`` branch we can now easily extract methods. 
 
@@ -122,6 +122,6 @@ There is still one thing I do not really like in this code: the side effect we h
 
 There is another side effect in the ``consumeAndUpdateIfChaning()`` call. This method does in fact two things: it updates the current value, and modifies the state of the queue. Not that great, but in queue based algorithms, it is very common. 
 
-### Reverse conversion
+#### Reverse conversion
 
 The refactorings we do in the reverse conversion are almost the same and based on the same principles.  
