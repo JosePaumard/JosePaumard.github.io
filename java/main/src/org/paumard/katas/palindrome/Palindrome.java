@@ -22,9 +22,12 @@ package org.paumard.katas.palindrome;
 public class Palindrome {
 
     public boolean isPalindrome(String input) {
-        if (input.length() <= 1)
+        if (input.length() <= 1) {
             return true;
-        else
+        } else if (input.length() == 2) {
             return input.charAt(0) == input.charAt(1);
+        } else {
+            return input.charAt(0) == input.charAt(2);
+        }
     }
 }
