@@ -69,4 +69,19 @@ public class PalindromeTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_return_true_for_a_two_identical_chars_string() {
+
+        // Given
+        Palindrome palindrome = new Palindrome();
+        String input = "AA";
+        boolean expectedResult =  true;
+
+        // When
+        boolean result = palindrome.isPalindrome(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
