@@ -22,6 +22,6 @@ package org.paumard.katas.palindrome;
 public class Palindrome {
 
     public boolean isPalindrome(String input) {
-        return true;
+        return input.length() == 0;
     }
 }
