@@ -31,7 +31,7 @@ public class PalindromeTest {
         // Given
         Palindrome palindrome = new Palindrome();
         String input = "";
-        boolean expectedResult = false;
+        boolean expectedResult =  true;
 
         // When
         boolean result = palindrome.isPalindrome(input);
