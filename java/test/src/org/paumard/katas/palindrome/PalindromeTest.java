@@ -39,4 +39,19 @@ public class PalindromeTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_return_false_for_a_random_string() {
+
+        // Given
+        Palindrome palindrome = new Palindrome();
+        String input = "Not a palindrome";
+        boolean expectedResult =  false;
+
+        // When
+        boolean result = palindrome.isPalindrome(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
