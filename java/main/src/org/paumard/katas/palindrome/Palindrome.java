@@ -24,22 +24,17 @@ public class Palindrome {
     public boolean isPalindrome(String input) {
         if (input.length() <= 1) {
             return true;
-        } else if (input.length() == 2) {
-            return input.charAt(0) == input.charAt(1);
-        } else if (input.length() == 3) {
-            return input.charAt(0) == input.charAt(2);
-        } else {
-            int increasingIndex = moveToFirstLetter(input);
-            int decreasingIndex = moveToLastLetter(input);
-            while (increasingIndex < decreasingIndex) {
-                if (!isSameCharIgnoringCase(input, increasingIndex, decreasingIndex)) {
-                    return false;
-                }
-                increasingIndex = moveToNextLetter(input, increasingIndex);
-                decreasingIndex = moveToPreviousLetter(input, decreasingIndex);
-            }
-            return true;
         }
+        int increasingIndex = moveToFirstLetter(input);
+        int decreasingIndex = moveToLastLetter(input);
+        while (increasingIndex < decreasingIndex) {
+            if (!isSameCharIgnoringCase(input, increasingIndex, decreasingIndex)) {
+                return false;
+            }
+            increasingIndex = moveToNextLetter(input, increasingIndex);
+            decreasingIndex = moveToPreviousLetter(input, decreasingIndex);
+        }
+        return true;
     }
 
     private int moveToFirstLetter(String input) {
