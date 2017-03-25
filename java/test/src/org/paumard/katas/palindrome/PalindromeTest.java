@@ -99,4 +99,19 @@ public class PalindromeTest {
         // Then
         assertThat(result).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void should_return_true_for_a_many_chars_palindrome() {
+
+        // Given
+        Palindrome palindrome = new Palindrome();
+        String input = "ABCDEFGHIIHGFEDBC";
+        boolean expectedResult =  true;
+
+        // When
+        boolean result = palindrome.isPalindrome(input);
+
+        // Then
+        assertThat(result).isEqualTo(expectedResult);
+    }
 }
