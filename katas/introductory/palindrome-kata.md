@@ -15,6 +15,11 @@ Sentences can be palindromes too:
 
 We want to create a method that takes a string of characters as its input, and returns a boolean that is true if the input string is a palindrome. One can use examples from the text file ``palindromes.txt``. [this file is provided with the code of the kata]. 
 
+### Comments
+
+I added a [palindrome-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/palindrome-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/tree/8d3e7fc24baafc46e820a2082c1235032da82556). 
+
+
 #### Short palindromes
 
 This kata is not very hard, the algorithm to write is quite straightforward. What is interesting in it, is to apply the baby steps method. One way to achieve this can be to begin with 0 char strings, then 1 char, then 2, then 3. Until 3 the code is very simple to write. So we can reach this point very quickly. The value delivered at this point is in fact very high, because 3 chars words are very common, so from a pure statistical point of view, we handle many cases. OK, this is just a kata... 
@@ -55,3 +60,7 @@ Note the use of a data provider to read the file. A data provider in TestNG is a
 Launching all the file lines in their own test is the right way to do it. In this way we have one test method call per line, and this is what we want. A failure for a given line will not stop the other lines to be tested. 
 
 Loading all the lines in a single method call, then testing all of them would not achieve this result. The failure of a single line would make the test fail, and would stop it, without testing the remaining lines. 
+
+[Back to index](/index.html)
+
+![Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png) [licence](http://creativecommons.org/licenses/by-nc-sa/4.0/)

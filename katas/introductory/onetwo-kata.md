@@ -125,3 +125,7 @@ There is another side effect in the ``consumeAndUpdateIfChaning()`` call. This m
 #### Reverse conversion
 
 The refactorings we do in the reverse conversion are almost the same and based on the same principles.  
+
+[Back to index](/index.html)
+
+![Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png) [licence](http://creativecommons.org/licenses/by-nc-sa/4.0/)

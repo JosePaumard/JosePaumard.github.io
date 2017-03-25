@@ -67,3 +67,7 @@ The exception part may be a good occasion to check the elements every Java devel
 #### Wrap-up
 
 StringCalculator is a nice kata, not very hard, another good occasion to work on problem slicing and TDD. And for the Java version of this kata, a good occasion to make sure everything is known about exceptions!
+
+[Back to index](/index.html)
+
+![Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png) [licence](http://creativecommons.org/licenses/by-nc-sa/4.0/)
