@@ -32,19 +32,33 @@ public class Palindrome {
             int increasingIndex = 0;
             int decreasingIndex = input.length() - 1;
             while (increasingIndex < decreasingIndex) {
-                if (Character.toLowerCase(input.charAt(increasingIndex)) != Character.toLowerCase(input.charAt(decreasingIndex))) {
+                if (!isSameCharIgnoringCase(input, increasingIndex, decreasingIndex)) {
                     return false;
                 }
-                increasingIndex++;
-                while (!Character.isLetter(input.charAt(increasingIndex))) {
-                    increasingIndex++;
-                }
-                decreasingIndex--;
-                while (!Character.isLetter(input.charAt(decreasingIndex))) {
-                    decreasingIndex--;
-                }
+                increasingIndex = moveToNextLetter(input, increasingIndex);
+                decreasingIndex = moveToPreviousLetter(input, decreasingIndex);
             }
             return true;
         }
+    }
+
+    private int moveToPreviousLetter(String input, int decreasingIndex) {
+        decreasingIndex--;
+        while (!Character.isLetter(input.charAt(decreasingIndex))) {
+            decreasingIndex--;
+        }
+        return decreasingIndex;
+    }
+
+    private int moveToNextLetter(String input, int increasingIndex) {
+        increasingIndex++;
+        while (!Character.isLetter(input.charAt(increasingIndex))) {
+            increasingIndex++;
+        }
+        return increasingIndex;
+    }
+
+    private boolean isSameCharIgnoringCase(String input, int increasingIndex, int decreasingIndex) {
+        return Character.toLowerCase(input.charAt(increasingIndex)) == Character.toLowerCase(input.charAt(decreasingIndex));
     }
 }
