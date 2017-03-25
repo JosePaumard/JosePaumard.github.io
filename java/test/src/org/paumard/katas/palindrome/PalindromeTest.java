@@ -16,7 +16,16 @@
 
 package org.paumard.katas.palindrome;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.stream.StreamSupport;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
 
@@ -25,13 +34,15 @@ import static org.assertj.core.api.StrictAssertions.assertThat;
  */
 public class PalindromeTest {
 
+    public static final String PALINDROMES_FILE = "files/palindromes.txt";
+
     @Test
     public void should_return_true_for_empty_string() {
 
         // Given
         Palindrome palindrome = new Palindrome();
         String input = "";
-        boolean expectedResult =  true;
+        boolean expectedResult = true;
 
         // When
         boolean result = palindrome.isPalindrome(input);
@@ -46,7 +57,7 @@ public class PalindromeTest {
         // Given
         Palindrome palindrome = new Palindrome();
         String input = "Not a palindrome";
-        boolean expectedResult =  false;
+        boolean expectedResult = false;
 
         // When
         boolean result = palindrome.isPalindrome(input);
@@ -61,7 +72,7 @@ public class PalindromeTest {
         // Given
         Palindrome palindrome = new Palindrome();
         String input = "A";
-        boolean expectedResult =  true;
+        boolean expectedResult = true;
 
         // When
         boolean result = palindrome.isPalindrome(input);
@@ -76,7 +87,7 @@ public class PalindromeTest {
         // Given
         Palindrome palindrome = new Palindrome();
         String input = "AA";
-        boolean expectedResult =  true;
+        boolean expectedResult = true;
 
         // When
         boolean result = palindrome.isPalindrome(input);
@@ -91,7 +102,7 @@ public class PalindromeTest {
         // Given
         Palindrome palindrome = new Palindrome();
         String input = "ABA";
-        boolean expectedResult =  true;
+        boolean expectedResult = true;
 
         // When
         boolean result = palindrome.isPalindrome(input);
@@ -106,7 +117,7 @@ public class PalindromeTest {
         // Given
         Palindrome palindrome = new Palindrome();
         String input = "ABCDEFGHIIHGFEDCBA";
-        boolean expectedResult =  true;
+        boolean expectedResult = true;
 
         // When
         boolean result = palindrome.isPalindrome(input);
@@ -121,7 +132,7 @@ public class PalindromeTest {
         // Given
         Palindrome palindrome = new Palindrome();
         String input = "Sore was I ere I saw Eros";
-        boolean expectedResult =  true;
+        boolean expectedResult = true;
 
         // When
         boolean result = palindrome.isPalindrome(input);
@@ -136,7 +147,7 @@ public class PalindromeTest {
         // Given
         Palindrome palindrome = new Palindrome();
         String input = "Salisbury moor, sir, is roomy. Rub Silas.";
-        boolean expectedResult =  true;
+        boolean expectedResult = true;
 
         // When
         boolean result = palindrome.isPalindrome(input);
@@ -151,12 +162,52 @@ public class PalindromeTest {
         // Given
         Palindrome palindrome = new Palindrome();
         String input = "\"Sore was I ere I saw Eros.";
-        boolean expectedResult =  true;
+        boolean expectedResult = true;
 
         // When
         boolean result = palindrome.isPalindrome(input);
 
         // Then
         assertThat(result).isEqualTo(expectedResult);
+    }
+
+    @DataProvider(name = "palindromes")
+    private Iterator<Object[]> palindromes() throws IOException {
+
+        Path path = Paths.get(PALINDROMES_FILE);
+        Spliterator<String> spliterator = Files.lines(path).spliterator();
+        return new Iterator<Object[]>() {
+            private String nextLine;
+            @Override
+            public boolean hasNext() {
+                boolean hasNext = spliterator.tryAdvance(line -> nextLine = line);
+                while (hasNext && isComment(nextLine)) {
+                    hasNext = spliterator.tryAdvance(line -> nextLine = line);
+                }
+                return hasNext;
+            }
+
+            private boolean isComment(String line) {
+                return line.startsWith("#");
+            }
+
+            @Override
+            public Object[] next() {
+                return new Object[] { nextLine };
+            }
+        };
+    }
+
+    @Test(dataProvider = "palindromes")
+    public void should_test_the_whole_file_correctly(String input) {
+
+        // Given
+        Palindrome palindrome = new Palindrome();
+
+        // When
+        boolean result = palindrome.isPalindrome(input);
+
+        // Then
+        assertThat(result).isTrue();
     }
 }
