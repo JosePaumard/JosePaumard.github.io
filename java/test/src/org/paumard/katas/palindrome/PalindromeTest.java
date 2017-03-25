@@ -105,7 +105,7 @@ public class PalindromeTest {
 
         // Given
         Palindrome palindrome = new Palindrome();
-        String input = "ABCDEFGHIIHGFEDBC";
+        String input = "ABCDEFGHIIHGFEDCBA";
         boolean expectedResult =  true;
 
         // When
