@@ -16,8 +16,6 @@
 
 package org.paumard.katas.palindrome;
 
-import javafx.util.converter.CharacterStringConverter;
-
 /**
  * Created by José
  */
@@ -31,10 +29,7 @@ public class Palindrome {
         } else if (input.length() == 3) {
             return input.charAt(0) == input.charAt(2);
         } else {
-            int increasingIndex = 0;
-            while (!Character.isLetter(input.charAt(increasingIndex))) {
-                increasingIndex++;
-            }
+            int increasingIndex = moveToFirstLetter(input);
             int decreasingIndex = moveToLastLetter(input);
             while (increasingIndex < decreasingIndex) {
                 if (!isSameCharIgnoringCase(input, increasingIndex, decreasingIndex)) {
@@ -45,6 +40,14 @@ public class Palindrome {
             }
             return true;
         }
+    }
+
+    private int moveToFirstLetter(String input) {
+        int increasingIndex = 0;
+        while (!Character.isLetter(input.charAt(increasingIndex))) {
+            increasingIndex++;
+        }
+        return increasingIndex;
     }
 
     private int moveToLastLetter(String input) {
