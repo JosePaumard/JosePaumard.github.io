@@ -30,10 +30,7 @@ public class Palindrome {
             return input.charAt(0) == input.charAt(2);
         } else {
             int increasingIndex = 0;
-            int decreasingIndex = input.length() - 1;
-            while (!Character.isLetter(input.charAt(decreasingIndex))) {
-                decreasingIndex--;
-            }
+            int decreasingIndex = moveToLastLetter(input);
             while (increasingIndex < decreasingIndex) {
                 if (!isSameCharIgnoringCase(input, increasingIndex, decreasingIndex)) {
                     return false;
@@ -43,6 +40,14 @@ public class Palindrome {
             }
             return true;
         }
+    }
+
+    private int moveToLastLetter(String input) {
+        int decreasingIndex = input.length() - 1;
+        while (!Character.isLetter(input.charAt(decreasingIndex))) {
+            decreasingIndex--;
+        }
+        return decreasingIndex;
     }
 
     private int moveToPreviousLetter(String input, int decreasingIndex) {
