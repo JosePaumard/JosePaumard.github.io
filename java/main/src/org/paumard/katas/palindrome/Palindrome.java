@@ -31,6 +31,9 @@ public class Palindrome {
         } else {
             int increasingIndex = 0;
             int decreasingIndex = input.length() - 1;
+            while (!Character.isLetter(input.charAt(decreasingIndex))) {
+                decreasingIndex--;
+            }
             while (increasingIndex < decreasingIndex) {
                 if (!isSameCharIgnoringCase(input, increasingIndex, decreasingIndex)) {
                     return false;
