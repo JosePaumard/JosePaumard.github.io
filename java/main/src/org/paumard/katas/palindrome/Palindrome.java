@@ -26,8 +26,19 @@ public class Palindrome {
             return true;
         } else if (input.length() == 2) {
             return input.charAt(0) == input.charAt(1);
-        } else {
+        } else if (input.length() == 3) {
             return input.charAt(0) == input.charAt(2);
+        } else {
+            int increasingIndex = 0;
+            int decreasingIndex = input.length() - 1;
+            while (increasingIndex < decreasingIndex) {
+                if (input.charAt(increasingIndex) != input.charAt(decreasingIndex)) {
+                    return false;
+                }
+                increasingIndex++;
+                decreasingIndex--;
+            }
+            return true;
         }
     }
 }
