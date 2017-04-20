@@ -28,6 +28,7 @@ public class RomanNumerals {
     public static final String V = "V";
     public static final String X = "X";
     public static final String L = "L";
+    public static final String C = "C";
 
     public String toRoman(int input) {
 
@@ -44,6 +45,8 @@ public class RomanNumerals {
             case 70:
             case 80:
                 return L + repeatSymbolX(input / 10 - 5);
+            case 90:
+                return X + C;
         }
 
         switch (input) {
