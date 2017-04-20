@@ -32,14 +32,17 @@ public class RomanNumerals {
 
     public String toRoman(int input) {
 
-        if (input == 200) {
-            return C + C;
-        }
-
+        int hundredsDigit = input / 100;
         int tensDigit = input / 10;
         int unitsDigit = input % 10;
 
-        return convertTensDigit(tensDigit) + convertUnitDigit(unitsDigit);
+        return convertHundredsDigit(hundredsDigit) +
+                convertTensDigit(tensDigit) +
+                convertUnitDigit(unitsDigit);
+    }
+
+    private String convertHundredsDigit(int input) {
+        return convertToDigit(input, C, "D", "M");
     }
 
     private String convertTensDigit(int input) {
