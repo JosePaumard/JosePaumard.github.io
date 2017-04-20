@@ -25,7 +25,9 @@ import java.util.stream.IntStream;
 public class RomanNumerals {
 
     public String toRoman(int input) {
-        if (input == 5) {
+        if (input == 6) {
+            return "VI";
+        } else if (input == 5) {
             return "V";
         } else if (input == 4) {
             return "IV";
