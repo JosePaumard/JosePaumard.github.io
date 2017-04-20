@@ -520,7 +520,7 @@ public class RomanNumeralsTest {
     }
 
     @Test
-    public void should_return_135_for_DCXXV() {
+    public void should_return_635_for_DCXXV() {
 
         // Given
         String input = "DCXXXV";
