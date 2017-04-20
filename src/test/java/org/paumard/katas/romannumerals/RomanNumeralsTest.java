@@ -68,4 +68,19 @@ public class RomanNumeralsTest {
         // Then
         Assertions.assertThat(output).isEqualTo(expectedOutput);
     }
+
+    @Test
+    public void should_return_IV_for_4() {
+
+        // Given
+        int input = 4;
+        String expectedOutput = "IV";
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        // When
+        String output = romanNumerals.toRoman(input);
+
+        // Then
+        Assertions.assertThat(output).isEqualTo(expectedOutput);
+    }
 }
