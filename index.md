@@ -25,6 +25,10 @@ Anyway, here is a list a very good (and well known!) readings if you want to lea
 
 [The Palindrome Kata](/katas/introductory/palindrome-kata.html)
 
+### Intermediate Katas
+
+[The Roman Numerals Kata](/katas/intermediate/romannumerals-kata.html)
+
 
 ## Books I Like
 Anyway, here is a list a very good (and well known!) readings if you want to learn more about clean code, software craftsmanship, and all the practices around those.
