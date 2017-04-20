@@ -55,10 +55,14 @@ public class RomanNumerals {
     }
 
     private String repeatSymbolX(int input) {
-        return IntStream.range(0, input).mapToObj(i -> X).collect(Collectors.joining());
+        return repeatSymbol(input, X);
     }
 
     private String repeatSymbolI(int input) {
-        return IntStream.range(0, input).mapToObj(i -> I).collect(Collectors.joining());
+        return repeatSymbol(input, I);
+    }
+
+    private String repeatSymbol(int input, String symbol) {
+        return IntStream.range(0, input).mapToObj(i -> symbol).collect(Collectors.joining());
     }
 }
