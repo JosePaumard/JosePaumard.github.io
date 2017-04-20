@@ -16,26 +16,12 @@
 
 package org.paumard.katas.romannumerals;
 
-import org.assertj.core.api.Assertions;
-import org.testng.annotations.Test;
-
 /**
  * Created by José
  */
-public class RomanNumeralsTest {
+public class RomanNumerals {
 
-    @Test
-    public void should_return_I_for_1() {
-
-        // Given
-        int input = 1;
-        String expectedOutput = "I";
-        RomanNumerals romanNumerals = new RomanNumerals();
-
-        // When
-        String output = romanNumerals.toRoman(input);
-
-        // Then
-        Assertions.assertThat(output).isEqualTo(expectedOutput);
+    public String toRoman(int input) {
+        return null;
     }
 }
