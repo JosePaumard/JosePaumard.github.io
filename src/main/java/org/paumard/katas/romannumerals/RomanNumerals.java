@@ -68,14 +68,6 @@ public class RomanNumerals {
         return null;
     }
 
-    private String repeatSymbolX(int input) {
-        return repeatSymbol(input, X);
-    }
-
-    private String repeatSymbolI(int input) {
-        return repeatSymbol(input, I);
-    }
-
     private String repeatSymbol(int input, String symbol) {
         return IntStream.range(0, input).mapToObj(i -> symbol).collect(Collectors.joining());
     }
