@@ -24,19 +24,23 @@ import java.util.stream.IntStream;
  */
 public class RomanNumerals {
 
+    public static final String I = "I";
+    public static final String V = "V";
+    public static final String X = "X";
+
     public String toRoman(int input) {
         if (input == 9) {
-            return "IX";
+            return I + X;
         }
         if (input >= 5) {
-            return "V" + repeatSymbolI(input - 5);
+            return V + repeatSymbolI(input - 5);
         } else if (input == 4) {
-            return "IV";
+            return I + V;
         }
         return repeatSymbolI(input);
     }
 
     private String repeatSymbolI(int input) {
-        return IntStream.range(0, input).mapToObj(i -> "I").collect(Collectors.joining());
+        return IntStream.range(0, input).mapToObj(i -> I).collect(Collectors.joining());
     }
 }
