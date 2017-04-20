@@ -1,3 +1,18 @@
+[Back to index](/index.html)
+
+[The FizzBuzz Kata](/katas/introductory/fizzbuzz-kata.html)
+
+[The Leap Years Kata](/katas/introductory/leapyears-kata.html)
+
+[The RPN Calculator Kata](/katas/introductory/rpncalculator-kata.html)
+
+[The String Calculator Kata](/katas/introductory/stringcalculator-kata.html)
+
+[The One Two Kata](/katas/introductory/onetwo-kata.html)
+
+The Palindrome Kata
+
+
 ## The Palindrome Kata
 
 The Palindrome kata is about telling if a given sentence can be red in both ways: from the left to the right (which is the classical way of reading in most latin languages) and from the right to the left.

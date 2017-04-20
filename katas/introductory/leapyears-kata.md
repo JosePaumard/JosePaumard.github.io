@@ -10,6 +10,8 @@ The Leap Years Kata
 
 [The One Two Kata](/katas/introductory/onetwo-kata.html)
 
+[The Palindrome Kata](/katas/introductory/palindrome-kata.html)
+
 
 ## The LeapYears Kata
 

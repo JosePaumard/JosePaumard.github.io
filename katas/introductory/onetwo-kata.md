@@ -10,6 +10,9 @@
 
 The One Two Kata
 
+[The Palindrome Kata](/katas/introductory/palindrome-kata.html)
+
+
 ## The One Two Kata
 
 ### The Kata
