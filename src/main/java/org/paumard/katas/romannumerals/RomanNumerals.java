@@ -42,6 +42,7 @@ public class RomanNumerals {
                 return L;
             case 60:
             case 70:
+            case 80:
                 return L + repeatSymbolX(input / 10 - 5);
         }
 
