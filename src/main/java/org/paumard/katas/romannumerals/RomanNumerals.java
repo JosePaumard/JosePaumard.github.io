@@ -31,16 +31,18 @@ public class RomanNumerals {
 
     public String toRoman(int input) {
 
-        if (input == 70) {
-            return L + X + X;
-        } else if (input == 60) {
-            return L + X;
-        } else if (input == 50) {
-            return L;
-        } else if (input == 40) {
-            return X + L;
-        } else if (input >= 10) {
-            return repeatSymbolX(input / 10);
+        switch (input) {
+            case 10:
+            case 20:
+            case 30:
+                return repeatSymbolX(input / 10);
+            case 40:
+                return X + L;
+            case 50:
+                return L;
+            case 60:
+            case 70:
+                return L + repeatSymbolX(input / 10 - 5);
         }
 
         switch (input) {
