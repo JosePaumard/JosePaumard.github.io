@@ -30,12 +30,8 @@ public class RomanNumerals {
 
     public String toRoman(int input) {
 
-        if (input == 10) {
-            return X;
-        } else if (input == 20) {
-            return X + X;
-        } else if (input == 30) {
-            return X + X + X;
+        if (input >= 10) {
+            return IntStream.range(0, input / 10).mapToObj(i -> X).collect(Collectors.joining());
         }
 
         switch (input) {
