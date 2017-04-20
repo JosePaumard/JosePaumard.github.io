@@ -23,6 +23,8 @@ Anyway, here is a list a very good (and well known!) readings if you want to lea
 
 [The One Two Kata](/katas/introductory/onetwo-kata.html)
 
+[The Palindrome Kata](/katas/introductory/palindrome-kata.html)
+
 
 ## Books I Like
 Anyway, here is a list a very good (and well known!) readings if you want to learn more about clean code, software craftsmanship, and all the practices around those.

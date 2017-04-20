@@ -34,7 +34,8 @@ We can stil use baby steps here: first deal with strings that have only letters,
 
 ```java
 while (increasingIndex < decreasingIndex) {
-    if (Character.toLowerCase(input.charAt(increasingIndex)) != Character.toLowerCase(input.charAt(decreasingIndex))) {
+    if (Character.toLowerCase(input.charAt(increasingIndex)) != 
+        Character.toLowerCase(input.charAt(decreasingIndex))) {
         return false;
     }
     increasingIndex++;
