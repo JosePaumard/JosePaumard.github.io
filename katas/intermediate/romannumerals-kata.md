@@ -87,5 +87,14 @@ Would it be a good idea to try to merge certain parts of both conversions togeth
 
 Remember: we should have only one reason to change a given method, or class. In fact, the SRP tells us to split this class in two, probably by using delegation, and to have separated conversion chains. Applying the SRP fully would have us to write two conversion services and to inject them in the class we wrote to separate things better. Trying to merge things would lead to weird code, and would break the SRP. 
 
+I added a [romannumerals-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/romannumerals-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/tree/ebe20ff19c407aff96391516b58f53d26665df61). I also created two labels, one for the first commit of the [Roman Numerals to Arabic conversion](https://github.com/JosePaumard/JosePaumard.github.io/tree/Arabic_to_Roman_conversion) and the second one for the [Arabic to Roman Numerals conversion](https://github.com/JosePaumard/JosePaumard.github.io/tree/Roman_to_Arabic_conversion).
+
+### Wrap-up
+
+The Roman Numerals kata is a nice kata, a little complex, with many ways of solving it. Applying the Strategy pattern to solve it is good idea, not always possible to fully apply. One has to remember the SRP not to make mistakes and completely mess up the code. 
+
+[Back to index](/index.html)
+
+![Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png) [licence](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 
