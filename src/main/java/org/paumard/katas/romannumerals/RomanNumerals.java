@@ -29,6 +29,8 @@ public class RomanNumerals {
     public static final String X = "X";
     public static final String L = "L";
     public static final String C = "C";
+    public static final String D = "D";
+    public static final String M = "M";
 
     public String toRoman(int input) {
 
@@ -42,7 +44,7 @@ public class RomanNumerals {
     }
 
     private String convertHundredsDigit(int input) {
-        return convertToDigit(input, C, "D", "M");
+        return convertToDigit(input, C, D, M);
     }
 
     private String convertTensDigit(int input) {
