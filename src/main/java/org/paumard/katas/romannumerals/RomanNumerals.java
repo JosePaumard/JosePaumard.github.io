@@ -27,10 +27,13 @@ public class RomanNumerals {
     public static final String I = "I";
     public static final String V = "V";
     public static final String X = "X";
+    public static final String L = "L";
 
     public String toRoman(int input) {
 
-        if (input >= 10) {
+        if (input == 40) {
+            return X + L;
+        } else if (input >= 10) {
             return repeatSymbolX(input / 10);
         }
 
