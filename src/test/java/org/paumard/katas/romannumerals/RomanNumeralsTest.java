@@ -533,4 +533,19 @@ public class RomanNumeralsTest {
         // Then
         Assertions.assertThat(output).isEqualTo(expectedOutput);
     }
+
+    @Test
+    public void should_return_1335_for_MCCCXXV() {
+
+        // Given
+        String input = "MCCCXXV";
+        int expectedOutput = 1335;
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        // When
+        int output = romanNumerals.toArabics(input);
+
+        // Then
+        Assertions.assertThat(output).isEqualTo(expectedOutput);
+    }
 }
