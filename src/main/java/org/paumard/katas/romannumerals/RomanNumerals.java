@@ -31,7 +31,7 @@ public class RomanNumerals {
     public String toRoman(int input) {
 
         if (input == 10) {
-            return "X";
+            return X;
         }
 
         switch (input) {
