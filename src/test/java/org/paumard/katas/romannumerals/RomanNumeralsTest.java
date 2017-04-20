@@ -539,7 +539,7 @@ public class RomanNumeralsTest {
 
         // Given
         String input = "MCCCXXV";
-        int expectedOutput = 1335;
+        int expectedOutput = 1325;
         RomanNumerals romanNumerals = new RomanNumerals();
 
         // When
