@@ -86,6 +86,6 @@ public class RomanNumerals {
     }
 
     public int toArabics(String input) {
-        return 1;
+        return input.length();
     }
 }
