@@ -84,4 +84,8 @@ public class RomanNumerals {
     private String repeatSymbol(int input, String symbol) {
         return IntStream.range(0, input).mapToObj(i -> symbol).collect(Collectors.joining());
     }
+
+    public int toArabics(String input) {
+        return 1;
+    }
 }
