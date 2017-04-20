@@ -35,7 +35,7 @@ public class RomanNumerals {
     public String toRoman(int input) {
 
         int hundredsDigit = input / 100;
-        int tensDigit = input / 10;
+        int tensDigit = (input % 100) / 10;
         int unitsDigit = input % 10;
 
         return convertHundredsDigit(hundredsDigit) +
