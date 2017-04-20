@@ -508,7 +508,7 @@ public class RomanNumeralsTest {
     public void should_return_135_for_CXXV() {
 
         // Given
-        String input = "CXXV";
+        String input = "CXXXV";
         int expectedOutput = 135;
         RomanNumerals romanNumerals = new RomanNumerals();
 
