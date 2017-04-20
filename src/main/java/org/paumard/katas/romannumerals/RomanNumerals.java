@@ -34,13 +34,19 @@ public class RomanNumerals {
 
     public String toRoman(int input) {
 
-        int hundredsDigit = input / 100;
+        int thousandsDigit = input / 1000;
+        int hundredsDigit = (input % 1000) / 100;
         int tensDigit = (input % 100) / 10;
         int unitsDigit = input % 10;
 
-        return convertHundredsDigit(hundredsDigit) +
+        return convertThousandsDigit(thousandsDigit) +
+                convertHundredsDigit(hundredsDigit) +
                 convertTensDigit(tensDigit) +
                 convertUnitDigit(unitsDigit);
+    }
+
+    private String convertThousandsDigit(int input) {
+        return convertToDigit(input, M, "", "");
     }
 
     private String convertHundredsDigit(int input) {
