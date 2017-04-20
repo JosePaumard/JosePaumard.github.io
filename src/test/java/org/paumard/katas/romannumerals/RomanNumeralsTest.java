@@ -308,4 +308,34 @@ public class RomanNumeralsTest {
         // Then
         Assertions.assertThat(output).isEqualTo(expectedOutput);
     }
+
+    @Test
+    public void should_return_XLIX_for_49() {
+
+        // Given
+        int input = 49;
+        String expectedOutput = "XLIX";
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        // When
+        String output = romanNumerals.toRoman(input);
+
+        // Then
+        Assertions.assertThat(output).isEqualTo(expectedOutput);
+    }
+
+    @Test
+    public void should_return_LXXIV_for_74() {
+
+        // Given
+        int input = 74;
+        String expectedOutput = "LXXIV";
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        // When
+        String output = romanNumerals.toRoman(input);
+
+        // Then
+        Assertions.assertThat(output).isEqualTo(expectedOutput);
+    }
 }
