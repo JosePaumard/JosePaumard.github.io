@@ -16,6 +16,7 @@
 
 package org.paumard.katas.romannumerals;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.function.IntUnaryOperator;
 import java.util.stream.Collectors;
@@ -107,15 +108,18 @@ public class RomanNumerals {
 
     public int toArabics(String input) {
 
-        if (input.equals("IV")) {
-            return 4;
+        ArrayDeque<Integer> queue = input.chars().boxed().collect(Collectors.toCollection(ArrayDeque::new));
+        int result = 0;
+        while (!queue.isEmpty()) {
+            int digitValue = RomanDigits.of(queue.poll()).value();
+
+            if (!queue.isEmpty() && digitValue < RomanDigits.of(queue.peek()).value()) {
+                result -= digitValue;
+            } else {
+                result += digitValue;
+            }
         }
 
-        IntUnaryOperator toValue = c -> {
-            RomanDigits romanDigits = RomanDigits.of(c);
-            return romanDigits.value();
-        };
-
-        return input.chars().map(toValue).sum();
+        return result;
     }
 }
