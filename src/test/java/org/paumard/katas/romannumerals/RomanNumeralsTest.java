@@ -473,4 +473,19 @@ public class RomanNumeralsTest {
         // Then
         Assertions.assertThat(output).isEqualTo(expectedOutput);
     }
+
+    @Test
+    public void should_return_12_for_XII() {
+
+        // Given
+        String input = "XII";
+        int expectedOutput = 12;
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        // When
+        int output = romanNumerals.toArabics(input);
+
+        // Then
+        Assertions.assertThat(output).isEqualTo(expectedOutput);
+    }
 }
