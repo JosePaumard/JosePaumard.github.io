@@ -203,4 +203,19 @@ public class RomanNumeralsTest {
         // Then
         Assertions.assertThat(output).isEqualTo(expectedOutput);
     }
+
+    @Test
+    public void should_return_XL_for_40() {
+
+        // Given
+        int input = 40;
+        String expectedOutput = "XL";
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        // When
+        String output = romanNumerals.toRoman(input);
+
+        // Then
+        Assertions.assertThat(output).isEqualTo(expectedOutput);
+    }
 }
