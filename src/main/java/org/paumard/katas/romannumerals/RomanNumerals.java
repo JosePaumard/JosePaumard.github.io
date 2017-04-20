@@ -30,6 +30,10 @@ public class RomanNumerals {
 
     public String toRoman(int input) {
 
+        if (input == 10) {
+            return "X";
+        }
+
         switch (input) {
             case 1:
             case 2:
