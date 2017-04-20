@@ -16,6 +16,7 @@
 
 package org.paumard.katas.romannumerals;
 
+import java.util.Arrays;
 import java.util.function.IntUnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -86,18 +87,29 @@ public class RomanNumerals {
         return IntStream.range(0, input).mapToObj(i -> symbol).collect(Collectors.joining());
     }
 
+    private enum RomanDigits {
+        I(1), V(5), X(10);
+
+        private int value;
+
+        private RomanDigits(int value) {
+            this.value = value;
+        }
+
+        public int value() {
+            return this.value;
+        }
+
+        public static RomanDigits of(int c) {
+            return Arrays.stream(values()).filter(digit -> digit.toString().charAt(0) == c).findFirst().get();
+        }
+    }
+
     public int toArabics(String input) {
 
         IntUnaryOperator toValue = c -> {
-            if (c == 'I') {
-                return 1;
-            } else if (c == 'V') {
-                return 5;
-            } else if (c == 'X') {
-                return 10;
-            } else {
-                return 0;
-            }
+            RomanDigits romanDigits = RomanDigits.of(c);
+            return romanDigits.value();
         };
 
         return input.chars().map(toValue).sum();
