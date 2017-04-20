@@ -13,7 +13,8 @@ Sentences can be palindromes too:
 
 ### The Kata
 
-We want to create a method that takes a string of characters as its input, and returns a boolean that is true if the input string is a palindrome. One can use examples from the text file ``palindromes.txt``. [this file is provided with the code of the kata]. 
+We want to create a method that takes a string of characters as its input, and returns a boolean that is true if the input string is a palindrome. One can use examples from the text file ``palindromes.txt``. This file is provided with the code of the kata for convenience only, and can be found here: http://www2.cs.arizona.edu/icon/oddsends/palinsen.htm 
+
 
 ### Comments
 
