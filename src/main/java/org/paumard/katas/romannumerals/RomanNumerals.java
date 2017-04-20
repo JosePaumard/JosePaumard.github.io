@@ -16,6 +16,7 @@
 
 package org.paumard.katas.romannumerals;
 
+import java.util.function.IntUnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -86,9 +87,17 @@ public class RomanNumerals {
     }
 
     public int toArabics(String input) {
-        if (input.equals("V")) {
-            return 5;
-        }
-        return input.length();
+
+        IntUnaryOperator toValue = c -> {
+            if (c == 'I') {
+                return 1;
+            } else if (c == 'V') {
+                return 5;
+            } else {
+                return 0;
+            }
+        };
+
+        return input.chars().map(toValue).sum();
     }
 }
