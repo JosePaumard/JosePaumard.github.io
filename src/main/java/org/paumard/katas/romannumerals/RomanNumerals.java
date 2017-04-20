@@ -111,9 +111,9 @@ public class RomanNumerals {
         ArrayDeque<Integer> queue = input.chars().boxed().collect(Collectors.toCollection(ArrayDeque::new));
         int result = 0;
         while (!queue.isEmpty()) {
-            int digitValue = RomanDigits.of(queue.poll()).value();
+            int digitValue = pollNextValue(queue);
 
-            if (!queue.isEmpty() && digitValue < RomanDigits.of(queue.peek()).value()) {
+            if (!queue.isEmpty() && digitValue < peekNextValue(queue)) {
                 result -= digitValue;
             } else {
                 result += digitValue;
@@ -121,5 +121,13 @@ public class RomanNumerals {
         }
 
         return result;
+    }
+
+    private int peekNextValue(ArrayDeque<Integer> queue) {
+        return RomanDigits.of(queue.peek()).value();
+    }
+
+    private int pollNextValue(ArrayDeque<Integer> queue) {
+        return RomanDigits.of(queue.poll()).value();
     }
 }
