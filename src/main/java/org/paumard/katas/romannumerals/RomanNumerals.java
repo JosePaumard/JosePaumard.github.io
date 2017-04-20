@@ -32,19 +32,13 @@ public class RomanNumerals {
 
     public String toRoman(int input) {
 
-        if (input == 12) {
-            return X + I + I;
-        }
+        int tensDigit = input / 10;
+        int unitsDigit = input % 10;
 
-        if (input >= 10) {
-            return convertTensDigit(input);
-        } else {
-            return convertUnitDigit(input);
-        }
+        return convertTensDigit(tensDigit) + convertUnitDigit(unitsDigit);
     }
 
     private String convertTensDigit(int input) {
-        input = input / 10;
         return convertToDigit(input, X, L, C);
     }
 
@@ -69,7 +63,7 @@ public class RomanNumerals {
             case 9:
                 return symbolFor1 + symbolFor10;
         }
-        return null;
+        return "";
     }
 
     private String repeatSymbol(int input, String symbol) {
