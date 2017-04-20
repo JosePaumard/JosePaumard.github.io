@@ -22,10 +22,10 @@ package org.paumard.katas.romannumerals;
 public class RomanNumerals {
 
     public String toRoman(int input) {
-        if (input == 1) {
-            return "I";
-        } else {
-            return "II";
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0 ; i < input ; i++) {
+            stringBuilder.append("I");
         }
+        return stringBuilder.toString();
     }
 }
