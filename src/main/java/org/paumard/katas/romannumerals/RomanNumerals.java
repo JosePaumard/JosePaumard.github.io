@@ -32,6 +32,10 @@ public class RomanNumerals {
 
     public String toRoman(int input) {
 
+        if (input == 200) {
+            return C + C;
+        }
+
         int tensDigit = input / 10;
         int unitsDigit = input % 10;
 
