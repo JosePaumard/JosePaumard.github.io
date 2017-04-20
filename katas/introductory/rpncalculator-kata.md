@@ -13,6 +13,8 @@ The RPN Calculator Kata
 [The Palindrome Kata](/katas/introductory/palindrome-kata.html)
 
 
+## The RPN Calculator Kata
+
 ### The Kata
 
 A RPN calculator program computes expressions written in RPN (Reverse Polish Notation).
