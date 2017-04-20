@@ -31,7 +31,9 @@ public class RomanNumerals {
 
     public String toRoman(int input) {
 
-        if (input == 40) {
+        if (input == 50) {
+            return L;
+        } else if (input == 40) {
             return X + L;
         } else if (input >= 10) {
             return repeatSymbolX(input / 10);
