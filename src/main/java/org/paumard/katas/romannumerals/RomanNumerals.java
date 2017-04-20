@@ -32,6 +32,14 @@ public class RomanNumerals {
 
     public String toRoman(int input) {
 
+        if (input >= 10) {
+            return convertTensDigit(input);
+        } else {
+            return convertUnitDigit(input);
+        }
+    }
+
+    private String convertTensDigit(int input) {
         switch (input) {
             case 10:
             case 20:
@@ -48,7 +56,10 @@ public class RomanNumerals {
             case 90:
                 return X + C;
         }
+        return null;
+    }
 
+    private String convertUnitDigit(int input) {
         switch (input) {
             case 1:
             case 2:
@@ -65,7 +76,6 @@ public class RomanNumerals {
             case 9:
                 return I + X;
         }
-
         return null;
     }
 
