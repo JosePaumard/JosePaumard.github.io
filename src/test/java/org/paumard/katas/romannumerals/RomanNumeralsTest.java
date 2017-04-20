@@ -353,4 +353,19 @@ public class RomanNumeralsTest {
         // Then
         Assertions.assertThat(output).isEqualTo(expectedOutput);
     }
+
+    @Test
+    public void should_return_CC_for_300() {
+
+        // Given
+        int input = 300;
+        String expectedOutput = "CCC";
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        // When
+        String output = romanNumerals.toRoman(input);
+
+        // Then
+        Assertions.assertThat(output).isEqualTo(expectedOutput);
+    }
 }
