@@ -12,6 +12,8 @@
 
 The Palindrome Kata
 
+[The Roman Numerals Kata](/katas/intermediate/romannumerals-kata.html)
+
 
 ## The Palindrome Kata
 

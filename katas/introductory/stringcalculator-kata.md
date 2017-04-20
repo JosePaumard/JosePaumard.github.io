@@ -12,6 +12,8 @@ The String Calculator Kata
 
 [The Palindrome Kata](/katas/introductory/palindrome-kata.html)
 
+[The Roman Numerals Kata](/katas/intermediate/romannumerals-kata.html)
+
 
 ## The String Calculator Kata
 

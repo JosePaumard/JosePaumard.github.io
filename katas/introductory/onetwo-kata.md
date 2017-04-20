@@ -12,6 +12,8 @@ The One Two Kata
 
 [The Palindrome Kata](/katas/introductory/palindrome-kata.html)
 
+[The Roman Numerals Kata](/katas/intermediate/romannumerals-kata.html)
+
 
 ## The One Two Kata
 
