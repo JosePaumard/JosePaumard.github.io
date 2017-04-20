@@ -41,41 +41,19 @@ public class RomanNumerals {
 
     private String convertTensDigit(int input) {
         input = input / 10;
-
-        String symbolFor1 = X;
-        String symbolFor5 = L;
-        String symbolFor10 = C;
-
-        switch (input) {
-            case 1:
-            case 2:
-            case 3:
-                return repeatSymbolX(input);
-            case 4:
-                return symbolFor1 + symbolFor5;
-            case 5:
-                return symbolFor5;
-            case 6:
-            case 7:
-            case 8:
-                return symbolFor5 + repeatSymbolX(input - 5);
-            case 9:
-                return symbolFor1 + symbolFor10;
-        }
-        return null;
+        return convertToDigit(input, X, L, C);
     }
 
     private String convertUnitDigit(int input) {
+        return convertToDigit(input, I, V, X);
+    }
 
-        String symbolFor1 = I;
-        String symbolFor5 = V;
-        String symbolFor10 = X;
-
+    private String convertToDigit(int input, String symbolFor1, String symbolFor5, String symbolFor10) {
         switch (input) {
             case 1:
             case 2:
             case 3:
-                return repeatSymbolI(input);
+                return repeatSymbol(input, symbolFor1);
             case 4:
                 return symbolFor1 + symbolFor5;
             case 5:
@@ -83,7 +61,7 @@ public class RomanNumerals {
             case 6:
             case 7:
             case 8:
-                return symbolFor5 + repeatSymbolI(input - 5);
+                return symbolFor5 + repeatSymbol(input - 5, symbolFor1);
             case 9:
                 return symbolFor1 + symbolFor10;
         }
