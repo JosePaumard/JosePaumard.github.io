@@ -158,4 +158,19 @@ public class RomanNumeralsTest {
         // Then
         Assertions.assertThat(output).isEqualTo(expectedOutput);
     }
+
+    @Test
+    public void should_return_X_for_10() {
+
+        // Given
+        int input = 10;
+        String expectedOutput = "X";
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        // When
+        String output = romanNumerals.toRoman(input);
+
+        // Then
+        Assertions.assertThat(output).isEqualTo(expectedOutput);
+    }
 }
