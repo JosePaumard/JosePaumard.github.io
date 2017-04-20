@@ -29,15 +29,25 @@ public class RomanNumerals {
     public static final String X = "X";
 
     public String toRoman(int input) {
-        if (input == 9) {
-            return I + X;
+
+        switch (input) {
+            case 1:
+            case 2:
+            case 3:
+                return repeatSymbolI(input);
+            case 4:
+                return I + V;
+            case 5:
+                return V;
+            case 6:
+            case 7:
+            case 8:
+                return V + repeatSymbolI(input - 5);
+            case 9:
+                return I + X;
         }
-        if (input >= 5) {
-            return V + repeatSymbolI(input - 5);
-        } else if (input == 4) {
-            return I + V;
-        }
-        return repeatSymbolI(input);
+
+        return null;
     }
 
     private String repeatSymbolI(int input) {
