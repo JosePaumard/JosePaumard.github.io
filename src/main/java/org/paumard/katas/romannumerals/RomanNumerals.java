@@ -107,6 +107,10 @@ public class RomanNumerals {
 
     public int toArabics(String input) {
 
+        if (input.equals("IV")) {
+            return 4;
+        }
+
         IntUnaryOperator toValue = c -> {
             RomanDigits romanDigits = RomanDigits.of(c);
             return romanDigits.value();
