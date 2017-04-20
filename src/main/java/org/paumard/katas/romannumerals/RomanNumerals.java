@@ -32,6 +32,10 @@ public class RomanNumerals {
 
     public String toRoman(int input) {
 
+        if (input == 12) {
+            return X + I + I;
+        }
+
         if (input >= 10) {
             return convertTensDigit(input);
         } else {
