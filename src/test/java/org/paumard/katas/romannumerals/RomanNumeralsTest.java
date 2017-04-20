@@ -98,4 +98,19 @@ public class RomanNumeralsTest {
         // Then
         Assertions.assertThat(output).isEqualTo(expectedOutput);
     }
+
+    @Test
+    public void should_return_VI_for_6() {
+
+        // Given
+        int input = 6;
+        String expectedOutput = "VI";
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        // When
+        String output = romanNumerals.toRoman(input);
+
+        // Then
+        Assertions.assertThat(output).isEqualTo(expectedOutput);
+    }
 }
