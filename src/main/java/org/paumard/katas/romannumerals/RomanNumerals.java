@@ -40,41 +40,52 @@ public class RomanNumerals {
     }
 
     private String convertTensDigit(int input) {
+        input = input / 10;
+
+        String symbolFor1 = X;
+        String symbolFor5 = L;
+        String symbolFor10 = C;
+
         switch (input) {
-            case 10:
-            case 20:
-            case 30:
-                return repeatSymbolX(input / 10);
-            case 40:
-                return X + L;
-            case 50:
-                return L;
-            case 60:
-            case 70:
-            case 80:
-                return L + repeatSymbolX(input / 10 - 5);
-            case 90:
-                return X + C;
+            case 1:
+            case 2:
+            case 3:
+                return repeatSymbolX(input);
+            case 4:
+                return symbolFor1 + symbolFor5;
+            case 5:
+                return symbolFor5;
+            case 6:
+            case 7:
+            case 8:
+                return symbolFor5 + repeatSymbolX(input - 5);
+            case 9:
+                return symbolFor1 + symbolFor10;
         }
         return null;
     }
 
     private String convertUnitDigit(int input) {
+
+        String symbolFor1 = I;
+        String symbolFor5 = V;
+        String symbolFor10 = X;
+
         switch (input) {
             case 1:
             case 2:
             case 3:
                 return repeatSymbolI(input);
             case 4:
-                return I + V;
+                return symbolFor1 + symbolFor5;
             case 5:
-                return V;
+                return symbolFor5;
             case 6:
             case 7:
             case 8:
-                return V + repeatSymbolI(input - 5);
+                return symbolFor5 + repeatSymbolI(input - 5);
             case 9:
-                return I + X;
+                return symbolFor1 + symbolFor10;
         }
         return null;
     }
