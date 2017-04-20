@@ -25,7 +25,10 @@ import java.util.stream.IntStream;
 public class RomanNumerals {
 
     public String toRoman(int input) {
+        return repeatSymbolI(input);
+    }
 
+    private String repeatSymbolI(int input) {
         return IntStream.range(0, input).mapToObj(i -> "I").collect(Collectors.joining());
     }
 }
