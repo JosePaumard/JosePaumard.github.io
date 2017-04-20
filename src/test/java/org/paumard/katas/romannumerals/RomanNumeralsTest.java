@@ -428,4 +428,19 @@ public class RomanNumeralsTest {
         // Then
         Assertions.assertThat(output).isEqualTo(expectedOutput);
     }
+
+    @Test
+    public void should_return_2_for_II() {
+
+        // Given
+        String input = "II";
+        int expectedOutput = 2;
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        // When
+        int output = romanNumerals.toArabics(input);
+
+        // Then
+        Assertions.assertThat(output).isEqualTo(expectedOutput);
+    }
 }
