@@ -31,7 +31,7 @@ public class RomanNumerals {
     public String toRoman(int input) {
 
         if (input >= 10) {
-            return IntStream.range(0, input / 10).mapToObj(i -> X).collect(Collectors.joining());
+            return repeatSymbolX(input / 10);
         }
 
         switch (input) {
@@ -52,6 +52,10 @@ public class RomanNumerals {
         }
 
         return null;
+    }
+
+    private String repeatSymbolX(int input) {
+        return IntStream.range(0, input).mapToObj(i -> X).collect(Collectors.joining());
     }
 
     private String repeatSymbolI(int input) {
