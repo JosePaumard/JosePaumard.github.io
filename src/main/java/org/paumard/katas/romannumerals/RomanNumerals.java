@@ -16,16 +16,16 @@
 
 package org.paumard.katas.romannumerals;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /**
  * Created by José
  */
 public class RomanNumerals {
 
     public String toRoman(int input) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0 ; i < input ; i++) {
-            stringBuilder.append("I");
-        }
-        return stringBuilder.toString();
+
+        return IntStream.range(0, input).mapToObj(i -> "I").collect(Collectors.joining());
     }
 }
