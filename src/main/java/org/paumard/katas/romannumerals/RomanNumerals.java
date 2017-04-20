@@ -34,6 +34,8 @@ public class RomanNumerals {
             return X;
         } else if (input == 20) {
             return X + X;
+        } else if (input == 30) {
+            return X + X + X;
         }
 
         switch (input) {
