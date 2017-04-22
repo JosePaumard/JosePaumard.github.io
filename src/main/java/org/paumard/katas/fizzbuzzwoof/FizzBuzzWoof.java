@@ -57,17 +57,34 @@ public class FizzBuzzWoof {
 
         public static String fizzBuzzWoofBySubstitution(int input) {
 
+            Function<String, String> digitRemover = createDigitRemover();
+            Function<String, String> replacer = createReplacer();
+
+            IntFunction<String> mapper = createFinalSubstituer(digitRemover, replacer);
+
+            return substitute(input, mapper);
+        }
+
+        private static String substitute(int input, IntFunction<String> mapper) {
+            return ("" + input).chars().mapToObj(mapper).collect(Collectors.joining());
+        }
+
+        private static IntFunction<String> createFinalSubstituer(Function<String, String> digitRemover, Function<String, String> replacer) {
+            Function<String, String> finalSubstituer = replacer.andThen(digitRemover);
+            return c -> finalSubstituer.apply("" + (c - '0'));
+        }
+
+        private static Function<String, String> createReplacer() {
+            Function<FBW, Function<String, String>> mapper2 = fbw -> (s -> s.equals("" + fbw.value) ? fbw.toString() : s);
+            return Arrays.stream(values()).map(mapper2).reduce(Function.identity(), Function::andThen);
+        }
+
+        private static Function<String, String> createDigitRemover() {
             Function<FBW, Function<String, String>> mapper1 = fbw -> (s -> s.replace("" + fbw.value, ""));
             Function<String, String> replacer = Arrays.stream(values()).map(mapper1).reduce(Function.identity(), Function::andThen);
 
             String nonSubstitutedInts = replacer.apply("0123456789");
-            UnaryOperator<String> finisher = s -> nonSubstitutedInts.contains(s) ? "" : s;
-
-            Function<FBW, Function<String, String>> mapper2 = fbw -> (s -> s.equals("" + fbw.value) ? fbw.toString() : s);
-
-            Function<String, String> function = Arrays.stream(values()).map(mapper2).reduce(Function.identity(), Function::andThen).andThen(finisher);
-            IntFunction<String> mapper = c -> function.apply("" + (c - '0'));
-            return ("" + input).chars().mapToObj(mapper).collect(Collectors.joining());
+            return s -> nonSubstitutedInts.contains(s) ? "" : s;
         }
     }
 
