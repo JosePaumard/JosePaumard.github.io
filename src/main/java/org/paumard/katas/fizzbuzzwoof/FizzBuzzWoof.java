@@ -45,15 +45,16 @@ public class FizzBuzzWoof {
             return result;
         }
 
-        if (("" + input).contains("3")) {
+        String inputAsString = "" + input;
+        if (inputAsString.contains("3")) {
             return FIZZ;
-        } else if (("" + input).contains("5")) {
+        } else if (inputAsString.contains("5")) {
             return BUZZ;
-        } else if (("" + input).contains("7")) {
+        } else if (inputAsString.contains("7")) {
             return WOOF;
         }
 
-        return "" + input;
+        return inputAsString;
     }
 
     private boolean isDivisibleBy7(int input) {
