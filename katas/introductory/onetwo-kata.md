@@ -14,6 +14,8 @@ The One Two Kata
 
 [The Roman Numerals Kata](/katas/intermediate/romannumerals-kata.html)
 
+[The Fizz Buzz Woof Kata](/katas/intermediate/fizzbuzzwoof-kata.html)
+
 
 ## The One Two Kata
 

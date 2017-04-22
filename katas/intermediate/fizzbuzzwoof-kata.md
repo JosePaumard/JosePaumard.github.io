@@ -137,6 +137,16 @@ Now comes the last part of this kata, which does not fit at all in the code we h
 Ha yes, and we need to refactor a bunch of tests that changed due to this new business requirement. 
 
 
+I added a [fizzbuzzwoof-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/fizzbuzzwoof-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/tree/84f838fbe1c00438f894400c837aa81bfc00d9e7). 
+
+I also created labels with the start of the main operations:
+- [Handling the simple division](https://github.com/JosePaumard/JosePaumard.github.io/tree/Handling_the_simple_division) 
+- [Handling multiple divisions](https://github.com/JosePaumard/JosePaumard.github.io/tree/Handling_multiple_divisions) 
+- [Handling the simple substitution](https://github.com/JosePaumard/JosePaumard.github.io/tree/Handling_the_simple_substitution) 
+- [Handling multiple substitutions](https://github.com/JosePaumard/JosePaumard.github.io/tree/Handling_multiple_substitutions) 
+- [Handling star substitution](https://github.com/JosePaumard/JosePaumard.github.io/tree/Handling_star_substitution) 
+
+
 [Back to index](/index.html)
 
 ![Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png) [licence](http://creativecommons.org/licenses/by-nc-sa/4.0/)

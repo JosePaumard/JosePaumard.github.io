@@ -14,6 +14,8 @@
 
 The Roman Numerals Kata
 
+[The Fizz Buzz Woof Kata](/katas/intermediate/fizzbuzzwoof-kata.html)
+
 
 ## The Roman Numerals Kata
 
