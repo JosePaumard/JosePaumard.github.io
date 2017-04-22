@@ -16,26 +16,12 @@
 
 package org.paumard.katas.fizzbuzzwoof;
 
-import org.assertj.core.api.Assertions;
-import org.testng.annotations.Test;
-
 /**
  * Created by José
  */
-public class FizzzBuzzWoofTest {
+public class FizzBuzzWoof {
 
-    @Test
-    public void should_return_1_for_1() {
-
-        // Given
-        int input = 1;
-        String expectedOuput = "1";
-        FizzBuzzWoof fizzBuzzWoof = new FizzBuzzWoof();
-
-        // When
-        String output = fizzBuzzWoof.convert(input);
-
-        // Then
-        Assertions.assertThat(output).isEqualTo(expectedOuput);
+    public String convert(int input) {
+        return null;
     }
 }
