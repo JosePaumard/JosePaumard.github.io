@@ -32,28 +32,31 @@ public class FizzBuzzWoof {
         if (isDivisible) {
             if (isDivisibleBy3(input)) {
                 result += FIZZ;
-                isDivisible = true;
             }
             if (isDivisibleBy5(input)) {
                 result += BUZZ;
-                isDivisible = true;
             }
             if (isDivisibleBy7(input)) {
                 result += WOOF;
-                isDivisible = true;
             }
-        }
-        if (isDivisible) {
+
             return result;
         }
 
+
         String inputAsString = "" + input;
-        if (inputAsString.contains("3")) {
-            return FIZZ;
-        } else if (inputAsString.contains("5")) {
-            return BUZZ;
-        } else if (inputAsString.contains("7")) {
-            return WOOF;
+        boolean contains = inputAsString.contains("3") || inputAsString.contains("5") || inputAsString.contains("7");
+
+        if (contains) {
+            if (inputAsString.contains("3")) {
+                return FIZZ;
+            } else if (inputAsString.contains("5")) {
+                return BUZZ;
+            } else if (inputAsString.contains("7")) {
+                return WOOF;
+            }
+
+            return inputAsString;
         }
 
         return inputAsString;
