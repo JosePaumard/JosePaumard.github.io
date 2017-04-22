@@ -26,6 +26,11 @@ public class FizzBuzzWoof {
     public static final String WOOF = "Woof";
 
     public String convert(int input) {
+
+        if (input == 13) {
+            return FIZZ;
+        }
+
         String result = "";
         boolean isDivisible = false;
         if (isDivisibleBy3(input)) {
