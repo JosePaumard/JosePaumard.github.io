@@ -310,11 +310,11 @@ public class FizzzBuzzWoofTest {
     }
 
     @Test
-    public void should_return_1_star_for_10() {
+    public void should_return_1_star_1_for_101() {
 
         // Given
-        int input = 10;
-        String expectedOuput = "Buzz*";
+        int input = 101;
+        String expectedOuput = "1*1";
         FizzBuzzWoof fizzBuzzWoof = new FizzBuzzWoof();
 
         // When
