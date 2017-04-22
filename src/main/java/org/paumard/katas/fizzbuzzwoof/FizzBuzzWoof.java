@@ -16,6 +16,10 @@
 
 package org.paumard.katas.fizzbuzzwoof;
 
+import java.util.Arrays;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 /**
  * Created by José
  */
@@ -25,22 +29,32 @@ public class FizzBuzzWoof {
     public static final String BUZZ = "Buzz";
     public static final String WOOF = "Woof";
 
+    private enum FBW {
+
+        Fizz(3),
+        Buzz(5),
+        Woof(7);
+
+        private int value;
+
+        FBW(int value) {
+            this.value = value;
+        }
+
+        public static boolean isDivisible(int input) {
+            return Arrays.stream(values()).anyMatch(fbw -> input % fbw.value == 0);
+        }
+
+        public static String fizzBuzzWoofByDivision(int input) {
+            return Arrays.stream(values()).map(fbw -> input % fbw.value == 0 ? fbw.toString() : "").collect(Collectors.joining());
+        }
+    }
+
     public String convert(int input) {
 
-        String result = "";
-        boolean isDivisible = isDivisibleBy3(input) || isDivisibleBy5(input) || isDivisibleBy7(input);
+        boolean isDivisible = FBW.isDivisible(input);
         if (isDivisible) {
-            if (isDivisibleBy3(input)) {
-                result += FIZZ;
-            }
-            if (isDivisibleBy5(input)) {
-                result += BUZZ;
-            }
-            if (isDivisibleBy7(input)) {
-                result += WOOF;
-            }
-
-            return result;
+            return FBW.fizzBuzzWoofByDivision(input);
         }
 
 
