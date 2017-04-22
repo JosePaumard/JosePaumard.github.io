@@ -21,10 +21,16 @@ package org.paumard.katas.fizzbuzzwoof;
  */
 public class FizzBuzzWoof {
 
+    public static final String FIZZ = "Fizz";
+
     public String convert(int input) {
-        if (input % 3 == 0) {
-            return "Fizz";
+        if (isDivisibleBy3(input)) {
+            return FIZZ;
         }
         return "" + input;
+    }
+
+    private boolean isDivisibleBy3(int input) {
+        return input % 3 == 0;
     }
 }
