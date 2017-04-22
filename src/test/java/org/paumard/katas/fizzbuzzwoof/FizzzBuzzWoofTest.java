@@ -113,4 +113,19 @@ public class FizzzBuzzWoofTest {
         // Then
         Assertions.assertThat(output).isEqualTo(expectedOuput);
     }
+
+    @Test
+    public void should_return_Woof_for_14() {
+
+        // Given
+        int input = 14;
+        String expectedOuput = "Woof";
+        FizzBuzzWoof fizzBuzzWoof = new FizzBuzzWoof();
+
+        // When
+        String output = fizzBuzzWoof.convert(input);
+
+        // Then
+        Assertions.assertThat(output).isEqualTo(expectedOuput);
+    }
 }
