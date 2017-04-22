@@ -37,7 +37,8 @@ public class FizzBuzzWoof {
             isDivisible = true;
         }
         if (isDivisibleBy7(input)) {
-            return WOOF;
+            result += WOOF;
+            isDivisible = true;
         }
         if (isDivisible) {
             return result;
