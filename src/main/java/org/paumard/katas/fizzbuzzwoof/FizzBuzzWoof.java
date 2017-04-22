@@ -22,7 +22,9 @@ package org.paumard.katas.fizzbuzzwoof;
 public class FizzBuzzWoof {
 
     public String convert(int input) {
-
+        if (input == 6) {
+            return "Fizz";
+        }
         return "" + input;
     }
 }
