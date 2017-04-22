@@ -90,13 +90,20 @@ public class FizzBuzzWoof {
 
     public String convert(int input) {
 
-        if (FBW.isDivisible(input)) {
-            return FBW.fizzBuzzWoofByDivision(input);
+        String result = "";
+        boolean isDivisible = FBW.isDivisible(input);
+        if (isDivisible) {
+            result = FBW.fizzBuzzWoofByDivision(input);
         }
 
 
-        if (FBW.contains(input)) {
-            return FBW.fizzBuzzWoofBySubstitution(input);
+        boolean contains = FBW.contains(input);
+        if (contains) {
+            result += FBW.fizzBuzzWoofBySubstitution(input);
+        }
+
+        if (isDivisible || contains) {
+            return result;
         }
 
         return "" + input;
