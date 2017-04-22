@@ -89,7 +89,22 @@ public class FizzzBuzzWoofTest {
 
         // Given
         int input = 10;
-        String expectedOuput = "Buzz    ";
+        String expectedOuput = "Buzz";
+        FizzBuzzWoof fizzBuzzWoof = new FizzBuzzWoof();
+
+        // When
+        String output = fizzBuzzWoof.convert(input);
+
+        // Then
+        Assertions.assertThat(output).isEqualTo(expectedOuput);
+    }
+
+    @Test
+    public void should_return_Buzz_for_20() {
+
+        // Given
+        int input = 20;
+        String expectedOuput = "Buzz";
         FizzBuzzWoof fizzBuzzWoof = new FizzBuzzWoof();
 
         // When
