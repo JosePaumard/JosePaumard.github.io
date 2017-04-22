@@ -17,6 +17,9 @@
 package org.paumard.katas.fizzbuzzwoof;
 
 import java.util.Arrays;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 /**
@@ -45,11 +48,22 @@ public class FizzBuzzWoof {
         }
 
         public static boolean contains(int input) {
-            return Arrays.stream(values()).anyMatch(fbw -> ("" + input).contains("" + fbw.value));
+            return contains("" + input);
+        }
+
+        private static boolean contains(String input) {
+            return Arrays.stream(values()).anyMatch(fbw -> input.contains("" + fbw.value));
         }
 
         public static String fizzBuzzWoofBySubstitution(int input) {
-            return Arrays.stream(values()).map(fbw -> ("" + input).contains("" + fbw.value) ? fbw.toString() : "").collect(Collectors.joining());
+
+            UnaryOperator<String> fizz = s -> s.equals("3") ? "Fizz" : s;
+            UnaryOperator<String> buzz = s -> s.equals("5") ? "Buzz" : s;
+            UnaryOperator<String> woof = s -> s.equals("7") ? "Woof" : s;
+            UnaryOperator<String> finisher = s -> "0124689".contains(s) ? "" : s;
+
+            IntFunction<String> mapper = c -> fizz.andThen(buzz).andThen(woof).andThen(finisher).apply("" + (c - '0'));
+            return ("" + input).chars().mapToObj(mapper).collect(Collectors.joining());
         }
     }
 
