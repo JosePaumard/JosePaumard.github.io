@@ -28,18 +28,20 @@ public class FizzBuzzWoof {
     public String convert(int input) {
 
         String result = "";
-        boolean isDivisible = false;
-        if (isDivisibleBy3(input)) {
-            result += FIZZ;
-            isDivisible = true;
-        }
-        if (isDivisibleBy5(input)) {
-            result += BUZZ;
-            isDivisible = true;
-        }
-        if (isDivisibleBy7(input)) {
-            result += WOOF;
-            isDivisible = true;
+        boolean isDivisible = isDivisibleBy3(input) || isDivisibleBy5(input) || isDivisibleBy7(input);
+        if (isDivisible) {
+            if (isDivisibleBy3(input)) {
+                result += FIZZ;
+                isDivisible = true;
+            }
+            if (isDivisibleBy5(input)) {
+                result += BUZZ;
+                isDivisible = true;
+            }
+            if (isDivisibleBy7(input)) {
+                result += WOOF;
+                isDivisible = true;
+            }
         }
         if (isDivisible) {
             return result;
