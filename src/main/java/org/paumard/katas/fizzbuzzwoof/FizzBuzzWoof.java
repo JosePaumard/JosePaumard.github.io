@@ -57,10 +57,13 @@ public class FizzBuzzWoof {
 
         public static String fizzBuzzWoofBySubstitution(int input) {
 
+            String pattern = "0124689";
+            String finalPattern = pattern.replace("" + Fizz.value, "").replace("" + Buzz.value, "").replace("" + Woof.value, "");
+
             UnaryOperator<String> fizz = s -> s.equals("3") ? "Fizz" : s;
             UnaryOperator<String> buzz = s -> s.equals("5") ? "Buzz" : s;
             UnaryOperator<String> woof = s -> s.equals("7") ? "Woof" : s;
-            UnaryOperator<String> finisher = s -> "0124689".contains(s) ? "" : s;
+            UnaryOperator<String> finisher = s -> finalPattern.contains(s) ? "" : s;
 
             IntFunction<String> mapper = c -> fizz.andThen(buzz).andThen(woof).andThen(finisher).apply("" + (c - '0'));
             return ("" + input).chars().mapToObj(mapper).collect(Collectors.joining());
