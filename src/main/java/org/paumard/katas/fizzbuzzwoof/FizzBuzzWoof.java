@@ -17,17 +17,12 @@
 package org.paumard.katas.fizzbuzzwoof;
 
 import java.util.Arrays;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
  * Created by José
  */
 public class FizzBuzzWoof {
-
-    public static final String FIZZ = "Fizz";
-    public static final String BUZZ = "Buzz";
-    public static final String WOOF = "Woof";
 
     private enum FBW {
 
@@ -60,31 +55,15 @@ public class FizzBuzzWoof {
 
     public String convert(int input) {
 
-        boolean isDivisible = FBW.isDivisible(input);
-        if (isDivisible) {
+        if (FBW.isDivisible(input)) {
             return FBW.fizzBuzzWoofByDivision(input);
         }
 
 
-        String inputAsString = "" + input;
-        boolean contains = FBW.contains(input);
-
-        if (contains) {
+        if (FBW.contains(input)) {
             return FBW.fizzBuzzWoofBySubstitution(input);
         }
 
-        return inputAsString;
-    }
-
-    private boolean isDivisibleBy7(int input) {
-        return input % 7 == 0;
-    }
-
-    private boolean isDivisibleBy5(int input) {
-        return input % 5 == 0;
-    }
-
-    private boolean isDivisibleBy3(int input) {
-        return input % 3 == 0;
+        return "" + input;
     }
 }
