@@ -26,14 +26,21 @@ public class FizzBuzzWoof {
     public static final String WOOF = "Woof";
 
     public String convert(int input) {
+        String result = "";
+        boolean isDivisible = false;
         if (isDivisibleBy3(input)) {
-            return FIZZ;
+            result += FIZZ;
+            isDivisible = true;
         }
         if (isDivisibleBy5(input)) {
-            return BUZZ;
+            result += BUZZ;
+            isDivisible = true;
         }
         if (isDivisibleBy7(input)) {
             return WOOF;
+        }
+        if (isDivisible) {
+            return result;
         }
         return "" + input;
     }
