@@ -27,10 +27,6 @@ public class FizzBuzzWoof {
 
     public String convert(int input) {
 
-        if (input == 13) {
-            return FIZZ;
-        }
-
         String result = "";
         boolean isDivisible = false;
         if (isDivisibleBy3(input)) {
@@ -48,6 +44,11 @@ public class FizzBuzzWoof {
         if (isDivisible) {
             return result;
         }
+
+        if (("" + input).contains("3")) {
+            return FIZZ;
+        }
+
         return "" + input;
     }
 
