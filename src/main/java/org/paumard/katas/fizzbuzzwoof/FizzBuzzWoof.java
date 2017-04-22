@@ -23,6 +23,7 @@ public class FizzBuzzWoof {
 
     public static final String FIZZ = "Fizz";
     public static final String BUZZ = "Buzz";
+    public static final String WOOF = "Woof";
 
     public String convert(int input) {
         if (isDivisibleBy3(input)) {
@@ -31,10 +32,14 @@ public class FizzBuzzWoof {
         if (isDivisibleBy5(input)) {
             return BUZZ;
         }
-        if (input % 7 == 0) {
-            return "Woof";
+        if (isDivisibleBy7(input)) {
+            return WOOF;
         }
         return "" + input;
+    }
+
+    private boolean isDivisibleBy7(int input) {
+        return input % 7 == 0;
     }
 
     private boolean isDivisibleBy5(int input) {
