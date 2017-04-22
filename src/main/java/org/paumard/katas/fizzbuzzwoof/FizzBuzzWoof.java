@@ -49,6 +49,8 @@ public class FizzBuzzWoof {
             return FIZZ;
         } else if (("" + input).contains("5")) {
             return BUZZ;
+        } else if (("" + input).contains("7")) {
+            return WOOF;
         }
 
         return "" + input;
