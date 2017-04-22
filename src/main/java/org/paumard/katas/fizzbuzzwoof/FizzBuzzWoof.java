@@ -31,7 +31,7 @@ public class FizzBuzzWoof {
         if (isDivisibleBy5(input)) {
             return BUZZ;
         }
-        if (input == 14) {
+        if (input % 7 == 0) {
             return "Woof";
         }
         return "" + input;
