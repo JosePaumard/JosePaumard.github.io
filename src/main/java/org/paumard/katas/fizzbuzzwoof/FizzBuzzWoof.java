@@ -27,6 +27,9 @@ public class FizzBuzzWoof {
         if (isDivisibleBy3(input)) {
             return FIZZ;
         }
+        if (input == 5) {
+            return "Buzz";
+        }
         return "" + input;
     }
 
