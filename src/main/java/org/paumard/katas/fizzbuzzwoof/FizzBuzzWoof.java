@@ -47,6 +47,8 @@ public class FizzBuzzWoof {
 
         if (("" + input).contains("3")) {
             return FIZZ;
+        } else if (("" + input).contains("5")) {
+            return BUZZ;
         }
 
         return "" + input;
