@@ -308,4 +308,19 @@ public class FizzzBuzzWoofTest {
         // Then
         Assertions.assertThat(output).isEqualTo(expectedOuput);
     }
+
+    @Test
+    public void should_return_1_star_for_10() {
+
+        // Given
+        int input = 10;
+        String expectedOuput = "1*";
+        FizzBuzzWoof fizzBuzzWoof = new FizzBuzzWoof();
+
+        // When
+        String output = fizzBuzzWoof.convert(input);
+
+        // Then
+        Assertions.assertThat(output).isEqualTo(expectedOuput);
+    }
 }
