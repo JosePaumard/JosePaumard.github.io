@@ -22,15 +22,20 @@ package org.paumard.katas.fizzbuzzwoof;
 public class FizzBuzzWoof {
 
     public static final String FIZZ = "Fizz";
+    public static final String BUZZ = "Buzz";
 
     public String convert(int input) {
         if (isDivisibleBy3(input)) {
             return FIZZ;
         }
-        if (input % 5 == 0) {
-            return "Buzz";
+        if (isDivisibleBy5(input)) {
+            return BUZZ;
         }
         return "" + input;
+    }
+
+    private boolean isDivisibleBy5(int input) {
+        return input % 5 == 0;
     }
 
     private boolean isDivisibleBy3(int input) {
