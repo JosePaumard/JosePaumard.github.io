@@ -57,17 +57,15 @@ public class FizzBuzzWoof {
 
         public static String fizzBuzzWoofBySubstitution(int input) {
 
-            UnaryOperator<String> fizz1 = s -> s.replace("" + Fizz.value, "");
-            UnaryOperator<String> buzz1 = s -> s.replace("" + Buzz.value, "");
-            UnaryOperator<String> woof1 = s -> s.replace("" + Woof.value, "");
+            Function<FBW, Function<String, String>> reducer = fbw -> (s -> s.replace("" + fbw.value, ""));
+            Function<String, String> replacer = Arrays.stream(values()).map(reducer).reduce(Function.identity(), Function::andThen);
 
-            Function<String, String> replacer = fizz1.andThen(buzz1).andThen(woof1);
-            String finalPattern = replacer.apply("0123456789");
+            String nonSubstitutedInts = replacer.apply("0123456789");
 
             UnaryOperator<String> fizz = s -> s.equals("3") ? "Fizz" : s;
             UnaryOperator<String> buzz = s -> s.equals("5") ? "Buzz" : s;
             UnaryOperator<String> woof = s -> s.equals("7") ? "Woof" : s;
-            UnaryOperator<String> finisher = s -> finalPattern.contains(s) ? "" : s;
+            UnaryOperator<String> finisher = s -> nonSubstitutedInts.contains(s) ? "" : s;
 
             IntFunction<String> mapper = c -> fizz.andThen(buzz).andThen(woof).andThen(finisher).apply("" + (c - '0'));
             return ("" + input).chars().mapToObj(mapper).collect(Collectors.joining());
