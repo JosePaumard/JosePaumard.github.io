@@ -84,17 +84,13 @@ public class FizzBuzzWoof {
             result = FBW.fizzBuzzWoofByDivision(input);
         }
 
-
         boolean contains = contains(input);
-        if (contains) {
-            result += substitution(input);
-        }
-
         if (isDivisible || contains) {
+            result += substitution(input);
             return result;
         }
 
-        return "" + input;
+        return replace0ByStar("" + input);
     }
 
     private String substitution(int input) {
@@ -112,6 +108,6 @@ public class FizzBuzzWoof {
     }
 
     private boolean contains(int input) {
-        return FBW.contains(input) || ("" + input).contains("0");
+        return FBW.contains(input);
     }
 }
