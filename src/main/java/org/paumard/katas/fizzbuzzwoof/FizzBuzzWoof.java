@@ -57,17 +57,16 @@ public class FizzBuzzWoof {
 
         public static String fizzBuzzWoofBySubstitution(int input) {
 
-            Function<FBW, Function<String, String>> reducer = fbw -> (s -> s.replace("" + fbw.value, ""));
-            Function<String, String> replacer = Arrays.stream(values()).map(reducer).reduce(Function.identity(), Function::andThen);
+            Function<FBW, Function<String, String>> mapper1 = fbw -> (s -> s.replace("" + fbw.value, ""));
+            Function<String, String> replacer = Arrays.stream(values()).map(mapper1).reduce(Function.identity(), Function::andThen);
 
             String nonSubstitutedInts = replacer.apply("0123456789");
-
-            UnaryOperator<String> fizz = s -> s.equals("3") ? "Fizz" : s;
-            UnaryOperator<String> buzz = s -> s.equals("5") ? "Buzz" : s;
-            UnaryOperator<String> woof = s -> s.equals("7") ? "Woof" : s;
             UnaryOperator<String> finisher = s -> nonSubstitutedInts.contains(s) ? "" : s;
 
-            IntFunction<String> mapper = c -> fizz.andThen(buzz).andThen(woof).andThen(finisher).apply("" + (c - '0'));
+            Function<FBW, Function<String, String>> mapper2 = fbw -> (s -> s.equals("" + fbw.value) ? fbw.toString() : s);
+
+            Function<String, String> function = Arrays.stream(values()).map(mapper2).reduce(Function.identity(), Function::andThen).andThen(finisher);
+            IntFunction<String> mapper = c -> function.apply("" + (c - '0'));
             return ("" + input).chars().mapToObj(mapper).collect(Collectors.joining());
         }
     }
