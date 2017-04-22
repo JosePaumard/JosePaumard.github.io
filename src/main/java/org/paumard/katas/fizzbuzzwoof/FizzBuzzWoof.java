@@ -57,11 +57,8 @@ public class FizzBuzzWoof {
 
         public static String fizzBuzzWoofBySubstitution(int input) {
 
-            Function<String, String> digitRemover = createDigitRemover();
             Function<String, String> replacer = createReplacer();
-
-            IntFunction<String> mapper = createFinalSubstituer(digitRemover, replacer);
-
+            IntFunction<String> mapper = createFinalSubstituer(replacer);
             return substitute(input, mapper);
         }
 
@@ -69,22 +66,13 @@ public class FizzBuzzWoof {
             return ("" + input).chars().mapToObj(mapper).collect(Collectors.joining());
         }
 
-        private static IntFunction<String> createFinalSubstituer(Function<String, String> digitRemover, Function<String, String> replacer) {
-            Function<String, String> finalSubstituer = replacer.andThen(digitRemover);
-            return c -> finalSubstituer.apply("" + (c - '0'));
+        private static IntFunction<String> createFinalSubstituer(Function<String, String> replacer) {
+            return c -> replacer.apply("" + (c - '0'));
         }
 
         private static Function<String, String> createReplacer() {
             Function<FBW, Function<String, String>> mapper2 = fbw -> (s -> s.equals("" + fbw.value) ? fbw.toString() : s);
             return Arrays.stream(values()).map(mapper2).reduce(Function.identity(), Function::andThen);
-        }
-
-        private static Function<String, String> createDigitRemover() {
-            Function<FBW, Function<String, String>> mapper1 = fbw -> (s -> s.replace("" + fbw.value, ""));
-            Function<String, String> replacer = Arrays.stream(values()).map(mapper1).reduce(Function.identity(), Function::andThen);
-
-            String nonSubstitutedInts = replacer.apply("0123456789");
-            return s -> nonSubstitutedInts.contains(s) ? "" : s;
         }
     }
 
@@ -97,9 +85,9 @@ public class FizzBuzzWoof {
         }
 
 
-        boolean contains = FBW.contains(input);
+        boolean contains = contains(input);
         if (contains) {
-            result += FBW.fizzBuzzWoofBySubstitution(input);
+            result += substitution(input);
         }
 
         if (isDivisible || contains) {
@@ -107,5 +95,23 @@ public class FizzBuzzWoof {
         }
 
         return "" + input;
+    }
+
+    private String substitution(int input) {
+        String firstSubstitution = FBW.fizzBuzzWoofBySubstitution(input);
+        String secondSubstitution = replace0ByStar(firstSubstitution);
+        return removeDigitsFrom(secondSubstitution);
+    }
+
+    private String removeDigitsFrom(String input) {
+        return input.replaceAll("[0-9]", "");
+    }
+
+    private String replace0ByStar(String input) {
+        return input.replace("0", "*");
+    }
+
+    private boolean contains(int input) {
+        return FBW.contains(input) || ("" + input).contains("0");
     }
 }

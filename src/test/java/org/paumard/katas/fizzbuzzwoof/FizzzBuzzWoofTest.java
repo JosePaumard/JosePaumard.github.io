@@ -85,11 +85,11 @@ public class FizzzBuzzWoofTest {
     }
 
     @Test
-    public void should_return_Buzz_for_10() {
+    public void should_return_Buzz_Star_for_10() {
 
         // Given
         int input = 10;
-        String expectedOuput = "Buzz";
+        String expectedOuput = "Buzz*";
         FizzBuzzWoof fizzBuzzWoof = new FizzBuzzWoof();
 
         // When
@@ -100,11 +100,11 @@ public class FizzzBuzzWoofTest {
     }
 
     @Test
-    public void should_return_Buzz_for_20() {
+    public void should_return_Buzz_Star_for_20() {
 
         // Given
         int input = 20;
-        String expectedOuput = "Buzz";
+        String expectedOuput = "Buzz*";
         FizzBuzzWoof fizzBuzzWoof = new FizzBuzzWoof();
 
         // When
@@ -145,11 +145,11 @@ public class FizzzBuzzWoofTest {
     }
 
     @Test
-    public void should_return_FizzBuzz_for_60() {
+    public void should_return_FizzBuzz_Star_for_60() {
 
         // Given
         int input = 60;
-        String expectedOuput = "FizzBuzz";
+        String expectedOuput = "FizzBuzz*";
         FizzBuzzWoof fizzBuzzWoof = new FizzBuzzWoof();
 
         // When
@@ -175,11 +175,11 @@ public class FizzzBuzzWoofTest {
     }
 
     @Test
-    public void should_return_BuzzWoof_for_140() {
+    public void should_return_BuzzWoofStar_for_140() {
 
         // Given
         int input = 140;
-        String expectedOuput = "BuzzWoof";
+        String expectedOuput = "BuzzWoof*";
         FizzBuzzWoof fizzBuzzWoof = new FizzBuzzWoof();
 
         // When
@@ -190,11 +190,11 @@ public class FizzzBuzzWoofTest {
     }
 
     @Test
-    public void should_return_FizzBuzzWoof_for_210() {
+    public void should_return_FizzBuzzWoof_Star_for_210() {
 
         // Given
         int input = 210;
-        String expectedOuput = "FizzBuzzWoof";
+        String expectedOuput = "FizzBuzzWoof*";
         FizzBuzzWoof fizzBuzzWoof = new FizzBuzzWoof();
 
         // When
@@ -314,7 +314,7 @@ public class FizzzBuzzWoofTest {
 
         // Given
         int input = 10;
-        String expectedOuput = "1*";
+        String expectedOuput = "Buzz*";
         FizzBuzzWoof fizzBuzzWoof = new FizzBuzzWoof();
 
         // When
