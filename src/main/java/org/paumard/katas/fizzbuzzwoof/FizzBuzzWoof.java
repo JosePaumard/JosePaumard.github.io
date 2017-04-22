@@ -48,6 +48,14 @@ public class FizzBuzzWoof {
         public static String fizzBuzzWoofByDivision(int input) {
             return Arrays.stream(values()).map(fbw -> input % fbw.value == 0 ? fbw.toString() : "").collect(Collectors.joining());
         }
+
+        public static boolean contains(int input) {
+            return Arrays.stream(values()).anyMatch(fbw -> ("" + input).contains("" + fbw.value));
+        }
+
+        public static String fizzBuzzWoofBySubstitution(int input) {
+            return Arrays.stream(values()).map(fbw -> ("" + input).contains("" + fbw.value) ? fbw.toString() : "").collect(Collectors.joining());
+        }
     }
 
     public String convert(int input) {
@@ -59,18 +67,10 @@ public class FizzBuzzWoof {
 
 
         String inputAsString = "" + input;
-        boolean contains = inputAsString.contains("3") || inputAsString.contains("5") || inputAsString.contains("7");
+        boolean contains = FBW.contains(input);
 
         if (contains) {
-            if (inputAsString.contains("3")) {
-                return FIZZ;
-            } else if (inputAsString.contains("5")) {
-                return BUZZ;
-            } else if (inputAsString.contains("7")) {
-                return WOOF;
-            }
-
-            return inputAsString;
+            return FBW.fizzBuzzWoofBySubstitution(input);
         }
 
         return inputAsString;
