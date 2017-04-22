@@ -113,15 +113,19 @@ UnaryOperator<String> fizz1 = s -> s.replace("" + Fizz.value, "");
 UnaryOperator<String> buzz1 = s -> s.replace("" + Buzz.value, "");
 UnaryOperator<String> woof1 = s -> s.replace("" + Woof.value, "");
 
-Function<String, String> replacer = fizz1.andThen(buzz1).andThen(woof1);
+Function<String, String> replacer = 
+    fizz1.andThen(buzz1).andThen(woof1);
 ```
 
 This code is just there to understand what we are going to do: create a single substitution function, by composing multiple, unit substitution functions. This code is in fact purely functional, and this final function can be written using a stream of functions, reduced in the end with the composition as a reducer. We just end up with this:
 
 ```java
-Function<FBW, Function<String, String>> reducer = fbw -> (s -> s.replace("" + fbw.value, ""));
+Function<FBW, Function<String, String>> reducer = 
+    fbw -> (s -> s.replace("" + fbw.value, ""));
 Function<String, String> replacer = 
-    Arrays.stream(values()).map(reducer).reduce(Function.identity(), Function::andThen);
+    Arrays.stream(values())
+          .map(reducer)
+          .reduce(Function.identity(), Function::andThen);
 ```
 
 Now we have a system that works for divisible substitution, and matching substitution, but not for both. The reflex is of course to add a failing test. Adding some code to make it pass is quite easy, we just want to avoid the hurdle of using the result as a boolean as we saw earlier in this kata. 
