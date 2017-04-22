@@ -49,7 +49,6 @@ At last, a strategic requirement came from the market guys. We need to keep trac
 * `10` => `Buzz*`
 * `30` => `FizzFizz*`
 * `3105` => `FizzBuzzFizz*Buzz`
-* `30141592653` => `FizzWoofFizz*BuzzBuzzFizz`
 
 ### Comments
 
