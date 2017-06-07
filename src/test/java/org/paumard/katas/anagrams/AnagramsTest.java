@@ -20,6 +20,7 @@ import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,6 +33,20 @@ public class AnagramsTest {
 
         // Given
         List<String> dictionnary = new ArrayList<>();
+        Anagrams anagrams = new Anagrams();
+
+        // When
+        List<List<String>> result = anagrams.computeAnagrams(dictionnary);
+
+        // Then
+        Assertions.assertThat(result).isEmpty();
+    }
+
+    @Test
+    public void should_return_an_empty_result_list_for_an_input_dictionary_that_contains_no_anagram() {
+
+        // Given
+        List<String> dictionnary = Arrays.asList("one", "two", "three");
         Anagrams anagrams = new Anagrams();
 
         // When
