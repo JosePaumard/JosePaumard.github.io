@@ -17,7 +17,11 @@
 package org.paumard.katas.anagrams;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * Created by José
@@ -25,6 +29,17 @@ import java.util.List;
 public class Anagrams {
 
     public List<List<String>> computeAnagrams(List<String> dictionnary) {
-        return new ArrayList<>();
+
+        Function<String, String> sortLetters = word -> {
+            char[] letters = word.toCharArray();
+            Arrays.sort(letters);
+            return new String(letters);
+        };
+        Map<String, List<String>> anagrams = dictionnary.stream()
+                .collect(Collectors.groupingBy(sortLetters));
+
+        anagrams.entrySet().removeIf(entry -> entry.getValue().size() == 1);
+
+        return new ArrayList<>(anagrams.values());
     }
 }
