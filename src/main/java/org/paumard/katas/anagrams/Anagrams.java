@@ -16,6 +16,7 @@
 
 package org.paumard.katas.anagrams;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +25,6 @@ import java.util.List;
 public class Anagrams {
 
     public List<List<String>> computeAnagrams(List<String> dictionnary) {
-        return null;
+        return new ArrayList<>();
     }
 }
