@@ -55,4 +55,19 @@ public class AnagramsTest {
         // Then
         Assertions.assertThat(result).isEmpty();
     }
+
+    @Test
+    public void should_return_the_correct_list_of_two_anagrams_for_an_input_dictionary_that_contains_two_anagram() {
+
+        // Given
+        List<String> dictionnary = Arrays.asList("one", "two", "three", "rots", "sort");
+        Anagrams anagrams = new Anagrams();
+
+        // When
+        List<List<String>> result = anagrams.computeAnagrams(dictionnary);
+
+        // Then
+        Assertions.assertThat(result).hasSize(1);
+        Assertions.assertThat(result.get(0)).containsOnly("rots", "sorts");
+    }
 }
