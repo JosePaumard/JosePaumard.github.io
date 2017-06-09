@@ -19,9 +19,15 @@ package org.paumard.katas.anagrams;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * Created by José
@@ -90,5 +96,20 @@ public class AnagramsTest {
         Assertions.assertThat(result).hasSize(2);
         Assertions.assertThat(result.get(0)).containsOnly("rots", "sort");
         Assertions.assertThat(result.get(1)).containsOnly("boaster", "boaters", "borates");
+    }
+
+    @Test
+    public void should_return_20683_sets_of_anagrams_for_the_provided_dictionnary() throws IOException {
+
+        // Given
+        Path dictionnaryPath = Paths.get("files/wordlist.txt");
+        List<String> dictionnary = Files.lines(dictionnaryPath).collect(toList());
+        Anagrams anagrams = new Anagrams();
+
+        // When
+        List<List<String>> result = anagrams.computeAnagrams(dictionnary);
+
+        // Then
+        Assertions.assertThat(result).hasSize(20683);
     }
 }
