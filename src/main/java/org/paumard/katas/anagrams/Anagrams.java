@@ -48,10 +48,24 @@ public class Anagrams {
 
         Map.Entry<Integer, List<List<String>>> entry =
                 anagrams.stream()
-                .collect(Collectors.groupingBy(list -> list.get(0).length()))
-                .entrySet().stream()
-                .max(Map.Entry.comparingByKey())
-                .get();
+                        .collect(Collectors.groupingBy(list -> list.get(0).length()))
+                        .entrySet().stream()
+                        .max(Map.Entry.comparingByKey())
+                        .get();
+
+        return entry.getValue();
+    }
+
+    public List<List<String>> findTheBiggestAnagramicWord(List<String> dictionnary) {
+        List<List<String>> anagrams = computeAnagrams(dictionnary);
+
+
+        Map.Entry<Integer, List<List<String>>> entry =
+                anagrams.stream()
+                        .collect(Collectors.groupingBy(list -> list.size()))
+                        .entrySet().stream()
+                        .max(Map.Entry.comparingByKey())
+                        .get();
 
         return entry.getValue();
     }
