@@ -44,7 +44,15 @@ public class Anagrams {
     }
 
     public List<List<String>> findTheLongestAnagrams(List<String> dictionnary) {
+        List<List<String>> anagrams = computeAnagrams(dictionnary);
 
-        return null;
+        Map.Entry<Integer, List<List<String>>> entry =
+                anagrams.stream()
+                .collect(Collectors.groupingBy(list -> list.get(0).length()))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByKey())
+                .get();
+
+        return entry.getValue();
     }
 }

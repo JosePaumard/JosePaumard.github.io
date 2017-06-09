@@ -125,7 +125,7 @@ public class AnagramsTest {
         List<List<String>> longestAnagrams = anagrams.findTheLongestAnagrams(dictionnary);
 
         // Then
-        Assertions.assertThat(longestAnagrams).hasSize(2);
+        Assertions.assertThat(longestAnagrams).hasSize(1);
         Assertions.assertThat(longestAnagrams.get(0)).containsOnly("acoustoelectrically", "electroacoustically");
     }
 }
