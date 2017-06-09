@@ -42,4 +42,9 @@ public class Anagrams {
 
         return new ArrayList<>(anagrams.values());
     }
+
+    public List<List<String>> findTheLongestAnagrams(List<String> dictionnary) {
+
+        return null;
+    }
 }

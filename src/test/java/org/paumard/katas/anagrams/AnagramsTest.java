@@ -112,4 +112,20 @@ public class AnagramsTest {
         // Then
         Assertions.assertThat(result).hasSize(20683);
     }
+
+    @Test
+    public void should_find_the_correct_set_of_the_longest_anagrams() throws IOException {
+
+        // Given
+        Path dictionnaryPath = Paths.get("files/wordlist.txt");
+        List<String> dictionnary = Files.lines(dictionnaryPath).collect(toList());
+        Anagrams anagrams = new Anagrams();
+
+        // When
+        List<List<String>> longestAnagrams = anagrams.findTheLongestAnagrams(dictionnary);
+
+        // Then
+        Assertions.assertThat(longestAnagrams).hasSize(2);
+        Assertions.assertThat(longestAnagrams.get(0)).containsOnly("acoustoelectrically", "electroacoustically");
+    }
 }
