@@ -70,4 +70,25 @@ public class AnagramsTest {
         Assertions.assertThat(result).hasSize(1);
         Assertions.assertThat(result.get(0)).containsOnly("rots", "sort");
     }
+
+    @Test
+    public void should_return_the_correct_lists_of_anagrams_for_an_input_dictionary_that_contains_two_groups_of_anagrams() {
+
+        // Given
+        List<String> dictionnary =
+                Arrays.asList(
+                        "one", "two", "three",
+                        "rots", "sort",
+                        "boaster", "boaters", "borates");
+
+        Anagrams anagrams = new Anagrams();
+
+        // When
+        List<List<String>> result = anagrams.computeAnagrams(dictionnary);
+
+        // Then
+        Assertions.assertThat(result).hasSize(2);
+        Assertions.assertThat(result.get(0)).containsOnly("rots", "sort");
+        Assertions.assertThat(result.get(1)).containsOnly("boaster", "boaters", "borates");
+    }
 }
