@@ -16,6 +16,8 @@
 
 The FizzBuzzWoof Kata
 
+[The Anagrams Kata](/katas/intermediate/anagrams-kata.html)
+
 
 ## The FizzBuzzWoof Kata
 

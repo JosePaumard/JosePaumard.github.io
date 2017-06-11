@@ -16,6 +16,8 @@ The RPN Calculator Kata
 
 [The Fizz Buzz Woof Kata](/katas/intermediate/fizzbuzzwoof-kata.html)
 
+[The Anagrams Kata](/katas/intermediate/anagrams-kata.html)
+
 
 ## The RPN Calculator Kata
 

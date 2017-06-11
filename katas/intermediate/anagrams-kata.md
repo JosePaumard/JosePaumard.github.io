@@ -66,6 +66,10 @@ Once this map is built and filtered (we only need the values that are composed o
  
 I put this kata in the intermediate category, since you need to have some knowledge in the Stream & Collector Java 8 API. 
 
+
+I added a [anagrams-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/anagrams-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/tree/6f7649615b6b016f8a75c829c478fa7857210b65). 
+
+
 [Back to index](/index.html)
 
 ![Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png) [licence](http://creativecommons.org/licenses/by-nc-sa/4.0/)
