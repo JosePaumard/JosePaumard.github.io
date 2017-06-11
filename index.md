@@ -31,6 +31,7 @@ Anyway, here is a list a very good (and well known!) readings if you want to lea
 
 [The Fizz Buzz Woof Kata](/katas/intermediate/fizzbuzzwoof-kata.html)
 
+[The Anagrams Kata](/katas/intermediate/anagrams-kata.html)
 
 ## Books I Like
 Anyway, here is a list a very good (and well known!) readings if you want to learn more about clean code, software craftsmanship, and all the practices around those.
