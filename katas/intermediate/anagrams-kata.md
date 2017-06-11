@@ -29,7 +29,7 @@ It is quite a tricky kata, especially if you want to implement it in the right w
 
 The challenge is fairly simple: given a file containing one word per line, print out all the combinations of words that are anagrams; each line in the output contains all the words from the input that are anagrams of each other. For example, your program might include in its output:
 
-'''
+```text
 kinship pinkish
 enlist inlets listen silent
 boaster boaters borates
@@ -37,16 +37,16 @@ fresher refresh
 sinks skins
 knits stink
 rots sort
-'''
+```
 
 If you run this on the word list here you should find 20683 sets of anagrams (a total of 48162 words), including all-time favorites such as: 
 
-'''
+```text
 crepitus cuprites pictures piecrust
 paste pates peats septa spate tapes tepas
 punctilio unpolitic
 sunders undress
-'''
+```
 
 For added programming pleasure, find the longest words that are anagrams, and find the set of anagrams containing the most words (so `parsley players replays sparely` would not win, having only four words in the set).
 
