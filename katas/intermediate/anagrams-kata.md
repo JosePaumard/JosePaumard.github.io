@@ -64,7 +64,17 @@ On has just to recognize that finding an anagram can be done by associating ever
 
 Once this map is built and filtered (we only need the values that are composed of more than one word), gathering the longest list of anagrams, or the list with the longest words can be done very easily, using the stream of the entries of this map.
  
-I put this kata in the intermediate category, since you need to have some knowledge in the Stream & Collector Java 8 API. 
+I put this kata in the intermediate category, since you need to have some knowledge in the Stream & Collector Java 8 API.
+ 
+## And then...
+
+And then, I came across this tweet: https://twitter.com/fermatslibrary/status/875340896379817984, thanks to the guys behind the [Fermat's Library](https://twitter.com/fermatslibrary) Twitter account. Bytheway, they also have a very interesting YouTube account. 
+
+And what does this tweet teaches us (or at least me)? That if you assign the 26 letters of the alphabet a fixed prime number, then two anagrams will have the same product of mapped letters. Very smart. It makes the solving of this problem much faster. Instead of a first step in _p.log(p)_ to sort the letters, and a second step in _p_  to compare the sorted sets of letters, we have a first step in _p_ to compute the product and a second step in _1_ to compare the resulting integers. 
+
+So what should we do for this Kata? Well, as we already know, smart algorithm do not emerge by themselves. Quicksort does not emerge from Bubble sort, at some point we need to decide to implement the right algorithm. 
+ 
+We have tests, so we can refactor, and this is what we did on this kata. 
 
 
 I added a [anagrams-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/anagrams-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/tree/6f7649615b6b016f8a75c829c478fa7857210b65). 
