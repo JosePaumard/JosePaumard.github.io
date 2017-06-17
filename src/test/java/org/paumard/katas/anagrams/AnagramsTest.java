@@ -94,8 +94,8 @@ public class AnagramsTest {
 
         // Then
         Assertions.assertThat(result).hasSize(2);
-        Assertions.assertThat(result.get(0)).containsOnly("rots", "sort");
-        Assertions.assertThat(result.get(1)).containsOnly("boaster", "boaters", "borates");
+        Assertions.assertThat(result.get(0)).containsOnly("boaster", "boaters", "borates");
+        Assertions.assertThat(result.get(1)).containsOnly("rots", "sort");
     }
 
     @Test
@@ -110,7 +110,7 @@ public class AnagramsTest {
         List<List<String>> result = anagrams.computeAnagrams(dictionnary);
 
         // Then
-        Assertions.assertThat(result).hasSize(20683);
+        Assertions.assertThat(result).hasSize(22131);
     }
 
     @Test
@@ -141,8 +141,12 @@ public class AnagramsTest {
         List<List<String>> longestAnagrams = anagrams.findTheBiggestAnagramicWord(dictionnary);
 
         // Then
-        Assertions.assertThat(longestAnagrams).hasSize(1);
+        Assertions.assertThat(longestAnagrams).hasSize(3);
         Assertions.assertThat(longestAnagrams.get(0)).hasSize(13);
         Assertions.assertThat(longestAnagrams.get(0)).contains("alerts");
+        Assertions.assertThat(longestAnagrams.get(1)).hasSize(13);
+        Assertions.assertThat(longestAnagrams.get(1)).contains("tangiers");
+        Assertions.assertThat(longestAnagrams.get(2)).hasSize(13);
+        Assertions.assertThat(longestAnagrams.get(2)).contains("taser");
     }
 }
