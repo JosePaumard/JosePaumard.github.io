@@ -76,6 +76,10 @@ So what should we do for this Kata? Well, as we already know, smart algorithm do
  
 We have tests, so we can refactor, and this is what we did on this kata. 
 
+## Comments on the Prime numbers algorithm
+ 
+There are some modifications in the tests, which is bad, of course. It means that the refactored code does not do the same thing as the previous version. It is indeed the case, but there are good reasong for that. In fact, the dictionary file contains a mix of upper case and lower case letters. Some code has been added to handle that. There are characters with diacritics, that have been handled too. And lastly, there are also uses of the ' character, and I chose not to handled those words. So in the end, yes, the way the anagrams are found has changed a little. 
+
 
 I added a [anagrams-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/anagrams-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/tree/6f7649615b6b016f8a75c829c478fa7857210b65). 
 
