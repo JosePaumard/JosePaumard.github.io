@@ -23,6 +23,13 @@ public class TennisGame {
     private boolean player1Scored;
     private boolean player2Scored;
 
+    public TennisGame() {
+    }
+
+    public TennisGame(String initialScore) {
+
+    }
+
     public String score() {
         if (player1Scored) {
             return "Fifteen Love";
