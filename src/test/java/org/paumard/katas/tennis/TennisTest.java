@@ -162,7 +162,7 @@ public class TennisTest {
 
         // Given
         TennisGame tennis = new TennisGame("Thirty Fourty");
-        tennis.player2Scores();
+        tennis.player1Scores();
         String expectedScore = "Deuce";
 
         // When
