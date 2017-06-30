@@ -43,6 +43,48 @@ You need only report the score for the current game. Sets and Matches are out of
 
 We can proceed as we did in all the katas: a basic TDD approach, write a failing test, make it pass until all the business rules are implemented. What is nice in this Kata is that the business rules are clearly explained. 
 
+As soon as a player scores, we need to record a state in the `TennisGame` class. In a first step, we store the state as a boolean `player1 scored`, which is just enough to handle the first calls to the scoring methods. 
+
+#### Expressing tests
+
+Passed the "player 1 scores once" step we need to make a decision. The next test could be expressed in two ways : 
+- if player1 scores then scores again, then the score is Thirty Love
+Or: 
+- given that the score is Fifteen Love and that player1 scores then the score is Thirty Love. 
+
+What is the difference between both ways of expressing our test case? In the fist case we express a full path from an initial blank game to the state we want to test and implement. It may work for short paths with a low combinatorial. But as soon as they are many ways of going from a blank game to a given score we want to test, this way of expressing our tests will not work any more. 
+
+#### Setting the internal state
+
+The second way consists in modeling our `TennisGame` class as a state machine, and expressing a test as a transition between two states. This will always work and will not suffer from high combinatorial. But there is a restriction: we need to be able to set the state of the `TennisGame` class, and it raises the question: how can we do that? 
+
+There are mainly two ways of fixing the state of a class.  
+- Exposing it using getters and setters. 
+- Exposing a constructor that takes the initial state. 
+
+Exposing a state using getters and setters when they are not needed through the specification is very dangerous. It binds the state machine to its internal implementation. Very wrong idea. If at some point we need to change the internals of the sate machine, maintaining the setters and getters, that will not be linked to fields any more, will be a problem.  
+
+Setting the state through a constructor does not bind the internals of the state machine in any way. We just get an information about the internal state, and store it internally, without exposing it. So we are free to change internals in case we need it. 
+
+We could as well expose it through a builder using a lean API for instance, instead of a constructor. 
+
+#### Computing the score of both players
+
+At some point, we will need to split the internal state of the `TennisGame` class in two variables: the score of player 1 on one hand, and the score of player 2 on the other. A strategy pattern emerges there. Note that it would have emerged even without this refactoring, but it would have been much more complex, since the enumerated elements would have been all the possible scores of a tennis game. 
+
+#### Handling the end of the game
+
+If both players reach 3 points, then the score is not computed for each player, then merged to create the game score. What we know is the score of the game: deuce, advantage, and win. This is reflected in the code: at some point, we directly compute the overall game score instead of the individual ones. 
+
+### Wrap-up
+
+The Tennis Kata is nice, not very hard, and one more occasion to practice the Strategy pattern. To use is correctly for the end game, you need to know it well, be sure of the method to follow to extract it from the if then else you have in your code. 
+
+The code that we have written is fully covered, this is brought by the use of TDD, which is great. But Emily Bache raises a very interesting question in her book: do we cover the all problem? In other words, are all the transitions of our state machine covered by a test? The answer is clearly no. 
+
+Writing a complete set of tests to cover all the transitions using JUnit / TestNG would be very tedious. If you want to do that, writing parameterized tests, or even better, writing Cucumber tests is definitely the way to go. The last commits of this kata introduce a full Cucumber test, divided into three parts for the sake of readability. Some of those were failing, due to missing code in the constructor. 
+
+One last word on this point: the state machine we have here is rather simple, and we do not have too many transitions. On real complex problems, covering all the transitions might require more sophisticated ways, or may not be possible to achieve. 
 
 [Back to index](/index.html)
 
