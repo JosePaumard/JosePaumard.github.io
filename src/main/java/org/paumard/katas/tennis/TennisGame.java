@@ -48,7 +48,7 @@ public class TennisGame {
     }
 
     public String score() {
-        if (playersScoredMoreThan3()) {
+        if (aPlayerMayWin()) {
             GameScore gameScore = GameScore.of(this.player1Score, this.player2Score);
             return gameScore.label;
         }
@@ -56,7 +56,7 @@ public class TennisGame {
         return convertScoreToString(player1Score) + " " + convertScoreToString(player2Score);
     }
 
-    private boolean playersScoredMoreThan3() {
+    private boolean aPlayerMayWin() {
         return (this.player1Score >= 3 && this.player2Score >= 3) || this.player1Score > 3 || this.player2Score > 3;
     }
 
