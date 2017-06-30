@@ -15,8 +15,25 @@
  */
 package org.paumard.katas.tennis;
 
+import org.assertj.core.api.Assertions;
+import org.testng.annotations.Test;
+
 /**
  * Created by José
  */
 public class TennisTest {
+
+    @Test
+    public void shoud_return_Love_Love_when_no_player_scored() {
+
+        // Given
+        TennisGame tennis = new TennisGame();
+        String expectedScore = "Love Love";
+
+        // When
+        String score = tennis.score();
+
+        // Then
+        Assertions.assertThat(score).isEqualTo(expectedScore);
+    }
 }
