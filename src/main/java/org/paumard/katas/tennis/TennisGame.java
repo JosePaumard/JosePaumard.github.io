@@ -33,4 +33,8 @@ public class TennisGame {
     public void player1Scores() {
         this.player1Scored = true;
     }
+
+    public void player2Scores() {
+        
+    }
 }
