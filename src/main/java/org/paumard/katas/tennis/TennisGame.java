@@ -24,7 +24,6 @@ public class TennisGame {
 
     private int player1Score;
     private int player2Score;
-    private String initialScore;
 
     public TennisGame() {
         this.player1Score = 0;
@@ -32,9 +31,14 @@ public class TennisGame {
     }
 
     public TennisGame(String initialScore) {
-        String[] scores = initialScore.split(" ");
-        this.player1Score = convertScoreToInt(scores[0]);
-        this.player2Score = convertScoreToInt(scores[1]);
+        if (initialScore.equals("Deuce")) {
+            this.player1Score = 3;
+            this.player2Score = 3;
+        } else {
+            String[] scores = initialScore.split(" ");
+            this.player1Score = convertScoreToInt(scores[0]);
+            this.player2Score = convertScoreToInt(scores[1]);
+        }
     }
 
     private int convertScoreToInt(String score) {
@@ -45,6 +49,8 @@ public class TennisGame {
     public String score() {
         if (this.player1Score >= 3 && this.player1Score == this.player2Score) {
             return "Deuce";
+        } else if (this.player1Score > 3 && this.player2Score == this.player1Score - 1) {
+            return "Advantage player 1";
         }
 
         return convertScoreToString(player1Score) + " " + convertScoreToString(player2Score);
