@@ -47,12 +47,14 @@ public class TennisGame {
     }
 
     public String score() {
-        if (this.player1Score >= 3 && this.player1Score == this.player2Score) {
-            return "Deuce";
-        } else if (this.player1Score > 3 && this.player2Score == this.player1Score - 1) {
-            return "Advantage player 1";
-        } else if (this.player2Score > 3 && this.player1Score == this.player2Score - 1) {
-            return "Advantage player 2";
+        if (this.player1Score >= 3 && this.player2Score >= 3) {
+            if (this.player1Score == this.player2Score) {
+                return "Deuce";
+            } else if (this.player2Score == this.player1Score - 1) {
+                return "Advantage player 1";
+            } else if (this.player1Score == this.player2Score - 1) {
+                return "Advantage player 2";
+            }
         }
 
         return convertScoreToString(player1Score) + " " + convertScoreToString(player2Score);
