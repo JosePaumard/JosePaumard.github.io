@@ -16,6 +16,7 @@
 package org.paumard.katas.tennis;
 
 import java.util.Arrays;
+import java.util.function.BiPredicate;
 
 /**
  * Created by José
@@ -47,17 +48,16 @@ public class TennisGame {
     }
 
     public String score() {
-        if (this.player1Score >= 3 && this.player2Score >= 3) {
-            if (this.player1Score == this.player2Score) {
-                return "Deuce";
-            } else if (this.player2Score == this.player1Score - 1) {
-                return "Advantage player 1";
-            } else if (this.player1Score == this.player2Score - 1) {
-                return "Advantage player 2";
-            }
+        if (playersScoredMoreThan3()) {
+            GameScore gameScore = GameScore.of(this.player1Score, this.player2Score);
+            return gameScore.label;
         }
 
         return convertScoreToString(player1Score) + " " + convertScoreToString(player2Score);
+    }
+
+    private boolean playersScoredMoreThan3() {
+        return this.player1Score >= 3 && this.player2Score >= 3;
     }
 
     private String convertScoreToString(int score) {
@@ -93,6 +93,28 @@ public class TennisGame {
 
         public static IndividualScore byLabel(String label) {
             return Arrays.stream(values()).filter(individualScore -> individualScore.label.equals(label)).findAny().get();
+        }
+    }
+
+    private enum GameScore {
+        DEUCE((s1, s2) -> s1 == s2, "Deuce"),
+        ADVANTAGE_PLAYER_1((s1, s2) -> s1 == s2 + 1, "Advantage player 1"),
+        ADVANTAGE_PLAYER_2((s1, s2) -> s2 == s1 + 1, "Advantage player 2");
+
+        private final BiPredicate<Integer, Integer> check;
+        public final String label;
+
+        GameScore(BiPredicate<Integer, Integer> check, String label) {
+            this.check = check;
+            this.label = label;
+        }
+
+        public static GameScore of(int player1Score, int player2Score) {
+            return Arrays.stream(values()).filter(score -> score.check(player1Score, player2Score)).findAny().get();
+        }
+
+        private boolean check(int player1Score, int player2Score) {
+            return this.check.test(player1Score, player2Score);
         }
     }
 }
