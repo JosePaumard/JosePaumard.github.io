@@ -46,7 +46,7 @@ public class TennisGame {
         if (this.player1Score >= 3 && this.player1Score == this.player2Score) {
             return "Deuce";
         }
-        
+
         return convertScoreToString(player1Score) + " " + convertScoreToString(player2Score);
     }
 
