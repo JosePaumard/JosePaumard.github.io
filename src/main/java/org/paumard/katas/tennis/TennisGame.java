@@ -38,8 +38,10 @@ public class TennisGame {
     private int convertScoreToInt(String score) {
         if (score.equals("Love")) {
             return 0;
-        } else {
+        } else if (score.equals("Fifteen")){
             return 1;
+        } else {
+            return 2;
         }
     }
 
@@ -53,6 +55,8 @@ public class TennisGame {
             return "Fifteen";
         } else if (score == 2) {
             return "Thirty";
+        } else if (score == 3) {
+            return "Fourty";
         }
         return "Love";
     }
