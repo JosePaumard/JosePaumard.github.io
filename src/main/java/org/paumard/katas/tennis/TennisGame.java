@@ -23,4 +23,8 @@ public class TennisGame {
     public String score() {
         return "Love Love";
     }
+
+    public void player1Scores() {
+        
+    }
 }
