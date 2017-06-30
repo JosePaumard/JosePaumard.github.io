@@ -45,3 +45,16 @@ Feature: Tennis Kata
       | Fifteen Fourty  | Player 2 wins      |
       | Thirty Fourty   | Player 2 wins      |
       | Fourty Fourty   | Advantage player 2 |
+
+  Scenario Outline: Tennis End Game
+    Given A Tennis game with an initial score of <score>
+    When Player <scoring_player> scores
+    Then the score is <result>
+    Examples:
+      | score              | scoring_player | result             |
+      | Deuce              | 1              | Advantage player 1 |
+      | Deuce              | 2              | Advantage player 2 |
+      | Advantage player 1 | 1              | Player 1 wins      |
+      | Advantage player 2 | 2              | Player 2 wins      |
+      | Advantage player 1 | 2              | Deuce              |
+      | Advantage player 2 | 1              | Deuce              |
