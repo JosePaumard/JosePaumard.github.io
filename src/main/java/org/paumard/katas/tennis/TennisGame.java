@@ -15,6 +15,8 @@
  */
 package org.paumard.katas.tennis;
 
+import java.util.Arrays;
+
 /**
  * Created by José
  */
@@ -51,14 +53,9 @@ public class TennisGame {
     }
 
     private String convertScoreToString(int score) {
-        if (score == 1) {
-            return "Fifteen";
-        } else if (score == 2) {
-            return "Thirty";
-        } else if (score == 3) {
-            return "Fourty";
-        }
-        return "Love";
+
+        IndividualScore individualScore = IndividualScore.byScore(score);
+        return individualScore.label;
     }
 
     public void player1Scores() {
@@ -67,5 +64,24 @@ public class TennisGame {
 
     public void player2Scores() {
         this.player2Score++;
+    }
+
+    private enum IndividualScore {
+        LOVE(0, "Love"),
+        FIFTEEN(1, "Fifteen"),
+        THIRTY(2, "Thirty"),
+        FOURTY(3, "Fourty");
+
+        private final int score;
+        private final String label;
+
+        IndividualScore(int score, String label) {
+            this.score = score;
+            this.label = label;
+        }
+
+        public static IndividualScore byScore(int score) {
+            return Arrays.stream(values()).filter(individualScore -> individualScore.score == score).findAny().get();
+        }
     }
 }
