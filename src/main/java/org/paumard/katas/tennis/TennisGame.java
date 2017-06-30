@@ -37,6 +37,8 @@ public class TennisGame {
         if (player1Scored) {
             if (initialScore.equals("Love Love")) {
                 return "Fifteen Love";
+            } else if (initialScore.equals("Fifteen Love")) {
+                return "Thirty Love";
             } else {
                 return "Fifteen Fifteen";
             }
