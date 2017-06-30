@@ -35,6 +35,12 @@ public class TennisGame {
         if (initialScore.equals("Deuce")) {
             this.player1Score = 3;
             this.player2Score = 3;
+        } else if (initialScore.equals("Advantage player 1")) {
+            this.player1Score = 4;
+            this.player2Score = 3;
+        } else if (initialScore.equals("Advantage player 2")) {
+            this.player1Score = 3;
+            this.player2Score = 4;
         } else {
             String[] scores = initialScore.split(" ");
             this.player1Score = convertScoreToInt(scores[0]);
