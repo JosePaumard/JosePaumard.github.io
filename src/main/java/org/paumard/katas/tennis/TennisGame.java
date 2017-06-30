@@ -38,13 +38,8 @@ public class TennisGame {
     }
 
     private int convertScoreToInt(String score) {
-        if (score.equals("Love")) {
-            return 0;
-        } else if (score.equals("Fifteen")){
-            return 1;
-        } else {
-            return 2;
-        }
+        IndividualScore individualScore = IndividualScore.byLabel(score);
+        return individualScore.score;
     }
 
     public String score() {
@@ -53,7 +48,6 @@ public class TennisGame {
     }
 
     private String convertScoreToString(int score) {
-
         IndividualScore individualScore = IndividualScore.byScore(score);
         return individualScore.label;
     }
@@ -82,6 +76,10 @@ public class TennisGame {
 
         public static IndividualScore byScore(int score) {
             return Arrays.stream(values()).filter(individualScore -> individualScore.score == score).findAny().get();
+        }
+
+        public static IndividualScore byLabel(String label) {
+            return Arrays.stream(values()).filter(individualScore -> individualScore.label.equals(label)).findAny().get();
         }
     }
 }
