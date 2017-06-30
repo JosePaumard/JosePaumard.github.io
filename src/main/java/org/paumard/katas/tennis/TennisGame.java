@@ -33,17 +33,19 @@ public class TennisGame {
     }
 
     public String score() {
-        if (initialScore.equals("Love Love")) {
-            if (player1Scored) {
+
+        if (player1Scored) {
+            if (initialScore.equals("Love Love")) {
                 return "Fifteen Love";
-            } else if (player2Scored) {
-                return "Love Fifteen";
             } else {
-                return "Love Love";
+                return "Fifteen Fifteen";
             }
-        } else {
-            return "Fifteen Fifteen";
+        } else if (player2Scored) {
+            if (initialScore.equals("Love Love")) {
+                return "Love Fifteen";
+            }
         }
+        return "Love Love";
     }
 
     public void player1Scores() {
