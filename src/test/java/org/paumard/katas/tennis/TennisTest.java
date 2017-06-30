@@ -207,7 +207,7 @@ public class TennisTest {
 
         // Given
         TennisGame tennis = new TennisGame("Fourty Love");
-        tennis.player2Scores();
+        tennis.player1Scores();
         String expectedScore = "Player 1 wins";
 
         // When
