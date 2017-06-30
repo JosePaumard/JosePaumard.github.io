@@ -57,7 +57,7 @@ public class TennisGame {
     }
 
     private boolean playersScoredMoreThan3() {
-        return (this.player1Score >= 3 && this.player2Score >= 3) || this.player1Score > 3;
+        return (this.player1Score >= 3 && this.player2Score >= 3) || this.player1Score > 3 || this.player2Score > 3;
     }
 
     private String convertScoreToString(int score) {
@@ -100,7 +100,8 @@ public class TennisGame {
         DEUCE((s1, s2) -> s1 == s2, "Deuce"),
         ADVANTAGE_PLAYER_1((s1, s2) -> s1 == s2 + 1, "Advantage player 1"),
         ADVANTAGE_PLAYER_2((s1, s2) -> s2 == s1 + 1, "Advantage player 2"),
-        PLAYER_1_WINS((s1, s2) -> s1 > s2 + 1, "Player 1 wins");
+        PLAYER_1_WINS((s1, s2) -> s1 > s2 + 1, "Player 1 wins"),
+        PLAYER_2_WINS((s1, s2) -> s2 > s1 + 1, "Player 2 wins");
 
         private final BiPredicate<Integer, Integer> check;
         public final String label;
