@@ -20,43 +20,48 @@ package org.paumard.katas.tennis;
  */
 public class TennisGame {
 
-    private boolean player1Scored;
-    private boolean player2Scored;
+    private int player1Score;
+    private int player2Score;
     private String initialScore;
 
     public TennisGame() {
-        this.initialScore = "Love Love";
+        this.player1Score = 0;
+        this.player2Score = 0;
     }
 
     public TennisGame(String initialScore) {
-        this.initialScore = initialScore;
+        String[] scores = initialScore.split(" ");
+        this.player1Score = convertScoreToInt(scores[0]);
+        this.player2Score = convertScoreToInt(scores[1]);
+    }
+
+    private int convertScoreToInt(String score) {
+        if (score.equals("Love")) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 
     public String score() {
 
-        if (player1Scored) {
-            if (initialScore.equals("Love Love")) {
-                return "Fifteen Love";
-            } else if (initialScore.equals("Fifteen Love")) {
-                return "Thirty Love";
-            } else {
-                return "Fifteen Fifteen";
-            }
-        } else if (player2Scored) {
-            if (initialScore.equals("Love Love")) {
-                return "Love Fifteen";
-            } else {
-                return "Fifteen Fifteen";
-            }
+        return convertScoreToString(player1Score) + " " + convertScoreToString(player2Score);
+    }
+
+    private String convertScoreToString(int score) {
+        if (score == 1) {
+            return "Fifteen";
+        } else if (score == 2) {
+            return "Thirty";
         }
-        return "Love Love";
+        return "Love";
     }
 
     public void player1Scores() {
-        this.player1Scored = true;
+        this.player1Score++;
     }
 
     public void player2Scores() {
-        this.player2Scored = true;
+        this.player2Score++;
     }
 }
