@@ -76,6 +76,9 @@ At some point, we will need to split the internal state of the `TennisGame` clas
 
 If both players reach 3 points, then the score is not computed for each player, then merged to create the game score. What we know is the score of the game: deuce, advantage, and win. This is reflected in the code: at some point, we directly compute the overall game score instead of the individual ones. 
 
+I added a [tennis-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/tennis-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/tree/be95deb427e325980825a0a4abf6d89be493d22c).
+
+
 ### Wrap-up
 
 The Tennis Kata is nice, not very hard, and one more occasion to practice the Strategy pattern. To use is correctly for the end game, you need to know it well, be sure of the method to follow to extract it from the if then else you have in your code. 
