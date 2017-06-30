@@ -20,11 +20,17 @@ package org.paumard.katas.tennis;
  */
 public class TennisGame {
 
+    private boolean player1Scored;
+
     public String score() {
-        return "Love Love";
+        if (player1Scored) {
+            return "Fifteen Love";
+        } else {
+            return "Love Love";
+        }
     }
 
     public void player1Scores() {
-        
+        this.player1Scored = true;
     }
 }
