@@ -22,21 +22,27 @@ public class TennisGame {
 
     private boolean player1Scored;
     private boolean player2Scored;
+    private String initialScore;
 
     public TennisGame() {
+        this.initialScore = "Love Love";
     }
 
     public TennisGame(String initialScore) {
-
+        this.initialScore = initialScore;
     }
 
     public String score() {
-        if (player1Scored) {
-            return "Fifteen Love";
-        } else if (player2Scored) {
-            return "Love Fifteen";
+        if (initialScore.equals("Love Love")) {
+            if (player1Scored) {
+                return "Fifteen Love";
+            } else if (player2Scored) {
+                return "Love Fifteen";
+            } else {
+                return "Love Love";
+            }
         } else {
-            return "Love Love";
+            return "Fifteen Fifteen";
         }
     }
 
