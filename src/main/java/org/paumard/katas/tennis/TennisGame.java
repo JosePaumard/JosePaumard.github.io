@@ -21,6 +21,6 @@ package org.paumard.katas.tennis;
 public class TennisGame {
 
     public String score() {
-        return null;
+        return "Love Love";
     }
 }
