@@ -66,4 +66,19 @@ public class TennisTest {
         // Then
         Assertions.assertThat(score).isEqualTo(expectedScore);
     }
+
+    @Test
+    public void shoud_return_Fifteen_Fifteen_when_player1_scores_and_the_score_was_Love_Fifteen() {
+
+        // Given
+        TennisGame tennis = new TennisGame("Love Fifteen");
+        tennis.player1Scores();
+        String expectedScore = "Fifteen Fifteen";
+
+        // When
+        String score = tennis.score();
+
+        // Then
+        Assertions.assertThat(score).isEqualTo(expectedScore);
+    }
 }
