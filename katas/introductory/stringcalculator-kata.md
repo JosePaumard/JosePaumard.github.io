@@ -18,6 +18,8 @@ The String Calculator Kata
 
 [The Anagrams Kata](/katas/intermediate/anagrams-kata.html)
 
+[The Tennis Kata](/katas/intermediate/tennis-kata.html)
+
 
 ## The String Calculator Kata
 

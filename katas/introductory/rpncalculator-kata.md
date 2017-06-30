@@ -18,6 +18,8 @@ The RPN Calculator Kata
 
 [The Anagrams Kata](/katas/intermediate/anagrams-kata.html)
 
+[The Tennis Kata](/katas/intermediate/tennis-kata.html)
+
 
 ## The RPN Calculator Kata
 

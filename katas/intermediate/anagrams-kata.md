@@ -18,6 +18,8 @@
 
 The Anagrams Kata
 
+[The Tennis Kata](/katas/intermediate/tennis-kata.html)
+
 
 ## The Anagram Kata
 
