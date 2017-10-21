@@ -1,4 +1,4 @@
-package org.paumard.katas.tennis;/*
+/*
  * Copyright (C) 2017 José Paumard
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +13,8 @@ package org.paumard.katas.tennis;/*
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import cucumber.api.PendingException;
+package org.paumard.katas.tennis;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
