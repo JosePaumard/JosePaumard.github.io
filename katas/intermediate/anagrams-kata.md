@@ -60,9 +60,9 @@ Apart from having some fun with words, this kata should make you think somewhat 
 
 The word list cited in the text of this Kata is provided along with the code. The beginning of this kata is presented [here](katas/introductory/anagrams-kata.html). 
 
-This kata is really interesting. First, it is a funny problem to solve, and one can try it in different languages using any dictionnary. Second, thanks to the Java 8 Stream API, answering to all the questions is basically a one-liner, and proves to be very efficient. 
+This kata is really interesting. First, it is a funny problem to solve, and one can try it in different languages using any dictionary. Second, thanks to the Java 8 Stream API, answering to all the questions is basically a one-liner, and proves to be very efficient. 
 
-On has just to recognize that finding an anagram can be done by associating every word to a key, that can be computed from the sorted letters of that word. Aggregating all the words of the dictionnary is a good job for the `groupingBY()` collector and can be done very quickly. 
+One has just to recognize that finding an anagram can be done by associating every word to a key, that can be computed from the sorted letters of that word. Aggregating all the words of the dictionary is a good job for the `groupingBy()` collector and can be done very quickly. 
 
 Once this map is built and filtered (we only need the values that are composed of more than one word), gathering the longest list of anagrams, or the list with the longest words can be done very easily, using the stream of the entries of this map.
  
@@ -70,9 +70,9 @@ I put this kata in the intermediate category, since you need to have some knowle
  
 ## And then...
 
-And then, I came across this tweet: [https://twitter.com/fermatslibrary/status/875340896379817984](https://twitter.com/fermatslibrary/status/875340896379817984), thanks to the guys behind the [Fermat's Library](https://twitter.com/fermatslibrary) Twitter account. Bytheway, they also have a very interesting YouTube account. 
+And then, I came across this tweet: [https://twitter.com/fermatslibrary/status/875340896379817984](https://twitter.com/fermatslibrary/status/875340896379817984), thanks to the guys behind the [Fermat's Library](https://twitter.com/fermatslibrary) Twitter account. By the way, they also have a very interesting YouTube account. 
 
-And what does this tweet teaches us (or at least me)? That if you assign the 26 letters of the alphabet a fixed prime number, then two anagrams will have the same product of mapped letters. Very smart. It makes the solving of this problem much faster. Instead of a first step in _p.log(p)_ to sort the letters, and a second step in _p_  to compare the sorted sets of letters, we have a first step in _p_ to compute the product and a second step in _1_ to compare the resulting integers. 
+And what does this tweet teach us (or at least me)? That if you assign the 26 letters of the alphabet a fixed prime number, then two anagrams will have the same product of mapped letters. Very smart. It makes the solving of this problem much faster. Instead of a first step in _p.log(p)_ to sort the letters, and a second step in _p_  to compare the sorted sets of letters, we have a first step in _p_ to compute the product and a second step in _1_ to compare the resulting integers. 
 
 So what should we do for this Kata? Well, as we already know, smart algorithms do not emerge by themselves. Quicksort does not emerge from Bubble sort, at some point we need to decide to implement the right algorithm. 
  
