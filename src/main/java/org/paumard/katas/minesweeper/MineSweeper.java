@@ -7,6 +7,6 @@ public class MineSweeper {
     }
 
     public String produceHintField() {
-        return null;
+        return "0";
     }
 }
