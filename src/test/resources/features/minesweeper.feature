@@ -23,3 +23,15 @@ Feature: Minesweeper game
     """
     *
     """
+
+  Scenario: An mined 1x2 field
+    Given The following field
+    """
+    1 2
+    ..
+    """
+    When The resulting field is computed
+    Then The result is the following
+    """
+    00
+    """
