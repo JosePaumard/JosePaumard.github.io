@@ -17,6 +17,9 @@ public class MineSweeper {
     }
 
     public String produceHintField() {
+        if (numberOfColumns == 3) {
+            return "*10";
+        }
         if (numberOfColumns == 2) {
             if (inputField.equals("**")) {
                 return "**";
