@@ -17,24 +17,25 @@ public class MineSweeper {
     }
 
     public String produceHintField() {
-        if (numberOfColumns == 3) {
-            return "*10";
+        char[] result = new char[inputField.length()];
+        for (int index = 0 ; index < inputField.length() ; index++) {
+            result[index] = '0';
         }
-        if (numberOfColumns == 2) {
-            if (inputField.equals("**")) {
-                return "**";
-            } else if (inputField.startsWith("*")) {
-                return "*1";
-            } else if (inputField.endsWith("*")) {
-                return "1*";
-            } else {
-                return "00";
+        for (int index = 0 ; index < inputField.length() ; index++) {
+            if (inputField.charAt(index) == '*') {
+                result[index] = '*';
+                if (index - 1 >= 0) {
+                    if (result[index - 1] != '*') {
+                        result[index - 1]++;
+                    }
+                }
+                if (index + 1 < inputField.length()) {
+                    if (result[index + 1] != '*') {
+                        result[index + 1]++;
+                    }
+                }
             }
         }
-        if (inputField.endsWith("*")) {
-            return "*";
-        } else {
-            return "0";
-        }
+        return new String(result);
     }
 }
