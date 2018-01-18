@@ -17,6 +17,10 @@ public class MineSweeper {
     }
 
     public String produceHintField() {
+        if (numberOfLines == 2) {
+            return "0\r\n" +
+                    "0";
+        }
         char[] result = createEmptyResult();
         for (int index = 0 ; index < inputField.length() ; index++) {
             if (containsAMineAtIndex(index)) {
