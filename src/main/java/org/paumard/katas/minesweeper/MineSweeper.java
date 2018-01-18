@@ -1,10 +1,11 @@
 package org.paumard.katas.minesweeper;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class MineSweeper {
 
-    private String inputField;
+    private char[][] inputField;
     private int numberOfLines;
     private int numberOfColumns;
 
@@ -13,74 +14,62 @@ public class MineSweeper {
         String[] firstLineSplit = lines[0].split(" ");
         this.numberOfLines = Integer.parseInt(firstLineSplit[0].trim());
         this.numberOfColumns = Integer.parseInt(firstLineSplit[1].trim());
-        this.inputField = lines[1];
+        int firstLineOfMineField = 1;
+        this.inputField = new char[numberOfLines][];
+        for (int lineIndex = 0; lineIndex < numberOfLines; lineIndex++) {
+            this.inputField[lineIndex] = lines[lineIndex + firstLineOfMineField].trim().toCharArray();
+        }
     }
 
     public String produceHintField() {
-        if (numberOfLines == 2) {
-            return "0\r\n" +
-                    "0";
-        }
-        if (numberOfLines == 3) {
-            return "*\r\n" +
-                    "2\r\n" +
-                    "*";
-        }
-        char[] result = createEmptyResult();
-        for (int index = 0 ; index < inputField.length() ; index++) {
-            if (containsAMineAtIndex(index)) {
-                setAMineAtIndex(result, index);
-                updateNeighborhood(result, index);
+
+        char[][] result = createEmptyResult();
+        for (int lineIndex = 0; lineIndex < numberOfLines; lineIndex++) {
+            for (int columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
+                if (containsAMineAtIndex(inputField, lineIndex, columnIndex)) {
+                    setAMineAtIndex(result, lineIndex, columnIndex);
+                    updateNeighborhood(result, lineIndex, columnIndex);
+                }
             }
         }
+
         return createFinalResult(result);
     }
 
-    private String createFinalResult(char[] result) {
-        return new String(result);
+    private String createFinalResult(char[][] mineField) {
+        return Arrays.stream(mineField).map(String::new).collect(Collectors.joining("\r\n"));
     }
 
-    private void updateNeighborhood(char[] result, int index) {
-        if (previousIndexInBounds(index)) {
-            updateNeighborhoodForPreviousIndex(result, index);
-        }
-        if (nextIndexInBounds(index)) {
-            updateNeighborhoodForNextIndex(result, index);
-        }
-    }
+    private void updateNeighborhood(char[][] mineField, int lineIndex, int columnIndex) {
 
-    private void updateNeighborhoodForNextIndex(char[] result, int index) {
-        if (result[index + 1] != '*') {
-            result[index + 1]++;
-        }
-    }
-
-    private void updateNeighborhoodForPreviousIndex(char[] result, int index) {
-        if (result[index - 1] != '*') {
-            result[index - 1]++;
+        for (int deltaLine = -1; deltaLine <= 1; deltaLine++) {
+            for (int deltaColumn = -1; deltaColumn <= 1; deltaColumn++) {
+                if (lineIndex + deltaLine >= 0 && lineIndex + deltaLine < numberOfLines &&
+                        columnIndex + deltaColumn >= 0 && columnIndex + deltaColumn < numberOfColumns) {
+                    if (mineField[lineIndex + deltaLine][columnIndex + deltaColumn] != '*') {
+                        mineField[lineIndex + deltaLine][columnIndex + deltaColumn]++;
+                    }
+                }
+            }
         }
     }
 
-    private boolean nextIndexInBounds(int index) {
-        return index + 1 < inputField.length();
+    private void setAMineAtIndex(char[][] mineField, int lineIndex, int columnIndex) {
+        mineField[lineIndex][columnIndex] = '*';
     }
 
-    private boolean previousIndexInBounds(int index) {
-        return index - 1 >= 0;
+    private boolean containsAMineAtIndex(char[][] mineField, int lineIndex, int columnIndex) {
+        return mineField[lineIndex][columnIndex] == '*';
     }
 
-    private void setAMineAtIndex(char[] result, int index) {
-        result[index] = '*';
-    }
+    private char[][] createEmptyResult() {
+        char[][] result = new char[numberOfLines][numberOfColumns];
+        for (int lineIndex = 0; lineIndex < numberOfLines; lineIndex++) {
+            result[lineIndex] = new char[numberOfColumns];
+            for (int columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
+                result[lineIndex][columnIndex] = '0';
+            }
 
-    private boolean containsAMineAtIndex(int index) {
-        return inputField.charAt(index) == '*';
-    }
-
-    private char[] createEmptyResult() {
-        char[] result = new char[inputField.length()];
-        for (int index = 0 ; index < inputField.length() ; index++) {
-            result[index] = '0';
         }
         return result;
     }
