@@ -1,6 +1,6 @@
 Feature: Minesweeper game
 
-  Scenario: An empty 1x1 field
+  Scenario: A empty 1x1 field
     Given The following field
     """
     1 1
@@ -12,7 +12,7 @@ Feature: Minesweeper game
     0
     """
 
-  Scenario: An mined 1x1 field
+  Scenario: A mined 1x1 field
     Given The following field
     """
     1 1
@@ -24,7 +24,7 @@ Feature: Minesweeper game
     *
     """
 
-  Scenario: An mined 1x2 field with no mine
+  Scenario: A mined 1x2 field with no mine
     Given The following field
     """
     1 2
@@ -36,7 +36,7 @@ Feature: Minesweeper game
     00
     """
 
-  Scenario: An mined 1x2 field with one mine
+  Scenario: A mined 1x2 field with one mine
     Given The following field
     """
     1 2
@@ -48,7 +48,7 @@ Feature: Minesweeper game
     *1
     """
 
-  Scenario: An mined 1x2 field with one mine
+  Scenario: A mined 1x2 field with one mine
     Given The following field
     """
     1 2
@@ -60,7 +60,7 @@ Feature: Minesweeper game
     1*
     """
 
-  Scenario: An mined 1x2 field with two mines
+  Scenario: A mined 1x2 field with two mines
     Given The following field
     """
     1 2
@@ -72,7 +72,7 @@ Feature: Minesweeper game
     **
     """
 
-  Scenario: An mined 1x3 field with one mine
+  Scenario: A mined 1x3 field with one mine
     Given The following field
     """
     1 3
@@ -82,4 +82,40 @@ Feature: Minesweeper game
     Then The result is the following
     """
     *10
+    """
+
+  Scenario: A mined 1x3 field with two mines
+    Given The following field
+    """
+    1 3
+    *.*
+    """
+    When The resulting field is computed
+    Then The result is the following
+    """
+    *2*
+    """
+
+  Scenario: A mined 1x3 field with two mines
+    Given The following field
+    """
+    1 3
+    **.
+    """
+    When The resulting field is computed
+    Then The result is the following
+    """
+    **1
+    """
+
+  Scenario: A mined 1x3 field with three mines
+    Given The following field
+    """
+    1 3
+    ***
+    """
+    When The resulting field is computed
+    Then The result is the following
+    """
+    ***
     """
