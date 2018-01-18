@@ -60,7 +60,7 @@ Feature: Minesweeper game
     1*
     """
 
-  Scenario: An mined 1x2 field with one mine
+  Scenario: An mined 1x2 field with two mines
     Given The following field
     """
     1 2
@@ -70,4 +70,16 @@ Feature: Minesweeper game
     Then The result is the following
     """
     **
+    """
+
+  Scenario: An mined 1x3 field with one mine
+    Given The following field
+    """
+    1 3
+    *..
+    """
+    When The resulting field is computed
+    Then The result is the following
+    """
+    *10
     """
