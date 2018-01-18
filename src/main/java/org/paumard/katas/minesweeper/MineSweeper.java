@@ -18,7 +18,9 @@ public class MineSweeper {
 
     public String produceHintField() {
         if (numberOfColumns == 2) {
-            if (inputField.startsWith("*")) {
+            if (inputField.equals("**")) {
+                return "**";
+            } else if (inputField.startsWith("*")) {
                 return "*1";
             } else if (inputField.endsWith("*")) {
                 return "1*";
