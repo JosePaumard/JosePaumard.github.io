@@ -47,3 +47,15 @@ Feature: Minesweeper game
     """
     *1
     """
+
+  Scenario: An mined 1x2 field with one mine
+    Given The following field
+    """
+    1 2
+    .*
+    """
+    When The resulting field is computed
+    Then The result is the following
+    """
+    1*
+    """
