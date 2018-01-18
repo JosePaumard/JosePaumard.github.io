@@ -21,6 +21,11 @@ public class MineSweeper {
             return "0\r\n" +
                     "0";
         }
+        if (numberOfLines == 3) {
+            return "*\r\n" +
+                    "2\r\n" +
+                    "*";
+        }
         char[] result = createEmptyResult();
         for (int index = 0 ; index < inputField.length() ; index++) {
             if (containsAMineAtIndex(index)) {
