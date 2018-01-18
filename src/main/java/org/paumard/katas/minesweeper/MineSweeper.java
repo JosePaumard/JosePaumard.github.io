@@ -20,6 +20,8 @@ public class MineSweeper {
         if (numberOfColumns == 2) {
             if (inputField.startsWith("*")) {
                 return "*1";
+            } else if (inputField.endsWith("*")) {
+                return "1*";
             } else {
                 return "00";
             }
