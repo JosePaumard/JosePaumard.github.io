@@ -17,25 +17,62 @@ public class MineSweeper {
     }
 
     public String produceHintField() {
+        char[] result = createEmptyResult();
+        for (int index = 0 ; index < inputField.length() ; index++) {
+            if (containsAMineAtIndex(index)) {
+                setAMineAtIndex(result, index);
+                updateNeighborhood(result, index);
+            }
+        }
+        return createFinalResult(result);
+    }
+
+    private String createFinalResult(char[] result) {
+        return new String(result);
+    }
+
+    private void updateNeighborhood(char[] result, int index) {
+        if (previousIndexInBounds(index)) {
+            updateNeighborhoodForPreviousIndex(result, index);
+        }
+        if (nextIndexInBounds(index)) {
+            updateNeighborhoodForNextIndex(result, index);
+        }
+    }
+
+    private void updateNeighborhoodForNextIndex(char[] result, int index) {
+        if (result[index + 1] != '*') {
+            result[index + 1]++;
+        }
+    }
+
+    private void updateNeighborhoodForPreviousIndex(char[] result, int index) {
+        if (result[index - 1] != '*') {
+            result[index - 1]++;
+        }
+    }
+
+    private boolean nextIndexInBounds(int index) {
+        return index + 1 < inputField.length();
+    }
+
+    private boolean previousIndexInBounds(int index) {
+        return index - 1 >= 0;
+    }
+
+    private void setAMineAtIndex(char[] result, int index) {
+        result[index] = '*';
+    }
+
+    private boolean containsAMineAtIndex(int index) {
+        return inputField.charAt(index) == '*';
+    }
+
+    private char[] createEmptyResult() {
         char[] result = new char[inputField.length()];
         for (int index = 0 ; index < inputField.length() ; index++) {
             result[index] = '0';
         }
-        for (int index = 0 ; index < inputField.length() ; index++) {
-            if (inputField.charAt(index) == '*') {
-                result[index] = '*';
-                if (index - 1 >= 0) {
-                    if (result[index - 1] != '*') {
-                        result[index - 1]++;
-                    }
-                }
-                if (index + 1 < inputField.length()) {
-                    if (result[index + 1] != '*') {
-                        result[index + 1]++;
-                    }
-                }
-            }
-        }
-        return new String(result);
+        return result;
     }
 }
