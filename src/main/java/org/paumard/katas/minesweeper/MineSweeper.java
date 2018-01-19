@@ -17,11 +17,11 @@ public class MineSweeper {
     }
 
     public String produceHintField() {
-        char[] result = createEmptyResult();
-        for (int index = 0 ; index < inputField.length() ; index++) {
-            if (containsAMineAtIndex(index)) {
-                setAMineAtIndex(result, index);
-                updateNeighborhood(result, index);
+        ResultGrid resultGrid = createEmptyResult();
+        for (GridPosition position: inputGrid) {
+            if (inutGrid.containsAMineAt(position)) {
+                resultGrid.setAMineAt(position);
+                resultGrid.updateNeighborhood(position);
             }
         }
         return createFinalResult(result);
