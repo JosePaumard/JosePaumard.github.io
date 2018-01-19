@@ -1,12 +1,14 @@
 package org.paumard.katas.minesweeper;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class MineSweeper {
 
     private String inputField;
     private int numberOfLines;
     private int numberOfColumns;
+    private InputGrid inputGrid;
 
     public void init(String inputField) {
         String[] lines = inputField.split("\n");
@@ -19,12 +21,12 @@ public class MineSweeper {
     public String produceHintField() {
         ResultGrid resultGrid = createEmptyResult();
         for (GridPosition position: inputGrid) {
-            if (inutGrid.containsAMineAt(position)) {
+            if (inputGrid.containsAMineAt(position)) {
                 resultGrid.setAMineAt(position);
                 resultGrid.updateNeighborhood(position);
             }
         }
-        return createFinalResult(result);
+        return resultGrid.createFinalResult();
     }
 
     private String createFinalResult(char[] result) {
@@ -68,11 +70,39 @@ public class MineSweeper {
         return inputField.charAt(index) == '*';
     }
 
-    private char[] createEmptyResult() {
+    private ResultGrid createEmptyResult() {
         char[] result = new char[inputField.length()];
         for (int index = 0 ; index < inputField.length() ; index++) {
             result[index] = '0';
         }
         return result;
+    }
+
+    private static class ResultGrid {
+        public void setAMineAt(GridPosition position) {
+
+        }
+
+        public void updateNeighborhood(GridPosition position) {
+
+        }
+
+        public String createFinalResult() {
+            return null;
+        }
+    }
+
+    private static class InputGrid implements Iterable<GridPosition> {
+        @Override
+        public Iterator<GridPosition> iterator() {
+            return null;
+        }
+
+        public boolean containsAMineAt(GridPosition position) {
+            return false;
+        }
+    }
+
+    private static class GridPosition {
     }
 }
