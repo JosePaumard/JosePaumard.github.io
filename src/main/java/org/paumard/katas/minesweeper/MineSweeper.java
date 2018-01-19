@@ -93,7 +93,7 @@ public class MineSweeper {
                     private int deltaLine = -1;
                     @Override
                     public boolean hasNext() {
-                        return deltaLine < 1 || deltaColumn < 1;
+                        return deltaLine < 1 || (deltaLine == 1 && deltaColumn <= 1);
                     }
 
                     @Override
