@@ -112,11 +112,11 @@ public class MineSweeper {
     }
 
     private static class GridPosition {
-        private InputGrid gridPosition;
+        private InputGrid inputGrid;
         private int index;
 
-        public GridPosition(InputGrid gridPosition, int index) {
-            this.gridPosition = gridPosition;
+        public GridPosition(InputGrid inputGrid, int index) {
+            this.inputGrid = inputGrid;
             this.index = index;
         }
 
@@ -125,11 +125,11 @@ public class MineSweeper {
         }
 
         public boolean previousIndexInBounds() {
-            return gridPosition.isIndexInBounds(index - 1);
+            return inputGrid.isIndexInBounds(index - 1);
         }
 
         public boolean nextIndexInBounds() {
-            return gridPosition.isIndexInBounds(index + 1);
+            return inputGrid.isIndexInBounds(index + 1);
         }
     }
 }
