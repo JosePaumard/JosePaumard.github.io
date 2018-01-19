@@ -1,6 +1,7 @@
 package org.paumard.katas.minesweeper;
 
 import java.util.Iterator;
+import java.util.function.Predicate;
 
 public class MineSweeper {
 
@@ -91,7 +92,7 @@ public class MineSweeper {
 
                 @Override
                 public GridPosition next() {
-                    GridPosition gridPosition = new GridPosition(InputGrid.this, index);
+                    GridPosition gridPosition = new GridPosition(idx -> idx >= 0 && idx < numberOfColumns, index);
                     index++;
                     return gridPosition;
                 }
@@ -105,18 +106,14 @@ public class MineSweeper {
         public ResultGrid createEmptyResult() {
             return new ResultGrid(this.numberOfColumns);
         }
-
-        public boolean isIndexInBounds(int index) {
-            return index >= 0 && index < numberOfColumns;
-        }
     }
 
     private static class GridPosition {
-        private InputGrid inputGrid;
+        private Predicate<Integer> isInBounds;
         private int index;
 
-        public GridPosition(InputGrid inputGrid, int index) {
-            this.inputGrid = inputGrid;
+        public GridPosition(Predicate<Integer> isInBounds, int index) {
+            this.isInBounds = isInBounds;
             this.index = index;
         }
 
@@ -125,11 +122,11 @@ public class MineSweeper {
         }
 
         public boolean previousIndexInBounds() {
-            return inputGrid.isIndexInBounds(index - 1);
+            return isInBounds.test(index - 1);
         }
 
         public boolean nextIndexInBounds() {
-            return inputGrid.isIndexInBounds(index + 1);
+            return isInBounds.test(index + 1);
         }
     }
 }
