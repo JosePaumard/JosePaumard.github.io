@@ -42,12 +42,24 @@ public class MineSweeper {
         }
 
         public void updateNeighborhood(GridPosition position) {
-            if (position.previousIndexInBounds()) {
+            if (previousIndexInBounds(position)) {
                 updateNeighborhoodForPreviousIndex(position);
             }
-            if (position.nextIndexInBounds()) {
+            if (nextIndexInBounds(position)) {
                 updateNeighborhoodForNextIndex(position);
             }
+        }
+
+        private boolean nextIndexInBounds(GridPosition position) {
+            return isInBounds(position.getColumn() + 1);
+        }
+
+        private boolean previousIndexInBounds(GridPosition position) {
+            return isInBounds(position.getColumn() - 1);
+        }
+
+        private boolean isInBounds(int positionIndex) {
+            return positionIndex >= 0 && positionIndex < this.result.length;
         }
 
         public String createFinalResult() {
@@ -92,7 +104,7 @@ public class MineSweeper {
 
                 @Override
                 public GridPosition next() {
-                    GridPosition gridPosition = new GridPosition(idx -> idx >= 0 && idx < numberOfColumns, index);
+                    GridPosition gridPosition = new GridPosition(index);
                     index++;
                     return gridPosition;
                 }
@@ -109,24 +121,14 @@ public class MineSweeper {
     }
 
     private static class GridPosition {
-        private Predicate<Integer> isInBounds;
         private int index;
 
-        public GridPosition(Predicate<Integer> isInBounds, int index) {
-            this.isInBounds = isInBounds;
+        public GridPosition(int index) {
             this.index = index;
         }
 
         public int getColumn() {
             return index;
-        }
-
-        public boolean previousIndexInBounds() {
-            return isInBounds.test(index - 1);
-        }
-
-        public boolean nextIndexInBounds() {
-            return isInBounds.test(index + 1);
         }
     }
 }
