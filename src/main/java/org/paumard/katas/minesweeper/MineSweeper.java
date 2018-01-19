@@ -1,25 +1,21 @@
 package org.paumard.katas.minesweeper;
 
-import java.util.Arrays;
 import java.util.Iterator;
 
 public class MineSweeper {
 
-    private String inputField;
-    private int numberOfLines;
-    private int numberOfColumns;
     private InputGrid inputGrid;
 
     public void init(String inputField) {
         String[] lines = inputField.split("\n");
         String[] firstLineSplit = lines[0].split(" ");
-        this.numberOfLines = Integer.parseInt(firstLineSplit[0].trim());
-        this.numberOfColumns = Integer.parseInt(firstLineSplit[1].trim());
-        this.inputField = lines[1];
+        int numberOfLines = Integer.parseInt(firstLineSplit[0].trim());
+        int numberOfColumns = Integer.parseInt(firstLineSplit[1].trim());
+        inputGrid = new InputGrid(numberOfLines, numberOfColumns, lines[1]);
     }
 
     public String produceHintField() {
-        ResultGrid resultGrid = createEmptyResult();
+        ResultGrid resultGrid = inputGrid.createEmptyResult();
         for (GridPosition position: inputGrid) {
             if (inputGrid.containsAMineAt(position)) {
                 resultGrid.setAMineAt(position);
@@ -29,80 +25,111 @@ public class MineSweeper {
         return resultGrid.createFinalResult();
     }
 
-    private String createFinalResult(char[] result) {
-        return new String(result);
-    }
-
-    private void updateNeighborhood(char[] result, int index) {
-        if (previousIndexInBounds(index)) {
-            updateNeighborhoodForPreviousIndex(result, index);
-        }
-        if (nextIndexInBounds(index)) {
-            updateNeighborhoodForNextIndex(result, index);
-        }
-    }
-
-    private void updateNeighborhoodForNextIndex(char[] result, int index) {
-        if (result[index + 1] != '*') {
-            result[index + 1]++;
-        }
-    }
-
-    private void updateNeighborhoodForPreviousIndex(char[] result, int index) {
-        if (result[index - 1] != '*') {
-            result[index - 1]++;
-        }
-    }
-
-    private boolean nextIndexInBounds(int index) {
-        return index + 1 < inputField.length();
-    }
-
-    private boolean previousIndexInBounds(int index) {
-        return index - 1 >= 0;
-    }
-
-    private void setAMineAtIndex(char[] result, int index) {
-        result[index] = '*';
-    }
-
-    private boolean containsAMineAtIndex(int index) {
-        return inputField.charAt(index) == '*';
-    }
-
-    private ResultGrid createEmptyResult() {
-        char[] result = new char[inputField.length()];
-        for (int index = 0 ; index < inputField.length() ; index++) {
-            result[index] = '0';
-        }
-        return result;
-    }
-
     private static class ResultGrid {
-        public void setAMineAt(GridPosition position) {
 
+        private final char[] result;
+
+        public ResultGrid(int numberOfColumns) {
+            this.result = new char[numberOfColumns];
+            for (int index = 0 ; index < numberOfColumns ; index++) {
+                result[index] = '0';
+            }
+        }
+
+        public void setAMineAt(GridPosition position) {
+            this.result[position.getColumn()] = '*';
         }
 
         public void updateNeighborhood(GridPosition position) {
-
+            if (position.previousIndexInBounds()) {
+                updateNeighborhoodForPreviousIndex(position);
+            }
+            if (position.nextIndexInBounds()) {
+                updateNeighborhoodForNextIndex(position);
+            }
         }
 
         public String createFinalResult() {
-            return null;
+            return new String(result);
+        }
+
+        private void updateNeighborhoodForNextIndex(GridPosition position) {
+            if (result[position.getColumn() + 1] != '*') {
+                result[position.getColumn() + 1]++;
+            }
+        }
+
+        private void updateNeighborhoodForPreviousIndex(GridPosition position) {
+            if (result[position.getColumn() - 1] != '*') {
+                result[position.getColumn() - 1]++;
+            }
         }
     }
 
     private static class InputGrid implements Iterable<GridPosition> {
+
+        private final int numberOfLines;
+        private final int numberOfColumns;
+        private final String line;
+
+        public InputGrid(int numberOfLines, int numberOfColumns, String line) {
+
+            this.numberOfLines = numberOfLines;
+            this.numberOfColumns = numberOfColumns;
+            this.line = line;
+        }
+
         @Override
         public Iterator<GridPosition> iterator() {
-            return null;
+            return new Iterator<GridPosition>() {
+                private int index = 0;
+
+                @Override
+                public boolean hasNext() {
+                    return index < line.length();
+                }
+
+                @Override
+                public GridPosition next() {
+                    GridPosition gridPosition = new GridPosition(InputGrid.this, index);
+                    index++;
+                    return gridPosition;
+                }
+            };
         }
 
         public boolean containsAMineAt(GridPosition position) {
-            return false;
+            return line.charAt(position.getColumn()) == '*';
+        }
+
+        public ResultGrid createEmptyResult() {
+            return new ResultGrid(this.numberOfColumns);
+        }
+
+        public boolean isIndexInBounds(int index) {
+            return index >= 0 && index < numberOfColumns;
         }
     }
 
     private static class GridPosition {
+        private InputGrid gridPosition;
+        private int index;
+
+        public GridPosition(InputGrid gridPosition, int index) {
+            this.gridPosition = gridPosition;
+            this.index = index;
+        }
+
+        public int getColumn() {
+            return index;
+        }
+
+        public boolean previousIndexInBounds() {
+            return gridPosition.isIndexInBounds(index - 1);
+        }
+
+        public boolean nextIndexInBounds() {
+            return gridPosition.isIndexInBounds(index + 1);
+        }
     }
 }
