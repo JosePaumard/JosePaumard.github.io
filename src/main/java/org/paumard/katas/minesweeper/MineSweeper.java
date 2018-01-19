@@ -1,7 +1,8 @@
 package org.paumard.katas.minesweeper;
 
+import java.util.Arrays;
 import java.util.Iterator;
-import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class MineSweeper {
 
@@ -12,7 +13,7 @@ public class MineSweeper {
         String[] firstLineSplit = lines[0].split(" ");
         int numberOfLines = Integer.parseInt(firstLineSplit[0].trim());
         int numberOfColumns = Integer.parseInt(firstLineSplit[1].trim());
-        inputGrid = new InputGrid(numberOfLines, numberOfColumns, lines[1]);
+        inputGrid = new InputGrid(numberOfLines, numberOfColumns, lines);
     }
 
     public String produceHintField() {
@@ -28,54 +29,41 @@ public class MineSweeper {
 
     private static class ResultGrid {
 
-        private final char[] result;
+        private final char[][] result;
+        private final int numberOfLines;
+        private final int numberOfColumns;
 
-        public ResultGrid(int numberOfColumns) {
-            this.result = new char[numberOfColumns];
-            for (int index = 0 ; index < numberOfColumns ; index++) {
-                result[index] = '0';
+        public ResultGrid(int numberOfLines, int numberOfColumns) {
+            this.numberOfLines = numberOfLines;
+            this.numberOfColumns = numberOfColumns;
+            this.result = new char[numberOfLines][];
+            for (int lineIndex = 0 ; lineIndex < numberOfLines ; lineIndex++) {
+                this.result[lineIndex] = new char[numberOfColumns];
+                for (int columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
+                    result[lineIndex][columnIndex] = '0';
+                }
             }
         }
 
         public void setAMineAt(GridPosition position) {
-            this.result[position.getColumn()] = '*';
+            this.result[position.getLine()][position.getColumn()] = '*';
         }
 
         public void updateNeighborhood(GridPosition position) {
-            if (previousIndexInBounds(position)) {
-                updateNeighborhoodForPreviousIndex(position);
+            for (int deltaLine = -1; deltaLine <= 1; deltaLine++) {
+                for (int deltaColumn = -1; deltaColumn <= 1; deltaColumn++) {
+                    if (position.line + deltaLine >= 0 && position.line + deltaLine < numberOfLines &&
+                        position.column + deltaColumn >= 0 && position.column + deltaColumn < numberOfColumns) {
+                        if (result[position.line + deltaLine][position.column + deltaColumn] != '*') {
+                            result[position.line + deltaLine][position.column + deltaColumn]++;
+                        }
+                    }
+                }
             }
-            if (nextIndexInBounds(position)) {
-                updateNeighborhoodForNextIndex(position);
-            }
-        }
-
-        private boolean nextIndexInBounds(GridPosition position) {
-            return isInBounds(position.getColumn() + 1);
-        }
-
-        private boolean previousIndexInBounds(GridPosition position) {
-            return isInBounds(position.getColumn() - 1);
-        }
-
-        private boolean isInBounds(int positionIndex) {
-            return positionIndex >= 0 && positionIndex < this.result.length;
         }
 
         public String createFinalResult() {
-            return new String(result);
-        }
-
-        private void updateNeighborhoodForNextIndex(GridPosition position) {
-            if (result[position.getColumn() + 1] != '*') {
-                result[position.getColumn() + 1]++;
-            }
-        }
-
-        private void updateNeighborhoodForPreviousIndex(GridPosition position) {
-            if (result[position.getColumn() - 1] != '*') {
-                result[position.getColumn() - 1]++;
-            }
+            return Arrays.stream(result).map(String::new).collect(Collectors.joining("\r\n"));
         }
     }
 
@@ -83,52 +71,66 @@ public class MineSweeper {
 
         private final int numberOfLines;
         private final int numberOfColumns;
-        private final String line;
+        private final char[][] inputField;
 
-        public InputGrid(int numberOfLines, int numberOfColumns, String line) {
+        public InputGrid(int numberOfLines, int numberOfColumns, String[] lines) {
 
             this.numberOfLines = numberOfLines;
             this.numberOfColumns = numberOfColumns;
-            this.line = line;
+            this.inputField = new char[numberOfLines][];
+            for (int lineIndex = 0; lineIndex < numberOfLines; lineIndex++) {
+                this.inputField[lineIndex] = lines[lineIndex + 1].trim().toCharArray();
+            }
         }
 
         @Override
         public Iterator<GridPosition> iterator() {
             return new Iterator<GridPosition>() {
-                private int index = 0;
+                private int columnIndex = 0;
+                private int lineIndex = 0;
 
                 @Override
                 public boolean hasNext() {
-                    return index < line.length();
+                    return columnIndex < numberOfColumns && lineIndex < numberOfLines;
                 }
 
                 @Override
                 public GridPosition next() {
-                    GridPosition gridPosition = new GridPosition(index);
-                    index++;
+                    GridPosition gridPosition = new GridPosition(lineIndex, columnIndex);
+                    columnIndex++;
+                    if (columnIndex == numberOfColumns) {
+                        columnIndex = 0;
+                        lineIndex++;
+                    }
                     return gridPosition;
                 }
             };
         }
 
         public boolean containsAMineAt(GridPosition position) {
-            return line.charAt(position.getColumn()) == '*';
+            return inputField[position.line][position.column] == '*';
         }
 
         public ResultGrid createEmptyResult() {
-            return new ResultGrid(this.numberOfColumns);
+            return new ResultGrid(this.numberOfLines, this.numberOfColumns);
         }
     }
 
     private static class GridPosition {
-        private int index;
+        private final int column;
+        private final int line;
 
-        public GridPosition(int index) {
-            this.index = index;
+        public GridPosition(int line, int column) {
+            this.line = line;
+            this.column = column;
         }
 
         public int getColumn() {
-            return index;
+            return this.column;
+        }
+
+        public int getLine() {
+            return this.line;
         }
     }
 }
