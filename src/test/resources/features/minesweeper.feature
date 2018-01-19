@@ -195,3 +195,19 @@ Feature: Minesweeper game
     *
     *
     """
+
+  Scenario: A mined 3x1 field with three mines
+    Given The following field
+    """
+    3 3
+    *..
+    *..
+    *.*
+    """
+    When The resulting field is computed
+    Then The result is the following
+    """
+    *20
+    *41
+    *3*
+    """
