@@ -119,3 +119,17 @@ Feature: Minesweeper game
     """
     ***
     """
+
+  Scenario: A mined 2x1 field with no mine
+    Given The following field
+    """
+    2 1
+    .
+    .
+    """
+    When The resulting field is computed
+    Then The result is the following
+    """
+    0
+    0
+    """
