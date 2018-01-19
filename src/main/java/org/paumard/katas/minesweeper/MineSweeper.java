@@ -36,13 +36,18 @@ public class MineSweeper {
         public ResultGrid(int numberOfLines, int numberOfColumns) {
             this.numberOfLines = numberOfLines;
             this.numberOfColumns = numberOfColumns;
-            this.result = new char[numberOfLines][];
+            this.result = createGrid(numberOfLines, numberOfColumns);
+        }
+
+        private char[][] createGrid(int numberOfLines, int numberOfColumns) {
+            char[][] result = new char[numberOfLines][];
             for (int lineIndex = 0 ; lineIndex < numberOfLines ; lineIndex++) {
                 this.result[lineIndex] = new char[numberOfColumns];
                 for (int columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
                     result[lineIndex][columnIndex] = '0';
                 }
             }
+            return result;
         }
 
         public void setAMineAt(GridPosition position) {
