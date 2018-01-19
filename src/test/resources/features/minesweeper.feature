@@ -147,3 +147,51 @@ Feature: Minesweeper game
     *
     1
     """
+
+  Scenario: A mined 3x1 field with one mine
+    Given The following field
+    """
+    3 1
+    *
+    .
+    .
+    """
+    When The resulting field is computed
+    Then The result is the following
+    """
+    *
+    1
+    0
+    """
+
+  Scenario: A mined 3x1 field with two mines
+    Given The following field
+    """
+    3 1
+    *
+    .
+    *
+    """
+    When The resulting field is computed
+    Then The result is the following
+    """
+    *
+    2
+    *
+    """
+
+  Scenario: A mined 3x1 field with three mines
+    Given The following field
+    """
+    3 1
+    *
+    *
+    *
+    """
+    When The resulting field is computed
+    Then The result is the following
+    """
+    *
+    *
+    *
+    """
