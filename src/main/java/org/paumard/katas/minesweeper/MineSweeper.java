@@ -42,7 +42,7 @@ public class MineSweeper {
         private char[][] createGrid(int numberOfLines, int numberOfColumns) {
             char[][] result = new char[numberOfLines][];
             for (int lineIndex = 0 ; lineIndex < numberOfLines ; lineIndex++) {
-                this.result[lineIndex] = new char[numberOfColumns];
+                result[lineIndex] = new char[numberOfColumns];
                 for (int columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
                     result[lineIndex][columnIndex] = '0';
                 }
@@ -54,21 +54,60 @@ public class MineSweeper {
             this.result[position.getLine()][position.getColumn()] = '*';
         }
 
-        public void updateNeighborhood(GridPosition position) {
-            for (int deltaLine = -1; deltaLine <= 1; deltaLine++) {
-                for (int deltaColumn = -1; deltaColumn <= 1; deltaColumn++) {
-                    if (position.line + deltaLine >= 0 && position.line + deltaLine < numberOfLines &&
-                        position.column + deltaColumn >= 0 && position.column + deltaColumn < numberOfColumns) {
-                        if (result[position.line + deltaLine][position.column + deltaColumn] != '*') {
-                            result[position.line + deltaLine][position.column + deltaColumn]++;
-                        }
-                    }
+        public void updateNeighborhood(GridPosition gridPosition) {
+
+            for (NeighborhoodPosition neighborhoodPosition: NeighborhoodPosition.neigborhood()) {
+                if (isInBounds(gridPosition, neighborhoodPosition)) {
+                    updateNeighborhood(gridPosition, neighborhoodPosition);
                 }
             }
         }
 
+        private void updateNeighborhood(GridPosition gridPosition, NeighborhoodPosition neighborhoodPosition) {
+            if (result[gridPosition.line + neighborhoodPosition.deltaLine][gridPosition.column + neighborhoodPosition.deltaColumn] != '*') {
+                result[gridPosition.line + neighborhoodPosition.deltaLine][gridPosition.column + neighborhoodPosition.deltaColumn]++;
+            }
+        }
+
+        private boolean isInBounds(GridPosition gridPosition, NeighborhoodPosition neighborhoodPosition) {
+            return gridPosition.column + neighborhoodPosition.deltaColumn >= 0 && gridPosition.column + neighborhoodPosition.deltaColumn < numberOfColumns &&
+                   gridPosition.line + neighborhoodPosition.deltaLine >= 0 && gridPosition.line + neighborhoodPosition.deltaLine < numberOfLines;
+        }
+
         public String createFinalResult() {
             return Arrays.stream(result).map(String::new).collect(Collectors.joining("\r\n"));
+        }
+
+        private static class NeighborhoodPosition {
+            private final int deltaLine;
+            private final int deltaColumn;
+
+            private NeighborhoodPosition(int deltaLine, int deltaColumn) {
+                this.deltaLine = deltaLine;
+                this.deltaColumn = deltaColumn;
+            }
+
+            public static Iterable<NeighborhoodPosition> neigborhood() {
+                return () -> new Iterator<NeighborhoodPosition>() {
+                    private int deltaColumn = -1;
+                    private int deltaLine = -1;
+                    @Override
+                    public boolean hasNext() {
+                        return deltaLine < 1 || deltaColumn < 1;
+                    }
+
+                    @Override
+                    public NeighborhoodPosition next() {
+                        NeighborhoodPosition neighborhoodPosition = new NeighborhoodPosition(deltaLine, deltaColumn);
+                        deltaColumn++;
+                        if (deltaColumn == 2) {
+                            deltaColumn = -1;
+                            deltaLine++;
+                        }
+                        return neighborhoodPosition;
+                    }
+                };
+            }
         }
     }
 
@@ -96,7 +135,7 @@ public class MineSweeper {
 
                 @Override
                 public boolean hasNext() {
-                    return columnIndex < numberOfColumns && lineIndex < numberOfLines;
+                    return lineIndex < numberOfLines;
                 }
 
                 @Override
