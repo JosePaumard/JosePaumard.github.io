@@ -35,6 +35,8 @@ Anyway, here is a list a very good (and well known!) readings if you want to lea
 
 [The Tennis Kata](/katas/intermediate/tennis-kata.html)
 
+[The Minesweeper Kata](/katas/intermediate/minesweeper-kata.md)
+
 ## Books I Like
 Anyway, here is a list a very good (and well known!) readings if you want to learn more about clean code, software craftsmanship, and all the practices around those.
 
