@@ -2,7 +2,7 @@
 
 ## The Kata
 
-This kata has been published by Dave Thomas here: http://acm.uva.es/p/v101/10189.html
+This kata has been published here: http://acm.uva.es/p/v101/10189.html
 
 Have you ever played Minesweeper? It's a cute little game which comes within a certain Operating System whose name we can't really remember. Well, the goal of the game is to find all the mines within an MxN field. To help you, the game shows a number in a square which tells you how many mines there are adjacent to that square. For instance, take the following 4x4 field with 2 mines (which are represented by an * character):
 
@@ -35,6 +35,7 @@ Field #x:
 Where x stands for the number of the field (starting from 1). The next n lines should contain the field with the `.` characters replaced by the number of adjacent mines to that square. There must be an empty line between field outputs.
 
 ### Clues
+
 As you may have already noticed, each square may have at most 8 adjacent squares.
 
 ### Suggested Test Cases
@@ -76,7 +77,7 @@ Field #2:
 
 ### Simplification
 
-I do not thing that handling multiple mine fields brings anything more that complexity to this kata. So we will leave this aside, and concentrate on the computation of the result grid itself.
+I do not thing that handling multiple mine fields brings anything more than complexity to this kata. So we will leave this aside, and concentrate on the computation of the result grid itself.
 
 ### First Thoughts
 
@@ -88,7 +89,7 @@ So let us try to do that, and let us practice our SRP skills!
 
 ### The First Steps
 
-We can begin by writing some dumb code that is hard codes the solution of the kata. At some point, we need to begin to think and write an algorithm to solve the general form of the problem.
+We can begin by writing some dumb code that hard codes the solution of the kata. At some point, we need to begin to think and write an algorithm to solve the general form of the problem.
 
 The baby step approach tells us to always solve the simplest problem possible, given what is left to solve. So we can use the following program: first solve the problem when the grid is in fact a line, that is, a 1xp grid and write a valid algorithm for this case. And then, extend the vector to a matrix. I think the natural way is to grow the size of the mine field step by step, from 1x1 to 1x2, 1x3, 1x4, that will make a first algorithm on a line. Then we can take another approach, 2x1, 3x1, etc... that will make the algorithm on the columns. And in a third step, create matrices 2x2, etc...
 
@@ -96,26 +97,26 @@ It can be to go from the following piece of code, which is very technical, and v
 
 ```java
 public String produceHintField() {
-	char[] result = new char[inputField.length()];
-	for (int index = 0 ; index < inputField.length() ; index++) {
-		result[index] = '0';
-	}
-	for (int index = 0 ; index < inputField.length() ; index++) {
-		if (inputField.charAt(index) == '*') {
-			result[index] = '*';
-			if (index - 1 >= 0) {
-				if (result[index - 1] != '*') {
-					result[index - 1]++;
-				}
-			}
-			if (index + 1 < inputField.length()) {
-				if (result[index + 1] != '*') {
-					result[index + 1]++;
-				}
-			}
-		}
-	}
-	return new String(result);
+   char[] result = new char[inputField.length()];
+   for (int index = 0 ; index < inputField.length() ; index++) {
+      result[index] = '0';
+   }
+   for (int index = 0 ; index < inputField.length() ; index++) {
+      if (inputField.charAt(index) == '*') {
+         result[index] = '*';
+         if (index - 1 >= 0) {
+            if (result[index - 1] != '*') {
+               result[index - 1]++;
+            }
+         }
+         if (index + 1 < inputField.length()) {
+            if (result[index + 1] != '*') {
+               result[index + 1]++;
+            }
+         }
+      }
+   }
+   return new String(result);
 }
 ```
 
@@ -123,14 +124,14 @@ To this one, which can be read as a simple description of an algorithm:
 
 ```java
 public String produceHintField() {
-	char[] result = createEmptyResult();
-	for (int index = 0 ; index < inputField.length() ; index++) {
-		if (containsAMineAtIndex(index)) {
-			setAMineAtIndex(result, index);
-			updateNeighborhood(result, index);
-		}
-	}
-	return createFinalResult(result);
+   char[] result = createEmptyResult();
+   for (int index = 0 ; index < inputField.length() ; index++) {
+      if (containsAMineAtIndex(index)) {
+         setAMineAtIndex(result, index);
+            updateNeighborhood(result, index);
+      }
+   }
+   return createFinalResult(result);
 }
 ```
 
@@ -138,18 +139,18 @@ public String produceHintField() {
 
 This code looks like clean code, but there is more. Let us ask ourselves the following question: how many reasons do we have to change this code? This is the question we need to answer to tell if this method complies with the Single Responsibility Principle or not.
 
-It turns out that there is one major reason: the way we chose to encode the grid (which is in fact a vector in this intermediate step), and the way we run through it. So we are very close: how can we change this code so that is does not depend on the topology of the grid itself? Following those constraints, the code could become this one:
+It turns out that there is one major reason: the way we chose to encode the grid (which is in fact a vector in this intermediate step). There is also a second one, which in fact depends on the first one: the way we run through it. So we are very close: how can we change this code so that is does not depend on the topology of the grid itself? Following those constraints, the code could become this one:
 
 ```java
 public String produceHintField() {
-	ResultGrid resultGrid = createEmptyResult();
-	for (GridPosition position: inputGrid) {
-		if (inputGrid.containsAMineAt(position)) {
-			resultGrid.setAMineAt(position);
-			resultGrid.updateNeighborhood(position);
-		}
-	}
-	return createFinalResult(result);
+   ResultGrid resultGrid = createEmptyResult();
+   for (GridPosition position: inputGrid) {
+      if (inputGrid.containsAMineAt(position)) {
+         resultGrid.setAMineAt(position);
+         resultGrid.updateNeighborhood(position);
+      }
+   }
+   return createFinalResult(result);
 }
 ```
 
@@ -163,20 +164,20 @@ At some point, we may reach this kind of code to check if we can update the neig
 
 ```java
 if (position.previousIndexInBounds()) {
-	updateNeighborhoodForPreviousIndex(position);
+   updateNeighborhoodForPreviousIndex(position);
 }
 ```
 
 It raises two questions.
 
-The first one is about the `updateNeighborhoodForPreviousIndex(position)` call. Should this call be implemented on the `GridPosition` object? If it is, it would look like this one: `position.updateNeighborhoodForPreviousIndex()`. This question makes sense: a position could be able to update itself the result grid. This is probably the choice POO would have made back in the 80s.
+The first one is about the `updateNeighborhoodForPreviousIndex(position)` call. Should this call be implemented on the `GridPosition` object? If it is, it would look like this one: `position.updateNeighborhoodForPreviousIndex()`. This question makes sense: a position could be able to update itself the result grid. This is probably the choice OOP would have made back in the 80s.
 
 I don't think it is a good idea. The implementation of such a method would require a reference on the result grid, since it needs the upper bound of that grid. Creating a compile dependency from a grid position to the grid itself does not make sense. A grid has to know its positions, but the contrary is wrong.
 
-The second one is the `position.previousIndexInBounds()``call. How can it be implemented? Probably by this kind of code:
+The second one is the `position.previousIndexInBounds()` call. How can it be implemented? Probably by this kind of code:
 ```java
 public boolean previousIndexInBounds() {
-	return inputGrid.isIndexInBounds(index - 1);
+   return inputGrid.isIndexInBounds(index - 1);
 }
 ```
 
