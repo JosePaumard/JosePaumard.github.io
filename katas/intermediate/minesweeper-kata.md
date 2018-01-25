@@ -186,7 +186,7 @@ In fact, this in bounds checker methods can itself be seen as a parameter of thi
 
 But I still think that, from a design point of view, this method that checks if a position is in the bounds of the result grid, is a method of the result grid object.
 
-I added a [minesweepter-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/minesweeper-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/tree/84f838fbe1c00438f894400c837aa81bfc00d9e7). 
+I added a [minesweepter-kata branch](https://github.com/JosePaumard/JosePaumard.github.io/tree/minesweeper-kata) in this repo with a way of solving this kata, commit by commit. You can access [the first commit of this branch here](https://github.com/JosePaumard/JosePaumard.github.io/commit/9607386b13ae061ac8cbd331d6538237d90d50a1). I also created a label on the [transition from the vector to the matrix](https://github.com/JosePaumard/JosePaumard.github.io/tree/vector). 
 
 [Back to index](/index.html)
 
