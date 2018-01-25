@@ -1,25 +1,5 @@
 [Back to index](/index.html)
 
-[The FizzBuzz Kata](/katas/introductory/fizzbuzz-kata.html)
-
-[The Leap Years Kata](/katas/introductory/leapyears-kata.html)
-
-[The RPN Calculator Kata](/katas/introductory/rpncalculator-kata.html)
-
-[The String Calculator Kata](/katas/introductory/stringcalculator-kata.html)
-
-[The One Two Kata](/katas/introductory/onetwo-kata.html)
-
-[The Palindrome Kata](/katas/introductory/palindrome-kata.html)
-
-The Roman Numerals Kata
-
-[The Fizz Buzz Woof Kata](/katas/intermediate/fizzbuzzwoof-kata.html)
-
-[The Anagrams Kata](/katas/intermediate/anagrams-kata.html)
-
-[The Tennis Kata](/katas/intermediate/tennis-kata.html)
-
 
 ## The Roman Numerals Kata
 
