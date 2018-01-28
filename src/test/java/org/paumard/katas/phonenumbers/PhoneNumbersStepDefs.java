@@ -1,5 +1,6 @@
 package org.paumard.katas.phonenumbers;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -27,5 +28,10 @@ public class PhoneNumbersStepDefs {
     @Then("^The list is consistent$")
     public void the_list_is_consistent() throws Throwable {
         assertThat(isConsistent).isTrue();
+    }
+
+    @Then("^The list is not consistent$")
+    public void the_list_is_not_consistent() throws Throwable {
+        assertThat(isConsistent).isFalse();
     }
 }
