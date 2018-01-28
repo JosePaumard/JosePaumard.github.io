@@ -4,6 +4,6 @@ import java.util.List;
 
 public class PhoneNumbers {
     public boolean checkForConsistency(List<String> phoneNumbers) {
-        return false;
+        return true;
     }
 }
