@@ -14,6 +14,13 @@ Feature: Phone Numbers Kata
     When The list is analyzed
     Then The list is not consistent
 
+  Scenario: A list of two phone numbers with a prefix
+    Given The following list
+      | 911 123 |
+      | 911     |
+    When The list is analyzed
+    Then The list is not consistent
+
   Scenario: A list of two different phone numbers
     Given The following list
       | 123 456 |
