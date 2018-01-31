@@ -10,6 +10,6 @@ public class PhoneNumbers {
         }
         String firstPhoneNumber = phoneNumbers.get(0);
         String secondPhoneNumber = phoneNumbers.get(1);
-        return !secondPhoneNumber.startsWith(firstPhoneNumber);
+        return !secondPhoneNumber.startsWith(firstPhoneNumber) && !firstPhoneNumber.startsWith(secondPhoneNumber);
     }
 }
