@@ -5,6 +5,11 @@ import java.util.List;
 public class PhoneNumbers {
 
     public boolean checkForConsistency(List<String> phoneNumbers) {
-        return phoneNumbers.size() == 1;
+        if (phoneNumbers.size() == 1) {
+            return true;
+        }
+        String firstPhoneNumber = phoneNumbers.get(0);
+        String secondPhoneNumber = phoneNumbers.get(1);
+        return !secondPhoneNumber.startsWith(firstPhoneNumber);
     }
 }
