@@ -33,4 +33,10 @@ public class PhoneNumbersStepDefs {
 
         assertThat(isConsistent).isTrue();
     }
+
+    @Then("^The list is not consistent$")
+    public void the_list_is_not_consistent() throws Throwable {
+
+        assertThat(isConsistent).isFalse();
+    }
 }
