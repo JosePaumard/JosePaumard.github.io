@@ -35,3 +35,11 @@ Feature: Phone Numbers Kata
       | 911 345 |
     When The list is analyzed
     Then The list is not consistent
+
+  Scenario: A list of several phone numbers with a prefix
+    Given The following list
+      | 123 456 |
+      | 911     |
+      | 911 345 |
+    When The list is analyzed
+    Then The list is not consistent
