@@ -1,6 +1,8 @@
 package org.paumard.katas.phonenumbers;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class PhoneNumbers {
     public boolean isConsistent(List<String> phoneNumbersList) {
@@ -8,6 +10,12 @@ public class PhoneNumbers {
             return true;
         }
 
-        return !phoneNumbersList.get(0).equals(phoneNumbersList.get(1));
+        Set<String> phoneNumberSet = new HashSet<>();
+        for (String phoneNumber : phoneNumbersList) {
+            if (!phoneNumberSet.add(phoneNumber)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
