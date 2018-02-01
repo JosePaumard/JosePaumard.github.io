@@ -43,3 +43,11 @@ Feature: Phone Numbers Katas
       | 2 |
     When The list is checked for consistency
     Then The list is not consistent
+
+  Scenario: A list of three phone numbers that is not consistent
+    Given The following list
+      | 1 |
+      | 2 |
+      | 1 |
+    When The list is checked for consistency
+    Then The list is not consistent
