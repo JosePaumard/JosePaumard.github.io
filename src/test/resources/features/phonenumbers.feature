@@ -58,3 +58,10 @@ Feature: Phone Numbers Katas
       | 11 |
     When The list is checked for consistency
     Then The list is not consistent
+
+  Scenario: A list of two phone numbers without prefix
+    Given The following list
+      | 11 |
+      | 12 |
+    When The list is checked for consistency
+    Then The list is consistent
