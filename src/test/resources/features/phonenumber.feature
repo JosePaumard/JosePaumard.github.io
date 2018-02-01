@@ -27,3 +27,11 @@ Feature: Phone Numbers Kata
       | 234 567 |
     When The list is analyzed
     Then The list is consistent
+
+  Scenario: A list of several phone numbers with a prefix
+    Given The following list
+      | 911     |
+      | 123 456 |
+      | 911 345 |
+    When The list is analyzed
+    Then The list is not consistent
