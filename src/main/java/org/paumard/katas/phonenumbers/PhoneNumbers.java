@@ -1,5 +1,6 @@
 package org.paumard.katas.phonenumbers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PhoneNumbers {
@@ -9,14 +10,16 @@ public class PhoneNumbers {
             return true;
         }
 
-        String prefix = phoneNumbers.get(0);
+        List<String> seenPhoneNumbers = new ArrayList<>();
+        seenPhoneNumbers.add(phoneNumbers.get(0));
         for (int index = 1; index < phoneNumbers.size(); index++) {
             String phoneNumber = phoneNumbers.get(index);
-            if (phoneNumber.startsWith(prefix)) {
-                return false;
-            } else if (prefix.startsWith(phoneNumber)) {
-                return false;
+            for (String seenPhoneNumber : seenPhoneNumbers) {
+                if (phoneNumber.startsWith(seenPhoneNumber) || seenPhoneNumber.startsWith(phoneNumber)) {
+                    return false;
+                }
             }
+            seenPhoneNumbers.add(phoneNumber);
         }
         return true;
     }
