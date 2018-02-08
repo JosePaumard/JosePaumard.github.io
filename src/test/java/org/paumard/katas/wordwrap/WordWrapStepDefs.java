@@ -7,6 +7,10 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.assertj.core.api.Assertions;
 
+import java.util.List;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
 public class WordWrapStepDefs {
 
     private String line;
@@ -39,8 +43,9 @@ public class WordWrapStepDefs {
         Assertions.assertThat(this.result).isEmpty();
     }
 
-    @Then("^the result is: (.*)$")
-    public void the_result_is_hello(String expectedResult) throws Throwable {
-        Assertions.assertThat(this.result).isEqualTo(expectedResult);
+    @Then("^the result is:$")
+    public void the_result_is_hello(List<String> expectedResult) throws Throwable {
+        String concatenatedExpectedResult = expectedResult.stream().collect(Collectors.joining("\n"));
+        Assertions.assertThat(this.result).isEqualTo(concatenatedExpectedResult);
     }
 }
