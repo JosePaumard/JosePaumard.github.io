@@ -39,7 +39,7 @@ public class WordWrapStepDefs {
         Assertions.assertThat(this.result).isEmpty();
     }
 
-    @Then("^the result is (.*)$")
+    @Then("^the result is: (.*)$")
     public void the_result_is_hello(String expectedResult) throws Throwable {
         Assertions.assertThat(this.result).isEqualTo(expectedResult);
     }
