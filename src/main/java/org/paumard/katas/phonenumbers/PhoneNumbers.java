@@ -9,7 +9,7 @@ public class PhoneNumbers {
 
         Set<String> phoneNumberSet = new HashSet<>();
         for (String phoneNumber : phoneNumbersList) {
-            for (int index = 1; index < phoneNumber.length(); index++) {
+            for (int index = 1; index <= phoneNumber.length(); index++) {
                 String phoneNumberPrefix = phoneNumber.substring(0, index);
                 if (phoneNumberSet.contains(phoneNumberPrefix)) {
                     return false;
