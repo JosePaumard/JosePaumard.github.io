@@ -7,7 +7,7 @@ public class WordWrapper {
             return line;
         } else {
             String firstPart = line.substring(0, numberOfColumns);
-            String secondPart = line.substring(numberOfColumns);
+            String secondPart = wrap(numberOfColumns, line.substring(numberOfColumns));
             return firstPart + "\n" + secondPart;
         }
     }
