@@ -7,8 +7,15 @@ public class WordWrapper {
             return line;
         } else {
             String firstPart = line.substring(0, numberOfColumns);
-            String secondPart = wrap(numberOfColumns, line.substring(numberOfColumns));
-            return firstPart + "\n" + secondPart;
+            if (firstPart.contains(" ")) {
+                int indexOfSpace = firstPart.indexOf(' ');
+                firstPart = line.substring(0, indexOfSpace);
+                String secondPart = wrap(indexOfSpace + 1, line.substring(indexOfSpace + 1));
+                return firstPart + "\n" + secondPart;
+            } else {
+                String secondPart = wrap(numberOfColumns, line.substring(numberOfColumns));
+                return firstPart + "\n" + secondPart;
+            }
         }
     }
 }
