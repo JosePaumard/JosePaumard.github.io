@@ -65,3 +65,10 @@ Feature: Phone Numbers Katas
       | 12 |
     When The list is checked for consistency
     Then The list is consistent
+
+  Scenario: A list of two phone numbers with prefix
+    Given The following list
+      | 111     |
+      | 111 222 |
+    When The list is checked for consistency
+    Then The list is not consistent
