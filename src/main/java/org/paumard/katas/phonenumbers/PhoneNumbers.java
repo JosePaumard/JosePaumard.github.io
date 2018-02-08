@@ -13,7 +13,7 @@ public class PhoneNumbers {
             if (phoneNumberSet.contains(phoneNumberPrefix)) {
                 return false;
             }
-            phoneNumberSet.add(phoneNumberPrefix);
+            phoneNumberSet.add(phoneNumber);
         }
         return true;
     }
