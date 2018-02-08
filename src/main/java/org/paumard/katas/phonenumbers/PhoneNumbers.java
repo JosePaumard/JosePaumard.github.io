@@ -9,9 +9,11 @@ public class PhoneNumbers {
 
         Set<String> phoneNumberSet = new HashSet<>();
         for (String phoneNumber : phoneNumbersList) {
-            if (!phoneNumberSet.add(phoneNumber.substring(0, 1))) {
+            String phoneNumberPrefix = phoneNumber.substring(0, 1);
+            if (phoneNumberSet.contains(phoneNumberPrefix)) {
                 return false;
             }
+            phoneNumberSet.add(phoneNumberPrefix);
         }
         return true;
     }
