@@ -20,3 +20,14 @@ Feature: Word Wrap
     Then the result is:
       | Hel |
       | lo  |
+
+  Scenario: Wrapping an line multiple times with no space in a sorter line
+    Given The following line BraveNewWorld
+    And a 3 columns page
+    When the line is wrapped
+    Then the result is:
+      | Bra |
+      | veN |
+      | ewW |
+      | orl |
+      | d   |
