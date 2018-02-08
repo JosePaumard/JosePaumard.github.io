@@ -18,6 +18,11 @@ public class WordWrapStepDefs {
         this.line = "";
     }
 
+    @Given("^The following line (.*)$")
+    public void the_following_line(String line) throws Throwable {
+        this.line = line;
+    }
+
     @And("^a (\\d+) columns page$")
     public void _a_number_of_columns(int numberOfColumns) throws Throwable {
         this.numberOfColumns = numberOfColumns;
@@ -32,5 +37,10 @@ public class WordWrapStepDefs {
     @Then("^the result is an empty line$")
     public void the_result_is_an_empty_line() throws Throwable {
         Assertions.assertThat(this.result).isEmpty();
+    }
+
+    @Then("^the result is (.*)$")
+    public void the_result_is_hello(String expectedResult) throws Throwable {
+        Assertions.assertThat(this.result).isEqualTo(expectedResult);
     }
 }
