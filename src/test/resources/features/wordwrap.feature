@@ -13,7 +13,7 @@ Feature: Word Wrap
     Then the result is:
       | Hello |
 
-  Scenario: Wrapping an line with no space in a sorter line
+  Scenario: Wrapping an line with no space in a shorter line
     Given The following line Hello
     And a 3 columns page
     When the line is wrapped
@@ -21,7 +21,7 @@ Feature: Word Wrap
       | Hel |
       | lo  |
 
-  Scenario: Wrapping an line multiple times with no space in a sorter line
+  Scenario: Wrapping an line multiple times with no space in a shorter line
     Given The following line BraveNewWorld
     And a 3 columns page
     When the line is wrapped
@@ -31,3 +31,11 @@ Feature: Word Wrap
       | ewW |
       | orl |
       | d   |
+
+  Scenario: Wrapping an line with a space in a shorter line
+    Given The following line Hello world
+    And a 7 columns page
+    When the line is wrapped
+    Then the result is:
+      | Hello |
+      | world |
