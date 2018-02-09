@@ -8,7 +8,7 @@ public class WordWrapper {
         } else {
             String firstPart = line.substring(0, numberOfColumns);
             if (firstPart.contains(" ")) {
-                int indexOfSpace = firstPart.indexOf(' ');
+                int indexOfSpace = firstPart.lastIndexOf(' ');
                 firstPart = line.substring(0, indexOfSpace);
                 String secondPart = wrap(indexOfSpace + 1, line.substring(indexOfSpace + 1));
                 return firstPart + "\n" + secondPart;
