@@ -39,3 +39,11 @@ Feature: Word Wrap
     Then the result is:
       | Hello |
       | world |
+
+  Scenario: Wrapping an line with several spaces per line in a shorter line
+    Given The following line Hello brave new world
+    And a 18 columns page
+    When the line is wrapped
+    Then the result is:
+      | Hello brave new |
+      | world           |
