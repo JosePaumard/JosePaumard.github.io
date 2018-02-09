@@ -1,8 +1,10 @@
 package org.paumard.katas.wordwrap;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class WordWrapper {
 
@@ -10,15 +12,12 @@ public class WordWrapper {
         if (line.length() <= numberOfColumns) {
             return line;
         } else {
-            List<String> lines = new ArrayList<>();
 
-            for (String remainingLine = line; remainingLine.length() > 0; remainingLine = getRemainingLine(remainingLine, numberOfColumns)) {
-
-                String nextSegment = getNextSegment(remainingLine, numberOfColumns);
-                lines.add(nextSegment);
-            }
-
-            return lines.stream().collect(Collectors.joining("\n"));
+            return
+            Stream.iterate(line, remainingLine -> getRemainingLine(remainingLine, numberOfColumns))
+                    .takeWhile(remainingLine -> remainingLine.length() > 0)
+                    .map(remainingLine -> getNextSegment(remainingLine, numberOfColumns))
+                    .collect(Collectors.joining("\n"));
         }
     }
 
