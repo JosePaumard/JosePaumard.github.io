@@ -29,3 +29,13 @@ Feature: Word Wrap
       | Hell |
       | oWor |
       | ld   |
+
+  Scenario: Wrapping an line with no space in a shorter line
+    Given The following line HelloWorld
+    And a 3 columns page
+    When the line is wrapped
+    Then the result is:
+      | Hel |
+      | loW |
+      | orl |
+      | d   |
