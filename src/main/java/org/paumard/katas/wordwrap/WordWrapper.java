@@ -1,24 +1,19 @@
 package org.paumard.katas.wordwrap;
 
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class WordWrapper {
 
     public String wrap(int numberOfColumns, String line) {
-        if (line.length() <= numberOfColumns) {
-            return line;
-        } else {
 
-            return
-            Stream.iterate(line, remainingLine -> getRemainingLine(remainingLine, numberOfColumns))
-                    .takeWhile(remainingLine -> remainingLine.length() > 0)
-                    .map(remainingLine -> getNextSegment(remainingLine, numberOfColumns))
-                    .collect(Collectors.joining("\n"));
-        }
+        return
+                Stream.iterate(line, remainingLine -> getRemainingLine(remainingLine, numberOfColumns))
+                        .takeWhile(remainingLine -> remainingLine.length() > 0)
+                        .map(remainingLine -> getNextSegment(remainingLine, numberOfColumns))
+                        .collect(Collectors.joining("\n"));
+
     }
 
     private String getRemainingLine(String remainingLine, int numberOfColumns) {
