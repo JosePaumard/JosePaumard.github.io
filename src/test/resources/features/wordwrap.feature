@@ -55,3 +55,12 @@ Feature: Word Wrap
     Then the result is:
       | Hello brave |
       | world       |
+
+  Scenario: Wrapping an line with a space in a shorter line
+    Given The following line Hello brave world
+    And a 8 columns page
+    When the line is wrapped
+    Then the result is:
+      | Hello |
+      | brave |
+      | world |
