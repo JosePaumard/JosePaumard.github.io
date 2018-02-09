@@ -16,31 +16,39 @@ public class WordWrapper {
             lines.add(nextSegment);
             remainingLine = getRemainingLine(remainingLine, numberOfColumns);
 
-            while (remainingLine.length() > numberOfColumns) {
+            while (remainingLine.length() > 0) {
 
                 nextSegment = getNextSegment(remainingLine, numberOfColumns);
                 lines.add(nextSegment);
                 remainingLine = getRemainingLine(remainingLine, numberOfColumns);
             }
-            lines.add(remainingLine);
+
             return lines.stream().collect(Collectors.joining("\n"));
         }
     }
 
     private String getRemainingLine(String remainingLine, int numberOfColumns) {
         int limit = getLimit(remainingLine, numberOfColumns);
-        String nextPart = remainingLine.substring(0, numberOfColumns);
+        String nextPart = stringBefore(remainingLine, numberOfColumns);
         if (nextPart.contains(" ")) {
             remainingLine = remainingLine.substring(limit + 1);
         } else {
-            remainingLine = remainingLine.substring(numberOfColumns);
+            remainingLine = stringAfter(remainingLine, numberOfColumns);
         }
         return remainingLine;
     }
 
+    private String stringAfter(String remainingLine, int numberOfColumns) {
+        return numberOfColumns <= remainingLine.length() ? remainingLine.substring(numberOfColumns) : "";
+    }
+
+    private String stringBefore(String remainingLine, int numberOfColumns) {
+        return numberOfColumns <= remainingLine.length() ? remainingLine.substring(0, numberOfColumns) : remainingLine;
+    }
+
     private String getNextSegment(String remainingLine, int numberOfColumns) {
         int limit = getLimit(remainingLine, numberOfColumns);
-        String nextPart = remainingLine.substring(0, numberOfColumns);
+        String nextPart = stringBefore(remainingLine, numberOfColumns);
         if (nextPart.contains(" ")) {
             return nextPart.substring(0, limit);
         } else {
@@ -49,7 +57,8 @@ public class WordWrapper {
     }
 
     private int getLimit(String remainingLine, int numberOfColumns) {
-        String nextPart = remainingLine.substring(0, numberOfColumns);
+        String nextPart =
+                stringBefore(remainingLine, numberOfColumns);
         if (nextPart.contains(" ")) {
             return nextPart.lastIndexOf(' ');
         } else {
