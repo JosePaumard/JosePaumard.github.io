@@ -7,20 +7,28 @@ public class WordWrapper {
             return line;
         } else {
             String result = line.substring(0, numberOfColumns);
-            String nextPart;
+            String remainingLine;
             if (result.contains(" ")) {
                 int limit = result.lastIndexOf(' ');
                 result = line.substring(0, limit);
-                nextPart = line.substring(limit + 1);
+                remainingLine = line.substring(limit + 1);
             } else {
-                nextPart = line.substring(numberOfColumns);
+                remainingLine = line.substring(numberOfColumns);
             }
 
-            while (nextPart.length() >  numberOfColumns) {
-                result += "\n" + nextPart.substring(0, numberOfColumns);
-                nextPart = nextPart.substring(numberOfColumns);
+            while (remainingLine.length() >  numberOfColumns) {
+
+                String nextPart = remainingLine.substring(0, numberOfColumns);
+                if (nextPart.contains(" ")) {
+                    int limit = nextPart.lastIndexOf(' ');
+                    result += "\n" + nextPart.substring(0, limit);
+                    remainingLine = remainingLine.substring(limit + 1);
+                } else {
+                    result += "\n" + nextPart;
+                    remainingLine = remainingLine.substring(numberOfColumns);
+                }
             }
-            return result + "\n" + nextPart;
+            return result + "\n" + remainingLine;
         }
     }
 }
