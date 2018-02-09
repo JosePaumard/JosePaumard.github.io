@@ -12,27 +12,25 @@ public class WordWrapper {
         } else {
             List<String> lines = new ArrayList<>();
             String remainingLine = line;
-            int limit = 0;
-            String nextPart = remainingLine.substring(0, numberOfColumns);
-            limit = getLimit(numberOfColumns, nextPart);
-            String nextSegment = getNextSegment(nextPart, limit);
+            int limit = getLimit(remainingLine, numberOfColumns);
+            String nextSegment = getNextSegment(remainingLine, numberOfColumns, limit);
             lines.add(nextSegment);
-            remainingLine = getRemainingLine(remainingLine, nextPart, numberOfColumns, limit);
+            remainingLine = getRemainingLine(remainingLine, numberOfColumns, limit);
 
             while (remainingLine.length() > numberOfColumns) {
 
-                nextPart = remainingLine.substring(0, numberOfColumns);
-                limit = getLimit(numberOfColumns, nextPart);
-                nextSegment = getNextSegment(nextPart, limit);
+                limit = getLimit(remainingLine, numberOfColumns);
+                nextSegment = getNextSegment(remainingLine, numberOfColumns, limit);
                 lines.add(nextSegment);
-                remainingLine = getRemainingLine(remainingLine, nextPart, numberOfColumns, limit);
+                remainingLine = getRemainingLine(remainingLine, numberOfColumns, limit);
             }
             lines.add(remainingLine);
             return lines.stream().collect(Collectors.joining("\n"));
         }
     }
 
-    private String getRemainingLine(String remainingLine, String nextPart, int numberOfColumns, int limit) {
+    private String getRemainingLine(String remainingLine, int numberOfColumns, int limit) {
+        String nextPart = remainingLine.substring(0, numberOfColumns);
         if (nextPart.contains(" ")) {
             remainingLine = remainingLine.substring(limit + 1);
         } else {
@@ -41,7 +39,8 @@ public class WordWrapper {
         return remainingLine;
     }
 
-    private String getNextSegment(String nextPart, int limit) {
+    private String getNextSegment(String remainingLine, int numberOfColumns, int limit) {
+        String nextPart = remainingLine.substring(0, numberOfColumns);
         if (nextPart.contains(" ")) {
             return nextPart.substring(0, limit);
 
@@ -50,7 +49,8 @@ public class WordWrapper {
         }
     }
 
-    private int getLimit(int numberOfColumns, String nextPart) {
+    private int getLimit(String remainingLine, int numberOfColumns) {
+        String nextPart = remainingLine.substring(0, numberOfColumns);
         if (nextPart.contains(" ")) {
             return nextPart.lastIndexOf(' ');
         } else {
