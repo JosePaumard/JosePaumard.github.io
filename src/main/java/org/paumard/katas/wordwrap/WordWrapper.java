@@ -14,11 +14,7 @@ public class WordWrapper {
             String remainingLine = line;
             int limit = 0;
             String nextPart = remainingLine.substring(0, numberOfColumns);
-            if (nextPart.contains(" ")) {
-                limit = nextPart.lastIndexOf(' ');
-            } else {
-                limit = numberOfColumns;
-            }
+            limit = getLimit(numberOfColumns, nextPart);
             String nextSegment;
             if (nextPart.contains(" ")) {
                 nextSegment = nextPart.substring(0, limit);
@@ -36,11 +32,7 @@ public class WordWrapper {
             while (remainingLine.length() > numberOfColumns) {
 
                 nextPart = remainingLine.substring(0, numberOfColumns);
-                if (nextPart.contains(" ")) {
-                    limit = nextPart.lastIndexOf(' ');
-                } else {
-                    limit = numberOfColumns;
-                }
+                limit = getLimit(numberOfColumns, nextPart);
                 if (nextPart.contains(" ")) {
                     nextSegment = nextPart.substring(0, limit);
                 } else {
@@ -55,6 +47,14 @@ public class WordWrapper {
             }
             lines.add(remainingLine);
             return lines.stream().collect(Collectors.joining("\n"));
+        }
+    }
+
+    private int getLimit(int numberOfColumns, String nextPart) {
+        if (nextPart.contains(" ")) {
+            return nextPart.lastIndexOf(' ');
+        } else {
+            return numberOfColumns;
         }
     }
 }
