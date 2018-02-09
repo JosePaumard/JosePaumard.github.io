@@ -13,13 +13,21 @@ public class WordWrapper {
             List<String> lines = new ArrayList<>();
             String remainingLine = line;
             String nextPart = remainingLine;
+            int limit = 0;
             nextPart = remainingLine.substring(0, numberOfColumns);
             if (nextPart.contains(" ")) {
-                int limit = nextPart.lastIndexOf(' ');
+                limit = nextPart.lastIndexOf(' ');
+            } else {
+                limit = numberOfColumns;
+            }
+            if (nextPart.contains(" ")) {
                 lines.add(nextPart.substring(0, limit));
-                remainingLine = remainingLine.substring(limit + 1);
             } else {
                 lines.add(nextPart);
+            }
+            if (nextPart.contains(" ")) {
+                remainingLine = remainingLine.substring(limit + 1);
+            } else {
                 remainingLine = remainingLine.substring(numberOfColumns);
             }
 
@@ -27,11 +35,18 @@ public class WordWrapper {
 
                 nextPart = remainingLine.substring(0, numberOfColumns);
                 if (nextPart.contains(" ")) {
-                    int limit = nextPart.lastIndexOf(' ');
+                    limit = nextPart.lastIndexOf(' ');
+                } else {
+                    limit = numberOfColumns;
+                }
+                if (nextPart.contains(" ")) {
                     lines.add(nextPart.substring(0, limit));
-                    remainingLine = remainingLine.substring(limit + 1);
                 } else {
                     lines.add(nextPart);
+                }
+                if (nextPart.contains(" ")) {
+                    remainingLine = remainingLine.substring(limit + 1);
+                } else {
                     remainingLine = remainingLine.substring(numberOfColumns);
                 }
             }
