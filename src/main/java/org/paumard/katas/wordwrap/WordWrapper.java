@@ -6,19 +6,21 @@ public class WordWrapper {
         if (line.length() <= numberOfColumns) {
             return line;
         } else {
-            String result = line.substring(0, numberOfColumns);
+            String result = "";
             String remainingLine;
-            if (result.contains(" ")) {
-                int limit = result.lastIndexOf(' ');
-                result = line.substring(0, limit);
+            String nextPart = line.substring(0, numberOfColumns);
+            if (nextPart.contains(" ")) {
+                int limit = nextPart.lastIndexOf(' ');
+                nextPart = line.substring(0, limit);
                 remainingLine = line.substring(limit + 1);
             } else {
                 remainingLine = line.substring(numberOfColumns);
             }
+            result = nextPart;
 
             while (remainingLine.length() >  numberOfColumns) {
 
-                String nextPart = remainingLine.substring(0, numberOfColumns);
+                nextPart = remainingLine.substring(0, numberOfColumns);
                 if (nextPart.contains(" ")) {
                     int limit = nextPart.lastIndexOf(' ');
                     result += "\n" + nextPart.substring(0, limit);
