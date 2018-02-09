@@ -7,7 +7,15 @@ public class WordWrapper {
             return line;
         } else {
             String result = line.substring(0, numberOfColumns);
-            String nextPart = line.substring(numberOfColumns);
+            String nextPart;
+            if (result.contains(" ")) {
+                int limit = result.indexOf(' ');
+                result = line.substring(0, limit);
+                nextPart = line.substring(limit + 1);
+            } else {
+                nextPart = line.substring(numberOfColumns);
+            }
+
             while (nextPart.length() >  numberOfColumns) {
                 result += "\n" + nextPart.substring(0, numberOfColumns);
                 nextPart = nextPart.substring(numberOfColumns);
