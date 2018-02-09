@@ -12,14 +12,12 @@ public class WordWrapper {
         } else {
             List<String> lines = new ArrayList<>();
             String remainingLine = line;
-            int limit = getLimit(remainingLine, numberOfColumns);
             String nextSegment = getNextSegment(remainingLine, numberOfColumns);
             lines.add(nextSegment);
             remainingLine = getRemainingLine(remainingLine, numberOfColumns);
 
             while (remainingLine.length() > numberOfColumns) {
 
-                limit = getLimit(remainingLine, numberOfColumns);
                 nextSegment = getNextSegment(remainingLine, numberOfColumns);
                 lines.add(nextSegment);
                 remainingLine = getRemainingLine(remainingLine, numberOfColumns);
@@ -45,7 +43,6 @@ public class WordWrapper {
         String nextPart = remainingLine.substring(0, numberOfColumns);
         if (nextPart.contains(" ")) {
             return nextPart.substring(0, limit);
-
         } else {
             return nextPart;
         }
