@@ -12,26 +12,28 @@ public class WordWrapper {
         } else {
             List<String> lines = new ArrayList<>();
             String remainingLine = line;
-            String nextPart = remainingLine;
             int limit = 0;
-            nextPart = remainingLine.substring(0, numberOfColumns);
+            String nextPart = remainingLine.substring(0, numberOfColumns);
             if (nextPart.contains(" ")) {
                 limit = nextPart.lastIndexOf(' ');
             } else {
                 limit = numberOfColumns;
             }
+            String nextSegment;
             if (nextPart.contains(" ")) {
-                lines.add(nextPart.substring(0, limit));
+                nextSegment = nextPart.substring(0, limit);
+
             } else {
-                lines.add(nextPart);
+                nextSegment = nextPart;
             }
+            lines.add(nextSegment);
             if (nextPart.contains(" ")) {
                 remainingLine = remainingLine.substring(limit + 1);
             } else {
                 remainingLine = remainingLine.substring(numberOfColumns);
             }
 
-            while (remainingLine.length() >  numberOfColumns) {
+            while (remainingLine.length() > numberOfColumns) {
 
                 nextPart = remainingLine.substring(0, numberOfColumns);
                 if (nextPart.contains(" ")) {
@@ -40,10 +42,11 @@ public class WordWrapper {
                     limit = numberOfColumns;
                 }
                 if (nextPart.contains(" ")) {
-                    lines.add(nextPart.substring(0, limit));
+                    nextSegment = nextPart.substring(0, limit);
                 } else {
-                    lines.add(nextPart);
+                    nextSegment = nextPart;
                 }
+                lines.add(nextSegment);
                 if (nextPart.contains(" ")) {
                     remainingLine = remainingLine.substring(limit + 1);
                 } else {
