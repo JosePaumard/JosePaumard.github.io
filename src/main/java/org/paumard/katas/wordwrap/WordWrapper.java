@@ -8,7 +8,7 @@ public class WordWrapper {
         } else {
             String result = line.substring(0, numberOfColumns);
             String nextPart = line.substring(numberOfColumns);
-            if (nextPart.length() >  numberOfColumns) {
+            while (nextPart.length() >  numberOfColumns) {
                 result += "\n" + nextPart.substring(0, numberOfColumns);
                 nextPart = nextPart.substring(numberOfColumns);
             }
