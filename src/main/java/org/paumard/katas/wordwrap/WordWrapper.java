@@ -9,7 +9,7 @@ public class WordWrapper {
             String result = line.substring(0, numberOfColumns);
             String nextPart;
             if (result.contains(" ")) {
-                int limit = result.indexOf(' ');
+                int limit = result.lastIndexOf(' ');
                 result = line.substring(0, limit);
                 nextPart = line.substring(limit + 1);
             } else {
