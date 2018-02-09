@@ -11,16 +11,11 @@ public class WordWrapper {
             return line;
         } else {
             List<String> lines = new ArrayList<>();
-            String remainingLine = line;
-            String nextSegment = getNextSegment(remainingLine, numberOfColumns);
-            lines.add(nextSegment);
-            remainingLine = getRemainingLine(remainingLine, numberOfColumns);
 
-            while (remainingLine.length() > 0) {
+            for (String remainingLine = line; remainingLine.length() > 0; remainingLine = getRemainingLine(remainingLine, numberOfColumns)) {
 
-                nextSegment = getNextSegment(remainingLine, numberOfColumns);
+                String nextSegment = getNextSegment(remainingLine, numberOfColumns);
                 lines.add(nextSegment);
-                remainingLine = getRemainingLine(remainingLine, numberOfColumns);
             }
 
             return lines.stream().collect(Collectors.joining("\n"));
