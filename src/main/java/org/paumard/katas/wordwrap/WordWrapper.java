@@ -22,11 +22,15 @@ public class WordWrapper {
 
         private final String lineToBeWarped;
         private final int numberOfColumns;
+        private final String nextPart;
+        private final int limit;
 
         public Line(String lineToBeWarped, int numberOfColumns) {
 
             this.lineToBeWarped = lineToBeWarped;
             this.numberOfColumns = numberOfColumns;
+            this.nextPart = stringBefore(lineToBeWarped, numberOfColumns);
+            this.limit = getLimit(numberOfColumns);
         }
 
 
@@ -38,9 +42,7 @@ public class WordWrapper {
             return numberOfColumns <= remainingLine.length() ? remainingLine.substring(0, numberOfColumns) : remainingLine;
         }
 
-        private int getLimit(String remainingLine, int numberOfColumns) {
-            String nextPart =
-                    stringBefore(remainingLine, numberOfColumns);
+        private int getLimit(int numberOfColumns) {
             if (nextPart.contains(" ")) {
                 return nextPart.lastIndexOf(' ');
             } else {
@@ -49,8 +51,6 @@ public class WordWrapper {
         }
 
         public Line getRemainingLine() {
-            int limit = getLimit(lineToBeWarped, numberOfColumns);
-            String nextPart = stringBefore(lineToBeWarped, numberOfColumns);
             if (nextPart.contains(" ")) {
                 return new Line(lineToBeWarped.substring(limit + 1), numberOfColumns);
             } else {
@@ -63,8 +63,6 @@ public class WordWrapper {
         }
 
         public String getNextSegment() {
-            int limit = getLimit(lineToBeWarped, numberOfColumns);
-            String nextPart = stringBefore(lineToBeWarped, numberOfColumns);
             if (nextPart.contains(" ")) {
                 return nextPart.substring(0, limit);
             } else {
