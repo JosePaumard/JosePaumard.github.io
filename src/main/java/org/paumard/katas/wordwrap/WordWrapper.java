@@ -67,5 +67,17 @@ public class WordWrapper {
             this.lineToBeWarped = lineToBeWarped;
             this.numberOfColumns = numberOfColumns;
         }
+
+        public Line getRemainingLine() {
+            return null;
+        }
+
+        public boolean isNotEmpty() {
+            return false;
+        }
+
+        public String getNextSegment() {
+            return null;
+        }
     }
 }
