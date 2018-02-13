@@ -24,13 +24,19 @@ public class WordWrapper {
         private final int numberOfColumns;
         private final String nextPart;
         private final int limit;
+        private final boolean nextPartContainsSpace;
 
-        public Line(String lineToBeWarped, int numberOfColumns) {
+        private Line(String lineToBeWarped, int numberOfColumns) {
 
             this.lineToBeWarped = lineToBeWarped;
             this.numberOfColumns = numberOfColumns;
             this.nextPart = stringBefore(lineToBeWarped, numberOfColumns);
-            this.limit = getLimit(numberOfColumns);
+            this.nextPartContainsSpace = nextPart.contains(" ");
+            if (nextPartContainsSpace) {
+                this.limit = nextPart.lastIndexOf(' ');
+            } else {
+                this.limit = numberOfColumns;
+            }
         }
 
 
@@ -42,16 +48,8 @@ public class WordWrapper {
             return numberOfColumns <= remainingLine.length() ? remainingLine.substring(0, numberOfColumns) : remainingLine;
         }
 
-        private int getLimit(int numberOfColumns) {
-            if (nextPart.contains(" ")) {
-                return nextPart.lastIndexOf(' ');
-            } else {
-                return numberOfColumns;
-            }
-        }
-
         public Line getRemainingLine() {
-            if (nextPart.contains(" ")) {
+            if (nextPartContainsSpace) {
                 return new Line(lineToBeWarped.substring(limit + 1), numberOfColumns);
             } else {
                 return new Line(stringAfter(lineToBeWarped, numberOfColumns), numberOfColumns);
@@ -63,7 +61,7 @@ public class WordWrapper {
         }
 
         public String getNextSegment() {
-            if (nextPart.contains(" ")) {
+            if (nextPartContainsSpace) {
                 return nextPart.substring(0, limit);
             } else {
                 return nextPart;
