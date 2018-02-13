@@ -18,45 +18,6 @@ public class WordWrapper {
 
     }
 
-    private String getRemainingLine(String remainingLine, int numberOfColumns) {
-        int limit = getLimit(remainingLine, numberOfColumns);
-        String nextPart = stringBefore(remainingLine, numberOfColumns);
-        if (nextPart.contains(" ")) {
-            remainingLine = remainingLine.substring(limit + 1);
-        } else {
-            remainingLine = stringAfter(remainingLine, numberOfColumns);
-        }
-        return remainingLine;
-    }
-
-    private String stringAfter(String remainingLine, int numberOfColumns) {
-        return numberOfColumns <= remainingLine.length() ? remainingLine.substring(numberOfColumns) : "";
-    }
-
-    private String stringBefore(String remainingLine, int numberOfColumns) {
-        return numberOfColumns <= remainingLine.length() ? remainingLine.substring(0, numberOfColumns) : remainingLine;
-    }
-
-    private String getNextSegment(String remainingLine, int numberOfColumns) {
-        int limit = getLimit(remainingLine, numberOfColumns);
-        String nextPart = stringBefore(remainingLine, numberOfColumns);
-        if (nextPart.contains(" ")) {
-            return nextPart.substring(0, limit);
-        } else {
-            return nextPart;
-        }
-    }
-
-    private int getLimit(String remainingLine, int numberOfColumns) {
-        String nextPart =
-                stringBefore(remainingLine, numberOfColumns);
-        if (nextPart.contains(" ")) {
-            return nextPart.lastIndexOf(' ');
-        } else {
-            return numberOfColumns;
-        }
-    }
-
     private class Line {
 
         private final String lineToBeWarped;
@@ -66,6 +27,25 @@ public class WordWrapper {
 
             this.lineToBeWarped = lineToBeWarped;
             this.numberOfColumns = numberOfColumns;
+        }
+
+
+        private String stringAfter(String remainingLine, int numberOfColumns) {
+            return numberOfColumns <= remainingLine.length() ? remainingLine.substring(numberOfColumns) : "";
+        }
+
+        private String stringBefore(String remainingLine, int numberOfColumns) {
+            return numberOfColumns <= remainingLine.length() ? remainingLine.substring(0, numberOfColumns) : remainingLine;
+        }
+
+        private int getLimit(String remainingLine, int numberOfColumns) {
+            String nextPart =
+                    stringBefore(remainingLine, numberOfColumns);
+            if (nextPart.contains(" ")) {
+                return nextPart.lastIndexOf(' ');
+            } else {
+                return numberOfColumns;
+            }
         }
 
         public Line getRemainingLine() {
