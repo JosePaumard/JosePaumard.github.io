@@ -6,12 +6,14 @@ import java.util.stream.Stream;
 
 public class WordWrapper {
 
-    public String wrap(int numberOfColumns, String line) {
+    public String wrap(int numberOfColumns, String lineToBeWarped) {
+
+        Line line = new Line(lineToBeWarped, numberOfColumns);
 
         return
-                Stream.iterate(line, remainingLine -> getRemainingLine(remainingLine, numberOfColumns))
-                        .takeWhile(remainingLine -> remainingLine.length() > 0)
-                        .map(remainingLine -> getNextSegment(remainingLine, numberOfColumns))
+                Stream.iterate(line, Line::getRemainingLine)
+                        .takeWhile(Line::isNotEmpty)
+                        .map(Line::getNextSegment)
                         .collect(Collectors.joining("\n"));
 
     }
@@ -52,6 +54,18 @@ public class WordWrapper {
             return nextPart.lastIndexOf(' ');
         } else {
             return numberOfColumns;
+        }
+    }
+
+    private class Line {
+
+        private final String lineToBeWarped;
+        private final int numberOfColumns;
+
+        public Line(String lineToBeWarped, int numberOfColumns) {
+
+            this.lineToBeWarped = lineToBeWarped;
+            this.numberOfColumns = numberOfColumns;
         }
     }
 }
