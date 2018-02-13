@@ -69,15 +69,27 @@ public class WordWrapper {
         }
 
         public Line getRemainingLine() {
-            return null;
+            int limit = getLimit(lineToBeWarped, numberOfColumns);
+            String nextPart = stringBefore(lineToBeWarped, numberOfColumns);
+            if (nextPart.contains(" ")) {
+                return new Line(lineToBeWarped.substring(limit + 1), numberOfColumns);
+            } else {
+                return new Line(stringAfter(lineToBeWarped, numberOfColumns), numberOfColumns);
+            }
         }
 
         public boolean isNotEmpty() {
-            return false;
+            return this.lineToBeWarped.length() > 0;
         }
 
         public String getNextSegment() {
-            return null;
+            int limit = getLimit(lineToBeWarped, numberOfColumns);
+            String nextPart = stringBefore(lineToBeWarped, numberOfColumns);
+            if (nextPart.contains(" ")) {
+                return nextPart.substring(0, limit);
+            } else {
+                return nextPart;
+            }
         }
     }
 }
