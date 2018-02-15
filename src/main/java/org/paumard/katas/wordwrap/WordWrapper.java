@@ -30,6 +30,8 @@ public class WordWrapper {
                 return Line.shortLine(lineToBeWarped);
             } else if (!lineToBeWarped.contains(" ")) {
                 return Line.longLineWithNoSpace(lineToBeWarped, numberOfColumns);
+            } else if (lineToBeWarped.indexOf(' ') > numberOfColumns) {
+                return Line.longLineWithNoSpace(lineToBeWarped, numberOfColumns);
             }
             return new LineWithSpace(lineToBeWarped, numberOfColumns);
         }
