@@ -9,9 +9,9 @@ import java.util.stream.Stream;
 
 public class WordWrapper {
 
-    public String wrap(int numberOfColumns, String lineToBeWarped) {
+    public String wrap(int numberOfColumns, String lineToBeWrapped) {
 
-        Line line = Line.of(lineToBeWarped, numberOfColumns);
+        Line line = Line.of(lineToBeWrapped, numberOfColumns);
 
         return
                 Stream.iterate(line, Line::getRemainingLine)
@@ -26,22 +26,22 @@ public class WordWrapper {
         boolean isNotEmpty();
         String getNextSegment();
 
-        static Line of (String lineToBeWarped, int numberOfColumns) {
+        static Line of (String lineToBeWrapped, int numberOfColumns) {
 
-            LineFactory lineFactory = LineFactory.of(lineToBeWarped, numberOfColumns);
-            return lineFactory.warpLine(lineToBeWarped, numberOfColumns);
+            LineFactory lineFactory = LineFactory.of(lineToBeWrapped, numberOfColumns);
+            return lineFactory.wrapLine(lineToBeWrapped, numberOfColumns);
         }
 
-        static Line longLineWithSpace(String lineToBeWarped, int numberOfColumns) {
-            return new LongLineWithSpace(lineToBeWarped, numberOfColumns);
+        static Line longLineWithSpace(String lineToBeWrapped, int numberOfColumns) {
+            return new LongLineWithSpace(lineToBeWrapped, numberOfColumns);
         }
 
-        static Line longLineWithNoSpace(String lineToBeWarped, int numberOfColumns) {
-            return new LongLineWithNoSpace(lineToBeWarped, numberOfColumns);
+        static Line longLineWithNoSpace(String lineToBeWrapped, int numberOfColumns) {
+            return new LongLineWithNoSpace(lineToBeWrapped, numberOfColumns);
         }
 
-        static Line shortLine(String lineToBeWarped) {
-            return new ShortLine(lineToBeWarped);
+        static Line shortLine(String lineToBeWrapped) {
+            return new ShortLine(lineToBeWrapped);
         }
 
         static Line empty() {
@@ -112,13 +112,13 @@ public class WordWrapper {
         private final String segment;
         private final String remainingLine;
 
-        private LongLineWithSpace(String lineToBeWarped, int numberOfColumns) {
+        private LongLineWithSpace(String line, int numberOfColumns) {
 
             this.numberOfColumns = numberOfColumns;
-            String nextPart = lineToBeWarped.substring(0, numberOfColumns);
+            String nextPart = line.substring(0, numberOfColumns);
             int limit = nextPart.lastIndexOf(' ');
             this.segment = nextPart.substring(0, limit);
-            this.remainingLine = lineToBeWarped.substring(limit + 1);
+            this.remainingLine = line.substring(limit + 1);
         }
 
         public Line getRemainingLine() {
@@ -167,7 +167,7 @@ public class WordWrapper {
                     .findFirst().get();
         }
 
-        public Line warpLine(String line, int numberOfColumns) {
+        public Line wrapLine(String line, int numberOfColumns) {
             return lineFactory.apply(line, numberOfColumns);
         }
     }
