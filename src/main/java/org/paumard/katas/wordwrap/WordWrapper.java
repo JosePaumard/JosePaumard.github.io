@@ -26,12 +26,41 @@ public class WordWrapper {
         static Line of (String lineToBeWarped, int numberOfColumns) {
             if (lineToBeWarped.isEmpty()) {
                 return Line.empty();
+            } else if (lineToBeWarped.length() <= numberOfColumns) {
+                return Line.shortLine(lineToBeWarped);
             }
             return new LineWithSpace(lineToBeWarped, numberOfColumns);
         }
 
+        static Line shortLine(String lineToBeWarped) {
+            return new ShortLine(lineToBeWarped);
+        }
+
         static Line empty() {
             return new EmptyLine();
+        }
+    }
+
+    private static class ShortLine implements Line {
+        private String line;
+
+        public ShortLine(String line) {
+            this.line = line;
+        }
+
+        @Override
+        public Line getRemainingLine() {
+            return Line.empty();
+        }
+
+        @Override
+        public boolean isNotEmpty() {
+            return true;
+        }
+
+        @Override
+        public String getNextSegment() {
+            return line;
         }
     }
 
