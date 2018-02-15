@@ -28,8 +28,14 @@ public class WordWrapper {
                 return Line.empty();
             } else if (lineToBeWarped.length() <= numberOfColumns) {
                 return Line.shortLine(lineToBeWarped);
+            } else if (!lineToBeWarped.contains(" ")) {
+                return Line.longLineWithNoSpace(lineToBeWarped, numberOfColumns);
             }
             return new LineWithSpace(lineToBeWarped, numberOfColumns);
+        }
+
+        static Line longLineWithNoSpace(String lineToBeWarped, int numberOfColumns) {
+            return new LongLineWithNoSpace(lineToBeWarped, numberOfColumns);
         }
 
         static Line shortLine(String lineToBeWarped) {
@@ -41,6 +47,28 @@ public class WordWrapper {
         }
     }
 
+    private static class LongLineWithNoSpace implements Line {
+        private final String line;
+        private final int numberOfColumns;
+
+        public LongLineWithNoSpace(String line, int numberOfColumns) {
+            this.line = line;
+            this.numberOfColumns = numberOfColumns;
+        }
+
+        public Line getRemainingLine() {
+            return Line.of(line.substring(numberOfColumns), numberOfColumns);
+        }
+
+        public boolean isNotEmpty() {
+            return true;
+        }
+
+        public String getNextSegment() {
+            return line.substring(0, numberOfColumns);
+        }
+    }
+
     private static class ShortLine implements Line {
         private String line;
 
@@ -48,17 +76,14 @@ public class WordWrapper {
             this.line = line;
         }
 
-        @Override
         public Line getRemainingLine() {
             return Line.empty();
         }
 
-        @Override
         public boolean isNotEmpty() {
             return true;
         }
 
-        @Override
         public String getNextSegment() {
             return line;
         }
