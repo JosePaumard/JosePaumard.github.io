@@ -117,19 +117,13 @@ public class WordWrapper {
         private final int numberOfColumns;
         private final String nextPart;
         private final int limit;
-        private final boolean nextPartContainsSpace;
 
         private LongLineWithSpace(String lineToBeWarped, int numberOfColumns) {
 
             this.lineToBeWarped = lineToBeWarped;
             this.numberOfColumns = numberOfColumns;
             this.nextPart = stringBefore(lineToBeWarped, numberOfColumns);
-            this.nextPartContainsSpace = true;
-            if (nextPartContainsSpace) {
-                this.limit = nextPart.lastIndexOf(' ');
-            } else {
-                this.limit = numberOfColumns;
-            }
+            this.limit = nextPart.lastIndexOf(' ');
         }
 
 
@@ -143,11 +137,7 @@ public class WordWrapper {
 
         @Override
         public Line getRemainingLine() {
-            if (nextPartContainsSpace) {
-                return Line.of(lineToBeWarped.substring(limit + 1), numberOfColumns);
-            } else {
-                return Line.of(stringAfter(lineToBeWarped, numberOfColumns), numberOfColumns);
-            }
+            return Line.of(lineToBeWarped.substring(limit + 1), numberOfColumns);
         }
 
         public boolean isNotEmpty() {
@@ -156,11 +146,7 @@ public class WordWrapper {
 
         @Override
         public String getNextSegment() {
-            if (nextPartContainsSpace) {
-                return nextPart.substring(0, limit);
-            } else {
-                return nextPart;
-            }
+            return nextPart.substring(0, limit);
         }
     }
 }
