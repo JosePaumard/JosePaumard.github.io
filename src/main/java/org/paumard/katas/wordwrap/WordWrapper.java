@@ -8,7 +8,7 @@ public class WordWrapper {
 
     public String wrap(int numberOfColumns, String lineToBeWarped) {
 
-        Line line = new Line(lineToBeWarped, numberOfColumns);
+        Line line = Line.of(lineToBeWarped, numberOfColumns);
 
         return
                 Stream.iterate(line, Line::getRemainingLine)
@@ -18,7 +18,18 @@ public class WordWrapper {
 
     }
 
-    private class Line {
+    private interface Line {
+        Line getRemainingLine();
+        boolean isNotEmpty();
+        String getNextSegment();
+
+        static Line of (String lineToBeWarped, int numberOfColumns) {
+            return new LineWithSpace(lineToBeWarped, numberOfColumns);
+        }
+
+    }
+
+    private static class LineWithSpace implements Line {
 
         private final String lineToBeWarped;
         private final int numberOfColumns;
@@ -26,7 +37,7 @@ public class WordWrapper {
         private final int limit;
         private final boolean nextPartContainsSpace;
 
-        private Line(String lineToBeWarped, int numberOfColumns) {
+        private LineWithSpace(String lineToBeWarped, int numberOfColumns) {
 
             this.lineToBeWarped = lineToBeWarped;
             this.numberOfColumns = numberOfColumns;
@@ -48,11 +59,12 @@ public class WordWrapper {
             return numberOfColumns <= remainingLine.length() ? remainingLine.substring(0, numberOfColumns) : remainingLine;
         }
 
+        @Override
         public Line getRemainingLine() {
             if (nextPartContainsSpace) {
-                return new Line(lineToBeWarped.substring(limit + 1), numberOfColumns);
+                return new LineWithSpace(lineToBeWarped.substring(limit + 1), numberOfColumns);
             } else {
-                return new Line(stringAfter(lineToBeWarped, numberOfColumns), numberOfColumns);
+                return new LineWithSpace(stringAfter(lineToBeWarped, numberOfColumns), numberOfColumns);
             }
         }
 
@@ -60,6 +72,7 @@ public class WordWrapper {
             return this.lineToBeWarped.length() > 0;
         }
 
+        @Override
         public String getNextSegment() {
             if (nextPartContainsSpace) {
                 return nextPart.substring(0, limit);
