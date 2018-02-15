@@ -24,9 +24,30 @@ public class WordWrapper {
         String getNextSegment();
 
         static Line of (String lineToBeWarped, int numberOfColumns) {
+            if (lineToBeWarped.isEmpty()) {
+                return Line.empty();
+            }
             return new LineWithSpace(lineToBeWarped, numberOfColumns);
         }
 
+        static Line empty() {
+            return new EmptyLine();
+        }
+    }
+
+    private static class EmptyLine implements Line {
+
+        public Line getRemainingLine() {
+            return this;
+        }
+
+        public boolean isNotEmpty() {
+            return false;
+        }
+
+        public String getNextSegment() {
+            return "";
+        }
     }
 
     private static class LineWithSpace implements Line {
