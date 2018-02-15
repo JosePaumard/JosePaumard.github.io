@@ -1,6 +1,9 @@
 package org.paumard.katas.wordwrap;
 
 
+import java.util.Arrays;
+import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -24,17 +27,9 @@ public class WordWrapper {
         String getNextSegment();
 
         static Line of (String lineToBeWarped, int numberOfColumns) {
-            if (lineToBeWarped.isEmpty()) {
-                return Line.empty();
-            } else if (lineToBeWarped.length() <= numberOfColumns) {
-                return Line.shortLine(lineToBeWarped);
-            } else if (!lineToBeWarped.contains(" ")) {
-                return Line.longLineWithNoSpace(lineToBeWarped, numberOfColumns);
-            } else if (lineToBeWarped.indexOf(' ') > numberOfColumns) {
-                return Line.longLineWithNoSpace(lineToBeWarped, numberOfColumns);
-            } else {
-                return Line.longLineWithSpace(lineToBeWarped, numberOfColumns);
-            }
+
+            LineFactory lineFactory = LineFactory.of(lineToBeWarped, numberOfColumns);
+            return lineFactory.warpLine(lineToBeWarped, numberOfColumns);
         }
 
         static Line longLineWithSpace(String lineToBeWarped, int numberOfColumns) {
@@ -126,7 +121,6 @@ public class WordWrapper {
             this.remainingLine = lineToBeWarped.substring(limit + 1);
         }
 
-        @Override
         public Line getRemainingLine() {
             return Line.of(remainingLine, numberOfColumns);
         }
@@ -135,9 +129,46 @@ public class WordWrapper {
             return true;
         }
 
-        @Override
         public String getNextSegment() {
             return segment;
+        }
+    }
+
+    private enum LineFactory {
+        EMPTY_LINE_FACTORY(
+                (line, numberOfColumns) -> line.isEmpty(),
+                (line, numberOfColumns) -> Line.empty()
+        ),
+        SHORT_LINE_FACTORY(
+                (line, numberOfColumns) -> line.length() <= numberOfColumns,
+                (line, numberOfColumns) -> Line.shortLine(line)
+        ),
+        LONG_LINE_WITH_NO_SPACE(
+                (line, numberOfColumns) -> !line.contains(" ") || line.indexOf(' ') > numberOfColumns,
+                Line::longLineWithNoSpace
+        ),
+        LONG_LINE_WITH_SPACE(
+                (line, numberOfColumns) -> line.length() > numberOfColumns && line.indexOf(' ') <= numberOfColumns,
+                Line::longLineWithSpace
+        )
+        ;
+
+        private BiPredicate<String, Integer> selector;
+        private BiFunction<String, Integer, Line> lineFactory;
+
+        LineFactory(BiPredicate<String, Integer> selector, BiFunction<String, Integer, Line> lineFactory) {
+            this.selector = selector;
+            this.lineFactory = lineFactory;
+        }
+
+        public static LineFactory of(String line, int numberOfColumns) {
+            return Arrays.stream(values())
+                    .filter(factory -> factory.selector.test(line, numberOfColumns))
+                    .findFirst().get();
+        }
+
+        public Line warpLine(String line, int numberOfColumns) {
+            return lineFactory.apply(line, numberOfColumns);
         }
     }
 }
