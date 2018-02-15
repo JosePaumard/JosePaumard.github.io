@@ -32,8 +32,13 @@ public class WordWrapper {
                 return Line.longLineWithNoSpace(lineToBeWarped, numberOfColumns);
             } else if (lineToBeWarped.indexOf(' ') > numberOfColumns) {
                 return Line.longLineWithNoSpace(lineToBeWarped, numberOfColumns);
+            } else {
+                return Line.longLineWithSpace(lineToBeWarped, numberOfColumns);
             }
-            return new LineWithSpace(lineToBeWarped, numberOfColumns);
+        }
+
+        static Line longLineWithSpace(String lineToBeWarped, int numberOfColumns) {
+            return new LongLineWithSpace(lineToBeWarped, numberOfColumns);
         }
 
         static Line longLineWithNoSpace(String lineToBeWarped, int numberOfColumns) {
@@ -106,7 +111,7 @@ public class WordWrapper {
         }
     }
 
-    private static class LineWithSpace implements Line {
+    private static class LongLineWithSpace implements Line {
 
         private final String lineToBeWarped;
         private final int numberOfColumns;
@@ -114,7 +119,7 @@ public class WordWrapper {
         private final int limit;
         private final boolean nextPartContainsSpace;
 
-        private LineWithSpace(String lineToBeWarped, int numberOfColumns) {
+        private LongLineWithSpace(String lineToBeWarped, int numberOfColumns) {
 
             this.lineToBeWarped = lineToBeWarped;
             this.numberOfColumns = numberOfColumns;
@@ -139,9 +144,9 @@ public class WordWrapper {
         @Override
         public Line getRemainingLine() {
             if (nextPartContainsSpace) {
-                return new LineWithSpace(lineToBeWarped.substring(limit + 1), numberOfColumns);
+                return Line.of(lineToBeWarped.substring(limit + 1), numberOfColumns);
             } else {
-                return new LineWithSpace(stringAfter(lineToBeWarped, numberOfColumns), numberOfColumns);
+                return Line.of(stringAfter(lineToBeWarped, numberOfColumns), numberOfColumns);
             }
         }
 
