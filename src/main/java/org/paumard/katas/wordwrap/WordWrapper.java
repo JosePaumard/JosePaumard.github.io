@@ -124,7 +124,7 @@ public class WordWrapper {
             this.lineToBeWarped = lineToBeWarped;
             this.numberOfColumns = numberOfColumns;
             this.nextPart = stringBefore(lineToBeWarped, numberOfColumns);
-            this.nextPartContainsSpace = nextPart.contains(" ");
+            this.nextPartContainsSpace = true;
             if (nextPartContainsSpace) {
                 this.limit = nextPart.lastIndexOf(' ');
             } else {
