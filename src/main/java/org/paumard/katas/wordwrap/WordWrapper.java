@@ -138,7 +138,7 @@ public class WordWrapper {
         }
 
         private String stringBefore(String remainingLine, int numberOfColumns) {
-            return numberOfColumns <= remainingLine.length() ? remainingLine.substring(0, numberOfColumns) : remainingLine;
+            return remainingLine.substring(0, numberOfColumns);
         }
 
         @Override
