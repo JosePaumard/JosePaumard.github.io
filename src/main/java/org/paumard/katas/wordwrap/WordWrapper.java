@@ -113,40 +113,31 @@ public class WordWrapper {
 
     private static class LongLineWithSpace implements Line {
 
-        private final String lineToBeWarped;
         private final int numberOfColumns;
-        private final String nextPart;
-        private final int limit;
+        private final String segment;
+        private final String remainingLine;
 
         private LongLineWithSpace(String lineToBeWarped, int numberOfColumns) {
 
-            this.lineToBeWarped = lineToBeWarped;
             this.numberOfColumns = numberOfColumns;
-            this.nextPart = stringBefore(lineToBeWarped, numberOfColumns);
-            this.limit = nextPart.lastIndexOf(' ');
-        }
-
-
-        private String stringAfter(String remainingLine, int numberOfColumns) {
-            return remainingLine.substring(numberOfColumns);
-        }
-
-        private String stringBefore(String remainingLine, int numberOfColumns) {
-            return remainingLine.substring(0, numberOfColumns);
+            String nextPart = lineToBeWarped.substring(0, numberOfColumns);
+            int limit = nextPart.lastIndexOf(' ');
+            this.segment = nextPart.substring(0, limit);
+            this.remainingLine = lineToBeWarped.substring(limit + 1);
         }
 
         @Override
         public Line getRemainingLine() {
-            return Line.of(lineToBeWarped.substring(limit + 1), numberOfColumns);
+            return Line.of(remainingLine, numberOfColumns);
         }
 
         public boolean isNotEmpty() {
-            return this.lineToBeWarped.length() > 0;
+            return true;
         }
 
         @Override
         public String getNextSegment() {
-            return nextPart.substring(0, limit);
+            return segment;
         }
     }
 }
