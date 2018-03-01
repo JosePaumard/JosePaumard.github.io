@@ -19,15 +19,19 @@ public class PhoneNumbers {
         return true;
     }
 
-    private boolean addToPrefixSet(Set<String> phoneNumberSet, String phoneNumber) {
-        return phoneNumberSet.add(phoneNumber);
-    }
+    private class PhoneNumberPrefixes {
+        private Set<String> phoneNumberSet = new HashSet<>();
 
-    private boolean containsAKnownPrefix(Set<String> phoneNumberSet, String phoneNumber) {
-        return streamOfPrefixes(phoneNumber).anyMatch(phoneNumberSet::contains);
-    }
+        private Stream<String> streamOfPrefixes(String string) {
+            return IntStream.rangeClosed(1, string.length()).mapToObj(index -> string.substring(0, index));
+        }
 
-    static Stream<String> streamOfPrefixes(String string) {
-        return IntStream.rangeClosed(1, string.length()).mapToObj(index -> string.substring(0, index));
+        boolean containsAKnownPrefix(String phoneNumber) {
+            return streamOfPrefixes(phoneNumber).anyMatch(phoneNumberSet::contains);
+        }
+
+        void addToPrefixSet(String phoneNumber) {
+            phoneNumberSet.add(phoneNumber);
+        }
     }
 }
