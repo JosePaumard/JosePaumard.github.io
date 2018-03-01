@@ -9,12 +9,12 @@ import java.util.stream.Stream;
 public class PhoneNumbers {
     public boolean isConsistent(List<String> phoneNumbersList) {
 
-        Set<String> phoneNumberSet = new HashSet<>();
+        PhoneNumberPrefixes phoneNumberPrefixes = new PhoneNumberPrefixes();
         for (String phoneNumber : phoneNumbersList) {
-            if (containsAKnownPrefix(phoneNumberSet, phoneNumber)) {
+            if (phoneNumberPrefixes.containsAKnownPrefix(phoneNumber)) {
                 return false;
             }
-            addToPrefixSet(phoneNumberSet, phoneNumber);
+            phoneNumberPrefixes.addToPrefixSet(phoneNumber);
         }
         return true;
     }
