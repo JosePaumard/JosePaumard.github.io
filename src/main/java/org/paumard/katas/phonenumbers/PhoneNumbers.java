@@ -11,12 +11,20 @@ public class PhoneNumbers {
 
         Set<String> phoneNumberSet = new HashSet<>();
         for (String phoneNumber : phoneNumbersList) {
-            if (streamOfPrefixes(phoneNumber).anyMatch(phoneNumberSet::contains)) {
+            if (containsAKnownPrefix(phoneNumberSet, phoneNumber)) {
                 return false;
             }
-            phoneNumberSet.add(phoneNumber);
+            addToPrefixSet(phoneNumberSet, phoneNumber);
         }
         return true;
+    }
+
+    private boolean addToPrefixSet(Set<String> phoneNumberSet, String phoneNumber) {
+        return phoneNumberSet.add(phoneNumber);
+    }
+
+    private boolean containsAKnownPrefix(Set<String> phoneNumberSet, String phoneNumber) {
+        return streamOfPrefixes(phoneNumber).anyMatch(phoneNumberSet::contains);
     }
 
     static Stream<String> streamOfPrefixes(String string) {
