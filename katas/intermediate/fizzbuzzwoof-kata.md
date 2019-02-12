@@ -22,7 +22,7 @@ Then we do the same for 5 and `Buzz`. Here are some more examples:
 And of course we support both at the same time:
 
 * `15` => `FizzBuzzBuzz` (divisible by 3, divisible by 5, contains a 5)
-* `1535` => `FizzBuzzBuzzFizzBuzz` (divisible by 3, divisible by 5, contains a 5, then a 3, then a 5)
+* `2535` => `FizzBuzzBuzzFizzBuzz` (divisible by 3, divisible by 5, contains a 5, then a 3, then a 5)
 
 And then to really make a difference on our market, we need to support the 7, replaced with `Woof`.
 
