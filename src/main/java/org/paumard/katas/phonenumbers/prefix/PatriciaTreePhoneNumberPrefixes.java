@@ -34,5 +34,13 @@ public class PatriciaTreePhoneNumberPrefixes implements PhoneNumberPrefixes {
         public static Node createRootNode() {
             return null;
         }
+
+        public Node add(char digit) {
+            return null;
+        }
+
+        public void setTerminal(boolean terminal) {
+            
+        }
     }
 }
