@@ -3,6 +3,7 @@ package org.paumard.katas.phonenumbers;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -12,7 +13,8 @@ public class PhoneNumbers {
             return true;
         }
         PhoneNumberPrefixes phoneNumberPrefixes = new PhoneNumberPrefixes();
-        for (String phoneNumber : phoneNumbersList) {
+        List<PhoneNumber> phoneNumbers = phoneNumbersList.stream().map(PhoneNumber::new).collect(Collectors.toList());
+        for (PhoneNumber phoneNumber : phoneNumbers) {
             if (phoneNumber.containsAPrefixFrom(phoneNumberPrefixes)) {
                 return false;
             }
@@ -43,6 +45,12 @@ public class PhoneNumbers {
             return phoneNumberSet.stream()
                             .flatMap(this::streamOfPrefixes)
                             .anyMatch(phoneNumber::equals);
+        }
+    }
+
+    private class PhoneNumber {
+        public PhoneNumber(String phoneNumber) {
+
         }
     }
 }
