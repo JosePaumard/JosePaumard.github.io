@@ -22,7 +22,7 @@ public class PhoneNumbers {
             if (phoneNumber.isAPrefixFrom(phoneNumberPrefixes)) {
                 return false;
             }
-            phoneNumberPrefixes.addPrefix(phoneNumber);
+            phoneNumberPrefixes.addPrefix(phoneNumber.getPhoneNumber());
         }
         return true;
     }

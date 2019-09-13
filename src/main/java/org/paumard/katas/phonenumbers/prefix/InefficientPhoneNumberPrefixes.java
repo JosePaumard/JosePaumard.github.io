@@ -28,7 +28,7 @@ public class InefficientPhoneNumberPrefixes implements PhoneNumberPrefixes {
     }
 
     @Override
-    public void addPrefix(PhoneNumber phoneNumber) {
-        phoneNumberSet.add(phoneNumber.getPhoneNumber());
+    public void addPrefix(String phoneNumber) {
+        phoneNumberSet.add(phoneNumber);
     }
 }
