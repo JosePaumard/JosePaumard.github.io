@@ -37,8 +37,8 @@ public class PhoneNumbers {
             return streamOfPrefixes(phoneNumber).anyMatch(phoneNumberSet::contains);
         }
 
-        void addToPrefixSet(String phoneNumber) {
-            phoneNumberSet.add(phoneNumber);
+        void addToPrefixSet(PhoneNumber phoneNumber) {
+            phoneNumberSet.add(phoneNumber.getPhoneNumber());
         }
 
         private boolean isAPrefix(String phoneNumber) {
@@ -51,6 +51,18 @@ public class PhoneNumbers {
     private class PhoneNumber {
         public PhoneNumber(String phoneNumber) {
 
+        }
+
+        public boolean containsAPrefixFrom(PhoneNumberPrefixes phoneNumberPrefixes) {
+            return false;
+        }
+
+        public boolean isAPrefixFrom(PhoneNumberPrefixes phoneNumberPrefixes) {
+            return false;
+        }
+
+        public String getPhoneNumber() {
+            return null;
         }
     }
 }
