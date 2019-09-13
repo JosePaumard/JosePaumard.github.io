@@ -8,10 +8,18 @@ import java.util.stream.Stream;
 
 public class PhoneNumbers {
     public boolean isConsistent(List<String> phoneNumbersList) {
-
+        if (phoneNumbersList.size() == 1) {
+            return true;
+        }
         PhoneNumberPrefixes phoneNumberPrefixes = new PhoneNumberPrefixes();
         for (String phoneNumber : phoneNumbersList) {
             if (phoneNumberPrefixes.containsAKnownPrefix(phoneNumber)) {
+                return false;
+            }
+            boolean isAPrefix = phoneNumberPrefixes.phoneNumberSet.stream()
+                    .flatMap(phoneNumberPrefixes::streamOfPrefixes)
+                    .anyMatch(phoneNumber::equals);
+            if (isAPrefix) {
                 return false;
             }
             phoneNumberPrefixes.addToPrefixSet(phoneNumber);
