@@ -21,6 +21,13 @@ public class PatriciaTreePhoneNumberPrefixes implements PhoneNumberPrefixes {
 
     @Override
     public void addPrefix(String phoneNumber) {
+        Node node = rootNode;
+        for (char digit : phoneNumber.toCharArray()) {
+            if (digit != ' ') {
+                node = node.add(digit);
+            }
+        }
+        node.setTerminal(true);
     }
 
     private static class Node {
