@@ -54,17 +54,18 @@ public class PatriciaTreePhoneNumberPrefixes implements PhoneNumberPrefixes {
     private static class Node {
 
         private boolean terminal = false;
+        private Map<Character, Node>  map = new HashMap<>();
 
         public static Node createRootNode() {
             return new Node();
         }
 
         public Node add(char digit) {
-            return null;
+            return map.computeIfAbsent(digit, d -> new Node());
         }
 
         public Node get(char digit) {
-            return null;
+            return map.get(digit);
         }
 
         public void setTerminal(boolean terminal) {
