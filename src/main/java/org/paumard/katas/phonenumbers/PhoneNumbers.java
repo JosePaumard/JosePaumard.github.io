@@ -1,7 +1,7 @@
 package org.paumard.katas.phonenumbers;
 
 import org.paumard.katas.phonenumbers.model.PhoneNumber;
-import org.paumard.katas.phonenumbers.prefix.InefficientPhoneNumberPrefixes;
+import org.paumard.katas.phonenumbers.prefix.PatriciaTreePhoneNumberPrefixes;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +12,7 @@ public class PhoneNumbers {
             return true;
         }
 
-        PhoneNumberPrefixes phoneNumberPrefixes = new InefficientPhoneNumberPrefixes();
+        PhoneNumberPrefixes phoneNumberPrefixes = new PatriciaTreePhoneNumberPrefixes();
 
         List<PhoneNumber> phoneNumbers = phoneNumbersList.stream().map(PhoneNumber::new).collect(Collectors.toList());
         for (PhoneNumber phoneNumber : phoneNumbers) {
