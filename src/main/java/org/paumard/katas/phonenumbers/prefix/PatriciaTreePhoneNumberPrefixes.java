@@ -67,5 +67,9 @@ public class PatriciaTreePhoneNumberPrefixes implements PhoneNumberPrefixes {
         public Node get(char digit) {
             return null;
         }
+
+        public boolean isTerminal() {
+            return false;
+        }
     }
 }
