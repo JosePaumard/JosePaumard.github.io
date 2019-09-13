@@ -16,10 +16,7 @@ public class PhoneNumbers {
             if (phoneNumberPrefixes.containsAKnownPrefix(phoneNumber)) {
                 return false;
             }
-            boolean isAPrefix = phoneNumberPrefixes.phoneNumberSet.stream()
-                    .flatMap(phoneNumberPrefixes::streamOfPrefixes)
-                    .anyMatch(phoneNumber::equals);
-            if (isAPrefix) {
+            if (phoneNumberPrefixes.isAPrefix(phoneNumber)) {
                 return false;
             }
             phoneNumberPrefixes.addToPrefixSet(phoneNumber);
@@ -40,6 +37,12 @@ public class PhoneNumbers {
 
         void addToPrefixSet(String phoneNumber) {
             phoneNumberSet.add(phoneNumber);
+        }
+
+        private boolean isAPrefix(String phoneNumber) {
+            return phoneNumberSet.stream()
+                            .flatMap(this::streamOfPrefixes)
+                            .anyMatch(phoneNumber::equals);
         }
     }
 }
