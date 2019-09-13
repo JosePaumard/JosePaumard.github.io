@@ -16,7 +16,16 @@ public class PatriciaTreePhoneNumberPrefixes implements PhoneNumberPrefixes {
 
     @Override
     public boolean isAPrefix(String phoneNumber) {
-        return false;
+        Node node = rootNode;
+        for (char number : phoneNumber.toCharArray()) {
+            if (number != ' ') {
+                node = node.get(number);
+                if (node == null) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @Override
@@ -40,7 +49,7 @@ public class PatriciaTreePhoneNumberPrefixes implements PhoneNumberPrefixes {
         }
 
         public void setTerminal(boolean terminal) {
-            
+
         }
     }
 }
