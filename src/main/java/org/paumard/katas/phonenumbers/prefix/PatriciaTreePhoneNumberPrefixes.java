@@ -52,24 +52,27 @@ public class PatriciaTreePhoneNumberPrefixes implements PhoneNumberPrefixes {
     }
 
     private static class Node {
+
+        private boolean terminal = false;
+
         public static Node createRootNode() {
-            return null;
+            return new Node();
         }
 
         public Node add(char digit) {
             return null;
         }
 
-        public void setTerminal(boolean terminal) {
-
-        }
-
         public Node get(char digit) {
             return null;
         }
 
+        public void setTerminal(boolean terminal) {
+            this.terminal = terminal;
+        }
+
         public boolean isTerminal() {
-            return false;
+            return this.terminal;
         }
     }
 }
