@@ -11,7 +11,19 @@ public class PatriciaTreePhoneNumberPrefixes implements PhoneNumberPrefixes {
 
     @Override
     public boolean containsAKnownPrefix(String phoneNumber) {
-        return false;
+        Node node = rootNode;
+        for (char digit : phoneNumber.toCharArray()) {
+            if (digit != ' ') {
+                node = node.get(digit);
+                if (node == null) {
+                    return false;
+                }
+                if (node.isTerminal()) {
+                    return true;
+                }
+            }
+        }
+        return true;
     }
 
     @Override
