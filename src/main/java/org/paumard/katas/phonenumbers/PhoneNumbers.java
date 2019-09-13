@@ -13,10 +13,10 @@ public class PhoneNumbers {
         }
         PhoneNumberPrefixes phoneNumberPrefixes = new PhoneNumberPrefixes();
         for (String phoneNumber : phoneNumbersList) {
-            if (phoneNumberPrefixes.containsAKnownPrefix(phoneNumber)) {
+            if (phoneNumber.containsAPrefixFrom(phoneNumberPrefixes)) {
                 return false;
             }
-            if (phoneNumberPrefixes.isAPrefix(phoneNumber)) {
+            if (phoneNumber.isAPrefixFrom(phoneNumberPrefixes)) {
                 return false;
             }
             phoneNumberPrefixes.addToPrefixSet(phoneNumber);
