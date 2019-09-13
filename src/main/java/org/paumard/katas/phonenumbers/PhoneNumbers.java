@@ -56,11 +56,11 @@ public class PhoneNumbers {
         }
 
         public boolean containsAPrefixFrom(PhoneNumberPrefixes phoneNumberPrefixes) {
-            return false;
+            return phoneNumberPrefixes.containsAKnownPrefix(this.phoneNumber);
         }
 
         public boolean isAPrefixFrom(PhoneNumberPrefixes phoneNumberPrefixes) {
-            return false;
+            return phoneNumberPrefixes.isAPrefix(this.phoneNumber);
         }
 
         public String getPhoneNumber() {
