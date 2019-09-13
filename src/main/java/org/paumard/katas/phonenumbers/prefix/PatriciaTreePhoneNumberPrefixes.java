@@ -1,11 +1,11 @@
 package org.paumard.katas.phonenumbers.prefix;
 
 import org.paumard.katas.phonenumbers.PhoneNumberPrefixes;
-import org.paumard.katas.phonenumbers.prefix.node.HashMapNode;
+import org.paumard.katas.phonenumbers.prefix.node.ArrayNode;
 
 public class PatriciaTreePhoneNumberPrefixes implements PhoneNumberPrefixes {
 
-    private Node rootNode = new HashMapNode();
+    private Node rootNode = new ArrayNode();
 
     @Override
     public boolean containsAKnownPrefix(String phoneNumber) {
