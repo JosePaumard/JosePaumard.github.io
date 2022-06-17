@@ -31,7 +31,7 @@ And then to really make a difference on our market, we need to support the 7, re
 At last, a strategic requirement came from the market guys. We need to keep track of the 0 in the incoming numbers for a very important customer. Each 0 should be replaced by a star `*`. Here are some examples:
 
 * `10` => `Buzz*`
-* `30` => `FizzFizz*`
+* `30` => `FizzBuzzFizz*`
 * `3105` => `FizzBuzzFizz*Buzz`
 
 ### Comments
