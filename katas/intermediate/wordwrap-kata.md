@@ -122,7 +122,7 @@ We added a factory method along with this interface, to keep the code independen
 
 From this point, we can add several implementations of this interface. The process is to add them one by one, strategy by strategy: 
 - for the empty lines;
-- for the lines shorted than the size on the number of columns;
+- for the lines shorter than the size on the number of columns;
 - for the lines longer that this size, with no space in them;
 - for the one that have space in them, but after the number of columns limit;
 - and the others. 
